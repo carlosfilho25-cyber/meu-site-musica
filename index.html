@@ -3,33 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> 
-    <title>Músicas, Games e TERRARIA!</title>
+    <link rel="stylesheet" href="style.css">
+    <title>⚡ Minecraft Tiro ao Alvo ⚡</title>
 </head>
-
 <body>
-    <h1>⚡ Músicas, Games & Terraria ⚡</h1>
-    <p class="subtitulo">🎤 Resenhas + Gameplays + MINI TERRARIA ⛏️🌍</p>
 
-    <!-- SEÇÃO DO JOGO TERRARIA -->
-    <h2 class="secao-titulo">⛏️ Mineração Simples</h2>
-    
-    <div class="game-area">
-        <div class="game-info">
-            <p>💎 Pontos: <span id="pontos">0</span></p>
-            <p>❤️ Vidas: <span id="vidas">❤️❤️❤️❤️❤️</span></p>
-            <p>⛏️ Minério: <span id="minerioContador">0</span></p>
-            <button id="botaoReiniciar">🔄 Reiniciar Jogo</button>
+    <!-- ==================== TÍTULO ==================== -->
+    <h1 class="titulo-principal">⚡ Minecraft Tiro ao Alvo ⚡</h1>
+    <p class="subtitulo">🎯 Acerte os alvos antes que eles desapareçam! 30 segundos de pura adrenalina!</p>
+
+    <!-- ==================== JOGO ==================== -->
+    <div class="game-window">
+        <div class="game-header">
+            <h2>🎯 TIRO AO ALVO</h2>
+            <div class="game-stats">
+                <div>💥 Pontos: <span id="pontosDisplay">0</span></div>
+                <div>⏱️ Tempo: <span id="tempoDisplay">30</span>s</div>
+                <div>🎯 Acertos: <span id="acertosDisplay">0</span></div>
+                <div>🏆 Recorde: <span id="recordeDisplay">0</span></div>
+            </div>
         </div>
-        
-        <div id="gameBoard" class="game-board">
-            <!-- OS BLOCOS SERÃO CRIADOS PELO JAVASCRIPT -->
+
+        <!-- ÁREA DO JOGO -->
+        <div id="gameArea">
+            <!-- ALVOS SERÃO CRIADOS PELO JAVASCRIPT -->
+            <div id="alvo" class="alvo">🎯</div>
+            <div id="mensagemGame">Clique no alvo para começar!</div>
         </div>
-        
-        <p class="game-dica">💡 Clique nos blocos para minerar! 🟫 Terra = 1pt | 🪨 Pedra = 2pts | 💎 Minério = 5pts</p>
+
+        <!-- CONTROLES -->
+        <div class="controls">
+            <button id="btnIniciar">🚀 INICIAR JOGO</button>
+            <button id="btnReiniciar">🔄 Reiniciar</button>
+        </div>
+
+        <!-- DICAS -->
+        <div class="game-dica">
+            💡 Clique nos alvos 🎯 que aparecem para ganhar pontos!
+            <br>Eles desaparecem rápido! Fique atento! 👀
+        </div>
+
+        <!-- LEGENDA -->
+        <div class="legenda">
+            <div class="legenda-item"><span>🎯</span> Alvo (clique para atirar)</div>
+            <div class="legenda-item"><span>💥</span> Tiro certeiro!</div>
+            <div class="legenda-item"><span>⏱️</span> 30 segundos para fazer o máximo de pontos!</div>
+        </div>
     </div>
 
-    <!-- SEÇÃO DE MÚSICAS -->
+    <!-- ==================== SEÇÃO DE MÚSICAS ==================== -->
     <h2 class="secao-titulo">🎵 Músicas Geek</h2>
     <div class="grid-musicas">
         <iframe src="https://www.youtube.com/embed/fMvNUINWdjc" title="Tipo Sasuke" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -45,7 +67,7 @@
         <iframe src="https://www.youtube.com/embed/yZQPFLO3Q3A" title="AGONIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
-    <!-- SEÇÃO DE JOGOS -->
+    <!-- ==================== SEÇÃO DE GAMEPLAYS ==================== -->
     <h2 class="secao-titulo">🎮 Gameplays Insanos</h2>
     <div class="grid-jogos">
         <div class="jogo-card">
@@ -74,388 +96,243 @@
         </div>
     </div>
 
-    <!-- RODAPÉ -->
+    <!-- ==================== RODAPÉ ==================== -->
     <footer class="rodape">
-        <p>⛏️ Criado por Carlos - 2026 🌍</p>
+        <p>🎯 Criado por Carlos - 2026 💥</p>
     </footer>
 
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // ============================================
-        // 🎮 JOGO TERRARIA - MINERAÇÃO SIMPLES 🎮
-        // ============================================
+        // ============================================================
+        // 🎯 TIRO AO ALVO - JOGO MINECRAFT
+        // ============================================================
 
-        // 🎯 VARIÁVEIS DO JOGO
+        // ========== VARIÁVEIS ==========
+        const gameArea = document.getElementById('gameArea');
+        const alvo = document.getElementById('alvo');
+        const pontosDisplay = document.getElementById('pontosDisplay');
+        const tempoDisplay = document.getElementById('tempoDisplay');
+        const acertosDisplay = document.getElementById('acertosDisplay');
+        const recordeDisplay = document.getElementById('recordeDisplay');
+        const mensagemGame = document.getElementById('mensagemGame');
+
         let pontos = 0;
-        let vidas = 5;
-        let minerioColetado = 0;
-        let jogoAtivo = true;
-        let blocos = [];
-        const linhas = 6;
-        const colunas = 8;
-        let recorde = localStorage.getItem('recordTerraria') || 0;
+        let acertos = 0;
+        let tempoRestante = 30;
+        let jogoAtivo = false;
+        let temporizador = null;
+        let intervaloAlvo = null;
+        let recorde = localStorage.getItem('recordeTiroAlvo') || 0;
 
-        // 📦 ELEMENTOS DA TELA
-        const gameBoard = document.getElementById('gameBoard');
-        const pontosDisplay = document.getElementById('pontos');
-        const vidasDisplay = document.getElementById('vidas');
-        const minerioDisplay = document.getElementById('minerioContador');
-        const botaoReiniciar = document.getElementById('botaoReiniciar');
+        // ========== EXIBIR RECORDE ==========
+        recordeDisplay.textContent = recorde;
 
-        // 🎯 TIPOS DE BLOCOS
-        const TIPOS = {
-            TERRA: { nome: 'Terra', cor: '#8B6B3D', emoji: '🟫', pontos: 1, chance: 0.5 },
-            PEDRA: { nome: 'Pedra', cor: '#808080', emoji: '🪨', pontos: 2, chance: 0.3 },
-            MINERIO: { nome: 'Minério', cor: '#00BFFF', emoji: '💎', pontos: 5, chance: 0.15 },
-            LAVA: { nome: 'Lava', cor: '#FF4500', emoji: '🌋', pontos: -1, chance: 0.05 }
-        };
+        // ========== FUNÇÃO PARA MOVER O ALVO ==========
+        function moverAlvo() {
+            if (!jogoAtivo) return;
 
-        // 🏗️ FUNÇÃO PARA CRIAR O MUNDO
-        function criarMundo() {
-            gameBoard.innerHTML = '';
-            blocos = [];
+            const areaWidth = gameArea.clientWidth - 80;
+            const areaHeight = gameArea.clientHeight - 80;
 
-            for (let l = 0; l < linhas; l++) {
-                for (let c = 0; c < colunas; c++) {
-                    // ESCOLHE UM TIPO ALEATÓRIO
-                    let tipo = TIPOS.TERRA;
-                    const rand = Math.random();
-                    
-                    if (rand < TIPOS.LAVA.chance) {
-                        tipo = TIPOS.LAVA;
-                    } else if (rand < TIPOS.LAVA.chance + TIPOS.MINERIO.chance) {
-                        tipo = TIPOS.MINERIO;
-                    } else if (rand < TIPOS.LAVA.chance + TIPOS.MINERIO.chance + TIPOS.PEDRA.chance) {
-                        tipo = TIPOS.PEDRA;
-                    }
+            const x = Math.random() * areaWidth;
+            const y = Math.random() * areaHeight;
 
-                    // CRIA O BLOCO
-                    const bloco = document.createElement('div');
-                    bloco.className = 'bloco';
-                    bloco.dataset.tipo = tipo.nome;
-                    bloco.dataset.linha = l;
-                    bloco.dataset.coluna = c;
-                    bloco.style.backgroundColor = tipo.cor;
-                    bloco.textContent = tipo.emoji;
-                    
-                    // ADICIONA EVENTO DE CLIQUE
-                    bloco.addEventListener('click', function() {
-                        minerarBloco(this);
-                    });
+            alvo.style.left = x + 'px';
+            alvo.style.top = y + 'px';
+            alvo.style.display = 'block';
+            alvo.style.transform = 'scale(1)';
+            
+            // MUDA O EMOJI DO ALVO (EFEITO VISUAL)
+            const emojis = ['🎯', '👾', '💀', '🧟', '🕷️', '🐉', '⚡', '🔥'];
+            alvo.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        }
 
-                    gameBoard.appendChild(bloco);
-                    blocos.push({
-                        elemento: bloco,
-                        tipo: tipo,
-                        linha: l,
-                        coluna: c,
-                        minerado: false
-                    });
+        // ========== FUNÇÃO PARA O ALVO DESAPARECER ==========
+        function esconderAlvo() {
+            if (jogoAtivo) {
+                alvo.style.display = 'none';
+                // PERDE 1 PONTO POR DEIXAR O ALVO ESCAPAR
+                if (pontos > 0) {
+                    pontos--;
+                    pontosDisplay.textContent = pontos;
                 }
             }
         }
 
-        // ⛏️ FUNÇÃO PARA MINERAR
-        function minerarBloco(elemento) {
+        // ========== CLICAR NO ALVO ==========
+        alvo.addEventListener('click', function(e) {
             if (!jogoAtivo) return;
-            if (elemento.classList.contains('minerado')) return;
+            if (this.style.display === 'none') return;
 
-            // ENCONTRA O BLOCO NA LISTA
-            const blocoData = blocos.find(b => b.elemento === elemento);
-            if (!blocoData) return;
+            // IMPEDE O CLIQUE DE PASSAR PARA O ÁREA
+            e.stopPropagation();
 
-            // MINERA O BLOCO
-            blocoData.minerado = true;
-            elemento.classList.add('minerado');
-            
-            // GANHA OU PERDE PONTOS
-            const tipo = blocoData.tipo;
-            const pontosGanhos = tipo.pontos;
-            
-            // ATUALIZA PONTOS
-            pontos += pontosGanhos;
-            if (pontos < 0) pontos = 0;
+            // GANHA PONTO
+            pontos++;
+            acertos++;
             pontosDisplay.textContent = pontos;
+            acertosDisplay.textContent = acertos;
 
-            // SE FOR MINÉRIO
-            if (tipo.nome === 'Minério') {
-                minerioColetado++;
-                minerioDisplay.textContent = minerioColetado;
-                // EFEITO DE BRILHO
-                elemento.style.boxShadow = '0 0 50px rgba(0, 200, 255, 0.8)';
-            }
-
-            // SE FOR LAVA
-            if (tipo.nome === 'Lava') {
-                vidas--;
-                atualizarVidas();
-                elemento.style.boxShadow = '0 0 50px rgba(255, 0, 0, 0.8)';
-                // EFEITO DE TREME TERRA
-                gameBoard.style.animation = 'treme 0.3s ease';
-                setTimeout(() => {
-                    gameBoard.style.animation = '';
-                }, 300);
-                
-                if (vidas <= 0) {
-                    gameOver();
-                    return;
-                }
-            }
-
-            // MUDANÇA VISUAL
-            elemento.textContent = '⬛';
-            elemento.style.backgroundColor = '#333';
+            // EFEITO DE TIRO
+            this.style.transform = 'scale(1.5)';
+            this.style.boxShadow = '0 0 50px rgba(255, 200, 0, 0.9)';
             
-            // GERA UM NOVO BLOCO (EXCETO LAVA)
-            if (tipo.nome !== 'Lava') {
+            // CRIA UM EFEITO DE EXPLOSÃO VISUAL
+            const boom = document.createElement('div');
+            boom.textContent = '💥';
+            boom.style.position = 'absolute';
+            boom.style.left = (parseInt(this.style.left) + 30) + 'px';
+            boom.style.top = (parseInt(this.style.top) - 10) + 'px';
+            boom.style.fontSize = '40px';
+            boom.style.pointerEvents = 'none';
+            boom.style.transition = 'all 1s ease';
+            boom.style.opacity = '1';
+            gameArea.appendChild(boom);
+            
+            setTimeout(() => {
+                boom.style.opacity = '0';
+                boom.style.transform = 'scale(2)';
+                setTimeout(() => boom.remove(), 1000);
+            }, 100);
+
+            // SOMA EXTRA: A CADA 10 ACERTOS, GANHA 1 SEGUNDO EXTRA
+            if (acertos % 10 === 0 && acertos > 0) {
+                tempoRestante += 2;
+                tempoDisplay.textContent = tempoRestante;
+                mensagemGame.textContent = '⏱️ +2 segundos! Você é fera!';
+                mensagemGame.style.color = '#ffcc00';
                 setTimeout(() => {
-                    regenerarBloco(elemento);
+                    mensagemGame.textContent = '🎯 Continue atirando!';
+                    mensagemGame.style.color = '#d9b3ff';
                 }, 1000);
             }
-        }
 
-        // 🔄 REGENERA UM BLOCO
-        function regenerarBloco(elemento) {
+            // ESPERA UM POUCO E MOVE O ALVO
+            setTimeout(() => {
+                if (jogoAtivo) {
+                    moverAlvo();
+                }
+            }, 150);
+        });
+
+        // ========== CLICOU NA ÁREA DO JOGO (ERROU) ==========
+        gameArea.addEventListener('click', function(e) {
             if (!jogoAtivo) return;
-            
-            // ESCOLHE NOVO TIPO
-            let tipo = TIPOS.TERRA;
-            const rand = Math.random();
-            if (rand < TIPOS.LAVA.chance) {
-                tipo = TIPOS.LAVA;
-            } else if (rand < TIPOS.LAVA.chance + TIPOS.MINERIO.chance) {
-                tipo = TIPOS.MINERIO;
-            } else if (rand < TIPOS.LAVA.chance + TIPOS.MINERIO.chance + TIPOS.PEDRA.chance) {
-                tipo = TIPOS.PEDRA;
+            if (e.target === this) {
+                // PERDE 1 PONTO POR ERRAR
+                if (pontos > 0) {
+                    pontos--;
+                    pontosDisplay.textContent = pontos;
+                    mensagemGame.textContent = '❌ Errou! -1 ponto!';
+                    mensagemGame.style.color = '#ff4444';
+                    setTimeout(() => {
+                        mensagemGame.textContent = '🎯 Continue atirando!';
+                        mensagemGame.style.color = '#d9b3ff';
+                    }, 800);
+                }
             }
+        });
 
-            // ATUALIZA O BLOCO
-            const blocoData = blocos.find(b => b.elemento === elemento);
-            if (blocoData) {
-                blocoData.tipo = tipo;
-                blocoData.minerado = false;
-                elemento.className = 'bloco';
-                elemento.style.backgroundColor = tipo.cor;
-                elemento.textContent = tipo.emoji;
-                elemento.style.boxShadow = '';
-            }
+        // ========== INICIAR JOGO ==========
+        function iniciarJogo() {
+            if (jogoAtivo) return;
+
+            // RESETA TUDO
+            pontos = 0;
+            acertos = 0;
+            tempoRestante = 30;
+            jogoAtivo = true;
+
+            pontosDisplay.textContent = pontos;
+            acertosDisplay.textContent = acertos;
+            tempoDisplay.textContent = tempoRestante;
+            mensagemGame.textContent = '🎯 VAI COMEÇAR!';
+            mensagemGame.style.color = '#88ff88';
+
+            // MOSTRA O ALVO
+            moverAlvo();
+
+            // CRONÔMETRO
+            temporizador = setInterval(() => {
+                tempoRestante--;
+                tempoDisplay.textContent = tempoRestante;
+
+                if (tempoRestante <= 0) {
+                    finalizarJogo();
+                }
+            }, 1000);
+
+            // MOVIMENTA O ALVO A CADA 1 SEGUNDO
+            intervaloAlvo = setInterval(() => {
+                if (jogoAtivo) {
+                    // 30% DE CHANCE DO ALVO DESAPARECER SOZINHO
+                    if (Math.random() < 0.3) {
+                        esconderAlvo();
+                        setTimeout(() => {
+                            if (jogoAtivo) moverAlvo();
+                        }, 500);
+                    } else {
+                        moverAlvo();
+                    }
+                }
+            }, 1200);
+
+            document.getElementById('btnIniciar').textContent = '⏳ JOGANDO...';
+            document.getElementById('btnIniciar').disabled = true;
         }
 
-        // ❤️ ATUALIZA VIDAS
-        function atualizarVidas() {
-            let coracoes = '';
-            for (let i = 0; i < vidas; i++) {
-                coracoes += '❤️';
-            }
-            for (let i = vidas; i < 5; i++) {
-                coracoes += '🖤';
-            }
-            vidasDisplay.textContent = coracoes;
-        }
-
-        // 🏁 GAME OVER
-        function gameOver() {
+        // ========== FINALIZAR JOGO ==========
+        function finalizarJogo() {
             jogoAtivo = false;
-            
+            clearInterval(temporizador);
+            clearInterval(intervaloAlvo);
+            alvo.style.display = 'none';
+
             // SALVA RECORDE
             if (pontos > recorde) {
                 recorde = pontos;
-                localStorage.setItem('recordTerraria', recorde);
-                alert('🏆 NOVO RECORDE! ' + pontos + ' pontos!');
+                localStorage.setItem('recordeTiroAlvo', recorde);
+                recordeDisplay.textContent = recorde;
+                mensagemGame.textContent = `🏆 NOVO RECORDE! ${pontos} pontos! 🏆`;
+                mensagemGame.style.color = '#ffdd00';
             } else {
-                alert('💀 GAME OVER!\nPontos: ' + pontos + '\nRecorde: ' + recorde);
+                mensagemGame.textContent = `⏰ FIM DE JOGO! ${pontos} pontos. Recorde: ${recorde}`;
+                mensagemGame.style.color = '#ffcc00';
             }
+
+            document.getElementById('btnIniciar').textContent = '🚀 INICIAR JOGO';
+            document.getElementById('btnIniciar').disabled = false;
         }
 
-        // 🔄 REINICIAR JOGO
+        // ========== REINICIAR JOGO ==========
         function reiniciarJogo() {
+            clearInterval(temporizador);
+            clearInterval(intervaloAlvo);
+            jogoAtivo = false;
+            
             pontos = 0;
-            vidas = 5;
-            minerioColetado = 0;
-            jogoAtivo = true;
+            acertos = 0;
+            tempoRestante = 30;
             
             pontosDisplay.textContent = pontos;
-            minerioDisplay.textContent = minerioColetado;
-            atualizarVidas();
+            acertosDisplay.textContent = acertos;
+            tempoDisplay.textContent = tempoRestante;
+            alvo.style.display = 'none';
             
-            criarMundo();
+            mensagemGame.textContent = '🔄 Jogo reiniciado! Clique em "INICIAR" para jogar!';
+            mensagemGame.style.color = '#d9b3ff';
+            
+            document.getElementById('btnIniciar').textContent = '🚀 INICIAR JOGO';
+            document.getElementById('btnIniciar').disabled = false;
         }
 
-        // 🎮 BOTÃO REINICIAR
-        botaoReiniciar.addEventListener('click', reiniciarJogo);
+        // ========== BOTÕES ==========
+        document.getElementById('btnIniciar').addEventListener('click', iniciarJogo);
+        document.getElementById('btnReiniciar').addEventListener('click', reiniciarJogo);
 
-        // 🚀 INICIA O JOGO
-        window.onload = function() {
-            console.log('🏆 Recorde: ' + recorde + ' pontos');
-            criarMundo();
-            atualizarVidas();
-        };
+        // ========== MENSAGEM INICIAL ==========
+        mensagemGame.textContent = '🎯 Clique em "INICIAR JOGO" para começar!';
     </script>
 
-    <style>
-        /* ESTILOS DO JOGO TERRARIA */
-        .game-area {
-            max-width: 800px;
-            margin: 0 auto 50px auto;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 25px;
-            border: 3px solid #b366ff;
-            box-shadow: 0 0 50px rgba(155, 60, 255, 0.3);
-        }
-
-        .game-info {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            color: #ffffff;
-            font-size: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .game-info p {
-            margin: 0;
-            text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
-        }
-
-        .game-info span {
-            color: #ffcc00;
-            font-weight: bold;
-            font-size: 24px;
-        }
-
-        #vidas {
-            font-size: 28px;
-            color: #ff4444;
-        }
-
-        #botaoReiniciar {
-            background: linear-gradient(135deg, #b366ff, #7a00cc);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(155, 60, 255, 0.4);
-        }
-
-        #botaoReiniciar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(200, 100, 255, 0.6);
-        }
-
-        /* TABULEIRO */
-        .game-board {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 8px;
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-            background: rgba(20, 10, 30, 0.8);
-            border-radius: 20px;
-            border: 3px solid #7a00cc;
-        }
-
-        /* BLOCOS */
-        .bloco {
-            aspect-ratio: 1;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            user-select: none;
-        }
-
-        .bloco:hover {
-            transform: scale(1.08);
-            border-color: rgba(255, 255, 255, 0.3);
-            z-index: 2;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-        }
-
-        .bloco.minerado {
-            transform: scale(0.8);
-            opacity: 0.3;
-            cursor: default;
-        }
-
-        .bloco.minerado:hover {
-            transform: scale(0.8);
-        }
-
-        /* ANIMAÇÃO DE TREME TERRA */
-        @keyframes treme {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            50% { transform: translateX(10px); }
-            75% { transform: translateX(-10px); }
-            100% { transform: translateX(0); }
-        }
-
-        .game-dica {
-            color: #d9b3ff;
-            text-align: center;
-            font-size: 16px;
-            margin-top: 15px;
-            text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
-        }
-
-        /* 📱 RESPONSIVO */
-        @media (max-width: 700px) {
-            .game-board {
-                gap: 5px;
-                padding: 10px;
-            }
-            .bloco {
-                font-size: 22px;
-                border-radius: 6px;
-            }
-            .game-info {
-                font-size: 16px;
-            }
-            .game-info span {
-                font-size: 20px;
-            }
-            #vidas {
-                font-size: 22px;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .game-board {
-                gap: 3px;
-                padding: 6px;
-            }
-            .bloco {
-                font-size: 16px;
-                border-radius: 4px;
-            }
-            .game-info {
-                font-size: 14px;
-            }
-            .game-info span {
-                font-size: 16px;
-            }
-            #vidas {
-                font-size: 18px;
-            }
-            #botaoReiniciar {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
-        }
-    </style>
 </body>
 </html>
