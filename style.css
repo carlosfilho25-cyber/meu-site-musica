@@ -58,8 +58,8 @@ h1 {
 /* 🎵 GRID DE MÚSICAS (3 por linha) */
 .grid-musicas {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* 3 COLUNAS */
-    gap: 30px;  /* ESPAÇO ENTRE ELES */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
     max-width: 1300px;
     margin: 0 auto;
 }
@@ -111,7 +111,7 @@ h1 {
 
 .jogo-card h3 {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     margin: 0 0 15px 0;
     text-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
@@ -137,10 +137,10 @@ h1 {
     100% { box-shadow: 0 0 30px rgba(0, 200, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2); }
 }
 
-/* 📱 DEIXA RESPONSIVO (CELULAR) */
+/* 📱 DEIXA RESPONSIVO */
 @media (max-width: 900px) {
     .grid-musicas {
-        grid-template-columns: repeat(2, 1fr);  /* 2 COLUNAS NO TABLET */
+        grid-template-columns: repeat(2, 1fr);
     }
     .grid-jogos {
         grid-template-columns: repeat(2, 1fr);
@@ -152,7 +152,7 @@ h1 {
 
 @media (max-width: 600px) {
     .grid-musicas {
-        grid-template-columns: 1fr;  /* 1 COLUNA NO CELULAR */
+        grid-template-columns: 1fr;
     }
     .grid-jogos {
         grid-template-columns: 1fr;
