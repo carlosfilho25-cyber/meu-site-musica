@@ -1,7 +1,7 @@
-/* ⚡ FUNDO COM SUPER CHOQUE (imagem da internet) */
+/* ⚡ FUNDO COM SUPER CHOQUE */
 body {
     background: 
-        linear-gradient(rgba(10, 0, 21, 0.75), rgba(10, 0, 21, 0.75)),
+        linear-gradient(rgba(10, 0, 21, 0.8), rgba(10, 0, 21, 0.8)),
         url('https://i.pinimg.com/736x/66/09/de/6609de2b71e6025cd216206d853bccd7.jpg');
     background-size: cover;
     background-position: center;
@@ -9,87 +9,158 @@ body {
     background-repeat: no-repeat;
     min-height: 100vh;
     margin: 0;
-    padding: 20px;
+    padding: 30px;
+    font-family: Arial, sans-serif;
 }
 
-/* 🎤 TÍTULO COM AURA ELÉTRICA DO SUPER CHOQUE */
+/* 🎤 TÍTULO PRINCIPAL */
 h1 {
     color: #ffffff;
-    font-size: 80px;
+    font-size: 70px;
     text-align: center;
     font-family: 'Arial Black', Arial, sans-serif;
     text-shadow: 
         0 0 20px #00ccff,
         0 0 40px #0088ff,
         0 0 80px #0044ff,
-        0 0 120px #0022aa,
-        0 0 30px #ffffff;
+        0 0 120px #0022aa;
     letter-spacing: 8px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     animation: piscaEletrico 2.5s infinite ease-in-out;
 }
 
-/* ⚡ ANIMAÇÃO DO TÍTULO (PISCA IGUAL UM RAIO) */
 @keyframes piscaEletrico {
-    0% { 
-        text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; 
-    }
-    50% { 
-        text-shadow: 0 0 40px #66eeff, 0 0 80px #00ccff, 0 0 120px #0088ff, 0 0 180px #0044ff, 0 0 60px #ffffff; 
-    }
-    100% { 
-        text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; 
-    }
+    0% { text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa; }
+    50% { text-shadow: 0 0 40px #66eeff, 0 0 80px #00ccff, 0 0 120px #0088ff, 0 0 180px #0044ff; }
+    100% { text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa; }
 }
 
-/* ⚡ VÍDEOS COM AURA ELÉTRICA PULSANTE */
-iframe {
-    display: block;
-    margin: 40px auto;
-    border-radius: 25px;
-    width: 85%;
-    max-width: 850px;
-    height: 420px;
-    box-shadow: 
-        0 0 30px rgba(0, 200, 255, 0.8),
-        0 0 60px rgba(0, 150, 255, 0.6),
-        0 0 100px rgba(0, 100, 255, 0.4);
+/* 📝 SUBTÍTULO */
+.subtitulo {
+    color: #d9b3ff;
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+    margin-bottom: 40px;
+}
+
+/* 🏷️ TÍTULO DAS SEÇÕES */
+.secao-titulo {
+    color: #ffffff;
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff;
+    margin: 50px 0 30px 0;
+    border-bottom: 3px solid #00ccff;
+    padding-bottom: 15px;
+}
+
+/* 🎵 GRID DE MÚSICAS (3 por linha) */
+.grid-musicas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 COLUNAS */
+    gap: 30px;  /* ESPAÇO ENTRE ELES */
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.grid-musicas iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
     border: 3px solid #00ccff;
+    box-shadow: 
+        0 0 30px rgba(0, 200, 255, 0.6),
+        0 0 60px rgba(0, 150, 255, 0.4);
     transition: all 0.4s ease-in-out;
     animation: auraEletrica 3s infinite ease-in-out;
 }
 
-/* ⚡ QUANDO PASSA O MOUSE, EXPLODE LUZ! */
-iframe:hover {
-    transform: scale(1.04) rotate(1deg);
+.grid-musicas iframe:hover {
+    transform: scale(1.05);
     box-shadow: 
         0 0 50px rgba(0, 220, 255, 1),
-        0 0 100px rgba(0, 200, 255, 0.9),
-        0 0 150px rgba(0, 150, 255, 0.7),
-        0 0 200px rgba(0, 100, 255, 0.5);
+        0 0 100px rgba(0, 200, 255, 0.8);
     border-color: #66eeff;
-    border-width: 4px;
 }
 
-/* ⚡ ANIMAÇÃO DA AURA (PULSA SOZINHA) */
+/* 🎮 GRID DE JOGOS (3 por linha) */
+.grid-jogos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* CARD DE CADA JOGO */
+.jogo-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+    border: 2px solid rgba(0, 200, 255, 0.3);
+    transition: all 0.4s ease;
+}
+
+.jogo-card:hover {
+    transform: scale(1.03);
+    border-color: #66eeff;
+    box-shadow: 0 0 40px rgba(0, 200, 255, 0.4);
+}
+
+.jogo-card h3 {
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 0 15px 0;
+    text-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+}
+
+.jogo-card iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    border: 2px solid rgba(0, 200, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.jogo-card iframe:hover {
+    border-color: #66eeff;
+    box-shadow: 0 0 30px rgba(0, 200, 255, 0.5);
+}
+
+/* ⚡ ANIMAÇÃO DA AURA */
 @keyframes auraEletrica {
-    0% {
-        box-shadow: 
-            0 0 30px rgba(0, 200, 255, 0.5),
-            0 0 60px rgba(0, 150, 255, 0.3),
-            0 0 100px rgba(0, 100, 255, 0.2);
+    0% { box-shadow: 0 0 30px rgba(0, 200, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2); }
+    50% { box-shadow: 0 0 50px rgba(0, 220, 255, 0.9), 0 0 100px rgba(0, 200, 255, 0.6); }
+    100% { box-shadow: 0 0 30px rgba(0, 200, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2); }
+}
+
+/* 📱 DEIXA RESPONSIVO (CELULAR) */
+@media (max-width: 900px) {
+    .grid-musicas {
+        grid-template-columns: repeat(2, 1fr);  /* 2 COLUNAS NO TABLET */
     }
-    50% {
-        box-shadow: 
-            0 0 50px rgba(0, 220, 255, 1),
-            0 0 100px rgba(0, 200, 255, 0.8),
-            0 0 150px rgba(0, 150, 255, 0.6),
-            0 0 200px rgba(0, 100, 255, 0.4);
+    .grid-jogos {
+        grid-template-columns: repeat(2, 1fr);
     }
-    100% {
-        box-shadow: 
-            0 0 30px rgba(0, 200, 255, 0.5),
-            0 0 60px rgba(0, 150, 255, 0.3),
-            0 0 100px rgba(0, 100, 255, 0.2);
+    h1 {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-musicas {
+        grid-template-columns: 1fr;  /* 1 COLUNA NO CELULAR */
+    }
+    .grid-jogos {
+        grid-template-columns: 1fr;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    .secao-titulo {
+        font-size: 28px;
     }
 }
