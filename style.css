@@ -1,16 +1,19 @@
-/* ⚡ FUNDO COM SUPER CHOQUE */
+/* 🟣🖤 FUNDO ROXO COM PRETO */
 body {
-    background: 
-        linear-gradient(rgba(10, 0, 21, 0.8), rgba(10, 0, 21, 0.8)),
-        url('https://i.pinimg.com/736x/66/09/de/6609de2b71e6025cd216206d853bccd7.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    background: linear-gradient(135deg, #0a0015, #2d1b69, #0a0015);
+    background-size: 400% 400%;
+    animation: fundoMovimento 10s infinite ease-in-out;
     min-height: 100vh;
     margin: 0;
     padding: 30px;
     font-family: Arial, sans-serif;
+}
+
+/* 🌟 ANIMAÇÃO DO FUNDO (movimento suave) */
+@keyframes fundoMovimento {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* 🎤 TÍTULO PRINCIPAL */
@@ -20,19 +23,20 @@ h1 {
     text-align: center;
     font-family: 'Arial Black', Arial, sans-serif;
     text-shadow: 
-        0 0 20px #00ccff,
-        0 0 40px #0088ff,
-        0 0 80px #0044ff,
-        0 0 120px #0022aa;
+        0 0 20px #b366ff,
+        0 0 40px #7a00cc,
+        0 0 80px #4d0099,
+        0 0 120px #26004d;
     letter-spacing: 8px;
     margin-bottom: 10px;
-    animation: piscaEletrico 2.5s infinite ease-in-out;
+    animation: piscaTitulo 2.5s infinite ease-in-out;
 }
 
-@keyframes piscaEletrico {
-    0% { text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa; }
-    50% { text-shadow: 0 0 40px #66eeff, 0 0 80px #00ccff, 0 0 120px #0088ff, 0 0 180px #0044ff; }
-    100% { text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa; }
+/* ✨ ANIMAÇÃO DO TÍTULO */
+@keyframes piscaTitulo {
+    0% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d; }
+    50% { text-shadow: 0 0 40px #d9b3ff, 0 0 80px #b366ff, 0 0 120px #7a00cc, 0 0 180px #4d0099; }
+    100% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d; }
 }
 
 /* 📝 SUBTÍTULO */
@@ -40,7 +44,7 @@ h1 {
     color: #d9b3ff;
     font-size: 24px;
     text-align: center;
-    text-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
     margin-bottom: 40px;
 }
 
@@ -49,9 +53,9 @@ h1 {
     color: #ffffff;
     font-size: 40px;
     text-align: center;
-    text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff;
+    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc;
     margin: 50px 0 30px 0;
-    border-bottom: 3px solid #00ccff;
+    border-bottom: 3px solid #b366ff;
     padding-bottom: 15px;
 }
 
@@ -68,20 +72,20 @@ h1 {
     width: 100%;
     height: 250px;
     border-radius: 20px;
-    border: 3px solid #00ccff;
+    border: 3px solid #b366ff;
     box-shadow: 
-        0 0 30px rgba(0, 200, 255, 0.6),
-        0 0 60px rgba(0, 150, 255, 0.4);
+        0 0 30px rgba(155, 60, 255, 0.6),
+        0 0 60px rgba(100, 0, 200, 0.4);
     transition: all 0.4s ease-in-out;
-    animation: auraEletrica 3s infinite ease-in-out;
+    animation: auraRoxa 3s infinite ease-in-out;
 }
 
 .grid-musicas iframe:hover {
     transform: scale(1.05);
     box-shadow: 
-        0 0 50px rgba(0, 220, 255, 1),
-        0 0 100px rgba(0, 200, 255, 0.8);
-    border-color: #66eeff;
+        0 0 50px rgba(200, 100, 255, 1),
+        0 0 100px rgba(150, 50, 255, 0.8);
+    border-color: #d9b3ff;
 }
 
 /* 🎮 GRID DE JOGOS (3 por linha) */
@@ -99,14 +103,14 @@ h1 {
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 15px;
-    border: 2px solid rgba(0, 200, 255, 0.3);
+    border: 2px solid rgba(155, 60, 255, 0.3);
     transition: all 0.4s ease;
 }
 
 .jogo-card:hover {
     transform: scale(1.03);
-    border-color: #66eeff;
-    box-shadow: 0 0 40px rgba(0, 200, 255, 0.4);
+    border-color: #d9b3ff;
+    box-shadow: 0 0 40px rgba(155, 60, 255, 0.4);
 }
 
 .jogo-card h3 {
@@ -114,27 +118,27 @@ h1 {
     font-size: 18px;
     text-align: center;
     margin: 0 0 15px 0;
-    text-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
 }
 
 .jogo-card iframe {
     width: 100%;
     height: 200px;
     border-radius: 15px;
-    border: 2px solid rgba(0, 200, 255, 0.3);
+    border: 2px solid rgba(155, 60, 255, 0.3);
     transition: all 0.3s ease;
 }
 
 .jogo-card iframe:hover {
-    border-color: #66eeff;
-    box-shadow: 0 0 30px rgba(0, 200, 255, 0.5);
+    border-color: #d9b3ff;
+    box-shadow: 0 0 30px rgba(155, 60, 255, 0.5);
 }
 
-/* ⚡ ANIMAÇÃO DA AURA */
-@keyframes auraEletrica {
-    0% { box-shadow: 0 0 30px rgba(0, 200, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2); }
-    50% { box-shadow: 0 0 50px rgba(0, 220, 255, 0.9), 0 0 100px rgba(0, 200, 255, 0.6); }
-    100% { box-shadow: 0 0 30px rgba(0, 200, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2); }
+/* 💜 ANIMAÇÃO DA AURA ROXA */
+@keyframes auraRoxa {
+    0% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4), 0 0 60px rgba(100, 0, 200, 0.2); }
+    50% { box-shadow: 0 0 50px rgba(200, 100, 255, 0.9), 0 0 100px rgba(150, 50, 255, 0.6); }
+    100% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4), 0 0 60px rgba(100, 0, 200, 0.2); }
 }
 
 /* 📱 DEIXA RESPONSIVO */
