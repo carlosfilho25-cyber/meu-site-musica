@@ -1,8 +1,8 @@
-/* ⚡ FUNDO COM SUPER CHOQUE (MANTENDO O GRADIENTE) */
+/* ⚡ FUNDO COM SUPER CHOQUE (USANDO IMAGEM DA INTERNET) */
 body {
     background: 
-        linear-gradient(135deg, rgba(10, 0, 21, 0.7), rgba(45, 27, 105, 0.7), rgba(10, 0, 21, 0.7)),
-        url('super-choque.jpg');  /* ← MUDE PARA O NOME DA SUA IMAGEM */
+        linear-gradient(rgba(10, 0, 21, 0.7), rgba(45, 27, 105, 0.7), rgba(10, 0, 21, 0.7)),
+        url('https://i.pinimg.com/736x/66/09/de/6609de2b71e6025cd216206d853bccd7.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -12,37 +12,31 @@ body {
     padding: 20px;
 }
 
-/* 🎤 TÍTULO COM AURA ELÉTRICA (SUPER CHOQUE STYLE) */
+/* 🎤 TÍTULO COM AURA ELÉTRICA */
 h1 {
     color: #ffffff;
     font-size: 80px;
     text-align: center;
     font-family: 'Arial Black', Arial, sans-serif;
     text-shadow: 
-        0 0 20px #00ccff,     /* AZUL ELÉTRICO */
-        0 0 40px #0088ff,     /* AZUL MÉDIO */
-        0 0 80px #0044ff,     /* AZUL ESCURO */
-        0 0 120px #0022aa,    /* AZUL PROFUNDO */
-        0 0 30px #ffffff;     /* BRANCO */
+        0 0 20px #00ccff,
+        0 0 40px #0088ff,
+        0 0 80px #0044ff,
+        0 0 120px #0022aa,
+        0 0 30px #ffffff;
     letter-spacing: 5px;
     margin-bottom: 50px;
     animation: piscaEletrico 2.5s infinite ease-in-out;
 }
 
-/* ⚡ ANIMAÇÃO DO TÍTULO PISCADA ELÉTRICA */
+/* ⚡ ANIMAÇÃO DO TÍTULO */
 @keyframes piscaEletrico {
-    0% { 
-        text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; 
-    }
-    50% { 
-        text-shadow: 0 0 40px #66eeff, 0 0 80px #00ccff, 0 0 120px #0088ff, 0 0 180px #0044ff, 0 0 60px #ffffff; 
-    }
-    100% { 
-        text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; 
-    }
+    0% { text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; }
+    50% { text-shadow: 0 0 40px #66eeff, 0 0 80px #00ccff, 0 0 120px #0088ff, 0 0 180px #0044ff, 0 0 60px #ffffff; }
+    100% { text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; }
 }
 
-/* ⚡ IFRAME COM AURA ELÉTRICA (em vez de roxa) */
+/* ⚡ VÍDEOS COM AURA ELÉTRICA */
 iframe {
     display: block;
     margin: 40px auto;
@@ -51,11 +45,10 @@ iframe {
     max-width: 850px;
     height: 420px;
     box-shadow: 
-        0 0 30px rgba(0, 200, 255, 0.8),    /* AZUL ELÉTRICO */
-        0 0 60px rgba(0, 150, 255, 0.6),    /* AZUL MÉDIO */
-        0 0 100px rgba(0, 100, 255, 0.4),   /* AZUL DISTANTE */
-        0 0 150px rgba(0, 50, 200, 0.2);    /* AZUL PROFUNDO */
-    border: 3px solid #00ccff;              /* BORDA AZUL ELÉTRICO */
+        0 0 30px rgba(0, 200, 255, 0.8),
+        0 0 60px rgba(0, 150, 255, 0.6),
+        0 0 100px rgba(0, 100, 255, 0.4);
+    border: 3px solid #00ccff;
     transition: all 0.4s ease-in-out;
     animation: auraEletrica 3s infinite ease-in-out;
 }
@@ -72,7 +65,7 @@ iframe:hover {
     border-width: 4px;
 }
 
-/* ⚡ ANIMAÇÃO DA AURA ELÉTRICA PULSANTE */
+/* ⚡ ANIMAÇÃO DA AURA */
 @keyframes auraEletrica {
     0% {
         box-shadow: 
