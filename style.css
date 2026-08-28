@@ -1,7 +1,7 @@
-/* ⚡ FUNDO COM SUPER CHOQUE (USANDO IMAGEM DA INTERNET) */
+/* ⚡ FUNDO COM SUPER CHOQUE (imagem da internet) */
 body {
     background: 
-        linear-gradient(rgba(10, 0, 21, 0.7), rgba(45, 27, 105, 0.7), rgba(10, 0, 21, 0.7)),
+        linear-gradient(rgba(10, 0, 21, 0.75), rgba(10, 0, 21, 0.75)),
         url('https://i.pinimg.com/736x/66/09/de/6609de2b71e6025cd216206d853bccd7.jpg');
     background-size: cover;
     background-position: center;
@@ -12,7 +12,7 @@ body {
     padding: 20px;
 }
 
-/* 🎤 TÍTULO COM AURA ELÉTRICA */
+/* 🎤 TÍTULO COM AURA ELÉTRICA DO SUPER CHOQUE */
 h1 {
     color: #ffffff;
     font-size: 80px;
@@ -24,19 +24,25 @@ h1 {
         0 0 80px #0044ff,
         0 0 120px #0022aa,
         0 0 30px #ffffff;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     margin-bottom: 50px;
     animation: piscaEletrico 2.5s infinite ease-in-out;
 }
 
-/* ⚡ ANIMAÇÃO DO TÍTULO */
+/* ⚡ ANIMAÇÃO DO TÍTULO (PISCA IGUAL UM RAIO) */
 @keyframes piscaEletrico {
-    0% { text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; }
-    50% { text-shadow: 0 0 40px #66eeff, 0 0 80px #00ccff, 0 0 120px #0088ff, 0 0 180px #0044ff, 0 0 60px #ffffff; }
-    100% { text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; }
+    0% { 
+        text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; 
+    }
+    50% { 
+        text-shadow: 0 0 40px #66eeff, 0 0 80px #00ccff, 0 0 120px #0088ff, 0 0 180px #0044ff, 0 0 60px #ffffff; 
+    }
+    100% { 
+        text-shadow: 0 0 20px #00ccff, 0 0 40px #0088ff, 0 0 80px #0044ff, 0 0 120px #0022aa, 0 0 30px #ffffff; 
+    }
 }
 
-/* ⚡ VÍDEOS COM AURA ELÉTRICA */
+/* ⚡ VÍDEOS COM AURA ELÉTRICA PULSANTE */
 iframe {
     display: block;
     margin: 40px auto;
@@ -53,7 +59,7 @@ iframe {
     animation: auraEletrica 3s infinite ease-in-out;
 }
 
-/* ⚡ EFEITO HOVER: EXPLOSÃO ELÉTRICA! */
+/* ⚡ QUANDO PASSA O MOUSE, EXPLODE LUZ! */
 iframe:hover {
     transform: scale(1.04) rotate(1deg);
     box-shadow: 
@@ -65,12 +71,12 @@ iframe:hover {
     border-width: 4px;
 }
 
-/* ⚡ ANIMAÇÃO DA AURA */
+/* ⚡ ANIMAÇÃO DA AURA (PULSA SOZINHA) */
 @keyframes auraEletrica {
     0% {
         box-shadow: 
-            0 0 30px rgba(0, 200, 255, 0.6),
-            0 0 60px rgba(0, 150, 255, 0.4),
+            0 0 30px rgba(0, 200, 255, 0.5),
+            0 0 60px rgba(0, 150, 255, 0.3),
             0 0 100px rgba(0, 100, 255, 0.2);
     }
     50% {
@@ -82,8 +88,8 @@ iframe:hover {
     }
     100% {
         box-shadow: 
-            0 0 30px rgba(0, 200, 255, 0.6),
-            0 0 60px rgba(0, 150, 255, 0.4),
+            0 0 30px rgba(0, 200, 255, 0.5),
+            0 0 60px rgba(0, 150, 255, 0.3),
             0 0 100px rgba(0, 100, 255, 0.2);
     }
 }
