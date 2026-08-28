@@ -9,37 +9,30 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 🌟 ANIMAÇÃO DO FUNDO (movimento suave) */
 @keyframes fundoMovimento {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* 🎤 TÍTULO PRINCIPAL */
+/* 🎤 TÍTULO */
 h1 {
     color: #ffffff;
     font-size: 70px;
     text-align: center;
     font-family: 'Arial Black', Arial, sans-serif;
-    text-shadow: 
-        0 0 20px #b366ff,
-        0 0 40px #7a00cc,
-        0 0 80px #4d0099,
-        0 0 120px #26004d;
+    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d;
     letter-spacing: 8px;
     margin-bottom: 10px;
     animation: piscaTitulo 2.5s infinite ease-in-out;
 }
 
-/* ✨ ANIMAÇÃO DO TÍTULO */
 @keyframes piscaTitulo {
     0% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d; }
     50% { text-shadow: 0 0 40px #d9b3ff, 0 0 80px #b366ff, 0 0 120px #7a00cc, 0 0 180px #4d0099; }
     100% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d; }
 }
 
-/* 📝 SUBTÍTULO */
 .subtitulo {
     color: #d9b3ff;
     font-size: 24px;
@@ -48,7 +41,6 @@ h1 {
     margin-bottom: 40px;
 }
 
-/* 🏷️ TÍTULO DAS SEÇÕES */
 .secao-titulo {
     color: #ffffff;
     font-size: 40px;
@@ -59,7 +51,7 @@ h1 {
     padding-bottom: 15px;
 }
 
-/* 🎵 GRID DE MÚSICAS (3 por linha) */
+/* 🎵 MÚSICAS */
 .grid-musicas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -73,22 +65,18 @@ h1 {
     height: 250px;
     border-radius: 20px;
     border: 3px solid #b366ff;
-    box-shadow: 
-        0 0 30px rgba(155, 60, 255, 0.6),
-        0 0 60px rgba(100, 0, 200, 0.4);
+    box-shadow: 0 0 30px rgba(155, 60, 255, 0.6);
     transition: all 0.4s ease-in-out;
     animation: auraRoxa 3s infinite ease-in-out;
 }
 
 .grid-musicas iframe:hover {
     transform: scale(1.05);
-    box-shadow: 
-        0 0 50px rgba(200, 100, 255, 1),
-        0 0 100px rgba(150, 50, 255, 0.8);
+    box-shadow: 0 0 50px rgba(200, 100, 255, 1);
     border-color: #d9b3ff;
 }
 
-/* 🎮 GRID DE JOGOS (3 por linha) */
+/* 🎮 JOGOS */
 .grid-jogos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -97,7 +85,6 @@ h1 {
     margin: 0 auto;
 }
 
-/* CARD DE CADA JOGO */
 .jogo-card {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
@@ -134,37 +121,33 @@ h1 {
     box-shadow: 0 0 30px rgba(155, 60, 255, 0.5);
 }
 
-/* 💜 ANIMAÇÃO DA AURA ROXA */
 @keyframes auraRoxa {
-    0% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4), 0 0 60px rgba(100, 0, 200, 0.2); }
-    50% { box-shadow: 0 0 50px rgba(200, 100, 255, 0.9), 0 0 100px rgba(150, 50, 255, 0.6); }
-    100% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4), 0 0 60px rgba(100, 0, 200, 0.2); }
+    0% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4); }
+    50% { box-shadow: 0 0 50px rgba(200, 100, 255, 0.9); }
+    100% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4); }
 }
 
-/* 📱 DEIXA RESPONSIVO */
+.rodape {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    color: #d9b3ff;
+    border-top: 2px solid #b366ff;
+    font-size: 18px;
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
+}
+
 @media (max-width: 900px) {
-    .grid-musicas {
+    .grid-musicas, .grid-jogos {
         grid-template-columns: repeat(2, 1fr);
     }
-    .grid-jogos {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    h1 {
-        font-size: 45px;
-    }
+    h1 { font-size: 45px; }
 }
 
 @media (max-width: 600px) {
-    .grid-musicas {
+    .grid-musicas, .grid-jogos {
         grid-template-columns: 1fr;
     }
-    .grid-jogos {
-        grid-template-columns: 1fr;
-    }
-    h1 {
-        font-size: 30px;
-    }
-    .secao-titulo {
-        font-size: 28px;
-    }
+    h1 { font-size: 30px; }
+    .secao-titulo { font-size: 28px; }
 }

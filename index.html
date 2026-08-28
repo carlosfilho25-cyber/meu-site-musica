@@ -4,12 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"> 
-    <title>Músicas e Games</title>
+    <title>Músicas, Games e TERRARIA!</title>
 </head>
 
 <body>
-    <h1>⚡ Músicas & Games ⚡</h1>
-    <p class="subtitulo">🎤 Resenhas de música geek + Gameplays insanos 🎮</p>
+    <h1>⚡ Músicas, Games & Terraria ⚡</h1>
+    <p class="subtitulo">🎤 Resenhas + Gameplays + MINI TERRARIA ⛏️🌍</p>
+
+    <!-- SEÇÃO DO JOGO TERRARIA -->
+    <h2 class="secao-titulo">⛏️ Mineração Simples</h2>
+    
+    <div class="game-area">
+        <div class="game-info">
+            <p>💎 Pontos: <span id="pontos">0</span></p>
+            <p>❤️ Vidas: <span id="vidas">❤️❤️❤️❤️❤️</span></p>
+            <p>⛏️ Minério: <span id="minerioContador">0</span></p>
+            <button id="botaoReiniciar">🔄 Reiniciar Jogo</button>
+        </div>
+        
+        <div id="gameBoard" class="game-board">
+            <!-- OS BLOCOS SERÃO CRIADOS PELO JAVASCRIPT -->
+        </div>
+        
+        <p class="game-dica">💡 Clique nos blocos para minerar! 🟫 Terra = 1pt | 🪨 Pedra = 2pts | 💎 Minério = 5pts</p>
+    </div>
 
     <!-- SEÇÃO DE MÚSICAS -->
     <h2 class="secao-titulo">🎵 Músicas Geek</h2>
@@ -30,35 +48,414 @@
     <!-- SEÇÃO DE JOGOS -->
     <h2 class="secao-titulo">🎮 Gameplays Insanos</h2>
     <div class="grid-jogos">
-        <!-- STEAM - CS2 -->
         <div class="jogo-card">
             <h3>🟣 Steam - CS2 (3700 ELO)</h3>
             <iframe src="https://www.youtube.com/embed/Td7R4m5p73s" title="CS2 Gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
-        <!-- STEAM - Cyberpunk 2077 -->
         <div class="jogo-card">
             <h3>🟣 Steam - Cyberpunk 2077 MODS</h3>
             <iframe src="https://www.youtube.com/embed/iKdwk5nu5ws" title="Cyberpunk MODS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
-        <!-- XBOX - Halo Infinite -->
         <div class="jogo-card">
             <h3>🟢 Xbox - Halo Infinite [4K]</h3>
             <iframe src="https://www.youtube.com/embed/7oETYzF27lQ" title="Halo Infinite" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
-        <!-- PS5 - God of War Ragnarok -->
         <div class="jogo-card">
             <h3>🔵 PS5 - God of War Ragnarok</h3>
             <iframe src="https://www.youtube.com/embed/UEIqHfLggaA" title="God of War" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
-        <!-- PS5 - Spider-Man 2 -->
         <div class="jogo-card">
             <h3>🔵 PS5 - Spider-Man 2 [4K 120FPS]</h3>
             <iframe src="https://www.youtube.com/embed/dAVKjOHJfjI" title="Spider-Man 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <p>⛏️ Criado por Carlos - 2026 🌍</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // 🎮 JOGO TERRARIA - MINERAÇÃO SIMPLES 🎮
+        // ============================================
+
+        // 🎯 VARIÁVEIS DO JOGO
+        let pontos = 0;
+        let vidas = 5;
+        let minerioColetado = 0;
+        let jogoAtivo = true;
+        let blocos = [];
+        const linhas = 6;
+        const colunas = 8;
+        let recorde = localStorage.getItem('recordTerraria') || 0;
+
+        // 📦 ELEMENTOS DA TELA
+        const gameBoard = document.getElementById('gameBoard');
+        const pontosDisplay = document.getElementById('pontos');
+        const vidasDisplay = document.getElementById('vidas');
+        const minerioDisplay = document.getElementById('minerioContador');
+        const botaoReiniciar = document.getElementById('botaoReiniciar');
+
+        // 🎯 TIPOS DE BLOCOS
+        const TIPOS = {
+            TERRA: { nome: 'Terra', cor: '#8B6B3D', emoji: '🟫', pontos: 1, chance: 0.5 },
+            PEDRA: { nome: 'Pedra', cor: '#808080', emoji: '🪨', pontos: 2, chance: 0.3 },
+            MINERIO: { nome: 'Minério', cor: '#00BFFF', emoji: '💎', pontos: 5, chance: 0.15 },
+            LAVA: { nome: 'Lava', cor: '#FF4500', emoji: '🌋', pontos: -1, chance: 0.05 }
+        };
+
+        // 🏗️ FUNÇÃO PARA CRIAR O MUNDO
+        function criarMundo() {
+            gameBoard.innerHTML = '';
+            blocos = [];
+
+            for (let l = 0; l < linhas; l++) {
+                for (let c = 0; c < colunas; c++) {
+                    // ESCOLHE UM TIPO ALEATÓRIO
+                    let tipo = TIPOS.TERRA;
+                    const rand = Math.random();
+                    
+                    if (rand < TIPOS.LAVA.chance) {
+                        tipo = TIPOS.LAVA;
+                    } else if (rand < TIPOS.LAVA.chance + TIPOS.MINERIO.chance) {
+                        tipo = TIPOS.MINERIO;
+                    } else if (rand < TIPOS.LAVA.chance + TIPOS.MINERIO.chance + TIPOS.PEDRA.chance) {
+                        tipo = TIPOS.PEDRA;
+                    }
+
+                    // CRIA O BLOCO
+                    const bloco = document.createElement('div');
+                    bloco.className = 'bloco';
+                    bloco.dataset.tipo = tipo.nome;
+                    bloco.dataset.linha = l;
+                    bloco.dataset.coluna = c;
+                    bloco.style.backgroundColor = tipo.cor;
+                    bloco.textContent = tipo.emoji;
+                    
+                    // ADICIONA EVENTO DE CLIQUE
+                    bloco.addEventListener('click', function() {
+                        minerarBloco(this);
+                    });
+
+                    gameBoard.appendChild(bloco);
+                    blocos.push({
+                        elemento: bloco,
+                        tipo: tipo,
+                        linha: l,
+                        coluna: c,
+                        minerado: false
+                    });
+                }
+            }
+        }
+
+        // ⛏️ FUNÇÃO PARA MINERAR
+        function minerarBloco(elemento) {
+            if (!jogoAtivo) return;
+            if (elemento.classList.contains('minerado')) return;
+
+            // ENCONTRA O BLOCO NA LISTA
+            const blocoData = blocos.find(b => b.elemento === elemento);
+            if (!blocoData) return;
+
+            // MINERA O BLOCO
+            blocoData.minerado = true;
+            elemento.classList.add('minerado');
+            
+            // GANHA OU PERDE PONTOS
+            const tipo = blocoData.tipo;
+            const pontosGanhos = tipo.pontos;
+            
+            // ATUALIZA PONTOS
+            pontos += pontosGanhos;
+            if (pontos < 0) pontos = 0;
+            pontosDisplay.textContent = pontos;
+
+            // SE FOR MINÉRIO
+            if (tipo.nome === 'Minério') {
+                minerioColetado++;
+                minerioDisplay.textContent = minerioColetado;
+                // EFEITO DE BRILHO
+                elemento.style.boxShadow = '0 0 50px rgba(0, 200, 255, 0.8)';
+            }
+
+            // SE FOR LAVA
+            if (tipo.nome === 'Lava') {
+                vidas--;
+                atualizarVidas();
+                elemento.style.boxShadow = '0 0 50px rgba(255, 0, 0, 0.8)';
+                // EFEITO DE TREME TERRA
+                gameBoard.style.animation = 'treme 0.3s ease';
+                setTimeout(() => {
+                    gameBoard.style.animation = '';
+                }, 300);
+                
+                if (vidas <= 0) {
+                    gameOver();
+                    return;
+                }
+            }
+
+            // MUDANÇA VISUAL
+            elemento.textContent = '⬛';
+            elemento.style.backgroundColor = '#333';
+            
+            // GERA UM NOVO BLOCO (EXCETO LAVA)
+            if (tipo.nome !== 'Lava') {
+                setTimeout(() => {
+                    regenerarBloco(elemento);
+                }, 1000);
+            }
+        }
+
+        // 🔄 REGENERA UM BLOCO
+        function regenerarBloco(elemento) {
+            if (!jogoAtivo) return;
+            
+            // ESCOLHE NOVO TIPO
+            let tipo = TIPOS.TERRA;
+            const rand = Math.random();
+            if (rand < TIPOS.LAVA.chance) {
+                tipo = TIPOS.LAVA;
+            } else if (rand < TIPOS.LAVA.chance + TIPOS.MINERIO.chance) {
+                tipo = TIPOS.MINERIO;
+            } else if (rand < TIPOS.LAVA.chance + TIPOS.MINERIO.chance + TIPOS.PEDRA.chance) {
+                tipo = TIPOS.PEDRA;
+            }
+
+            // ATUALIZA O BLOCO
+            const blocoData = blocos.find(b => b.elemento === elemento);
+            if (blocoData) {
+                blocoData.tipo = tipo;
+                blocoData.minerado = false;
+                elemento.className = 'bloco';
+                elemento.style.backgroundColor = tipo.cor;
+                elemento.textContent = tipo.emoji;
+                elemento.style.boxShadow = '';
+            }
+        }
+
+        // ❤️ ATUALIZA VIDAS
+        function atualizarVidas() {
+            let coracoes = '';
+            for (let i = 0; i < vidas; i++) {
+                coracoes += '❤️';
+            }
+            for (let i = vidas; i < 5; i++) {
+                coracoes += '🖤';
+            }
+            vidasDisplay.textContent = coracoes;
+        }
+
+        // 🏁 GAME OVER
+        function gameOver() {
+            jogoAtivo = false;
+            
+            // SALVA RECORDE
+            if (pontos > recorde) {
+                recorde = pontos;
+                localStorage.setItem('recordTerraria', recorde);
+                alert('🏆 NOVO RECORDE! ' + pontos + ' pontos!');
+            } else {
+                alert('💀 GAME OVER!\nPontos: ' + pontos + '\nRecorde: ' + recorde);
+            }
+        }
+
+        // 🔄 REINICIAR JOGO
+        function reiniciarJogo() {
+            pontos = 0;
+            vidas = 5;
+            minerioColetado = 0;
+            jogoAtivo = true;
+            
+            pontosDisplay.textContent = pontos;
+            minerioDisplay.textContent = minerioColetado;
+            atualizarVidas();
+            
+            criarMundo();
+        }
+
+        // 🎮 BOTÃO REINICIAR
+        botaoReiniciar.addEventListener('click', reiniciarJogo);
+
+        // 🚀 INICIA O JOGO
+        window.onload = function() {
+            console.log('🏆 Recorde: ' + recorde + ' pontos');
+            criarMundo();
+            atualizarVidas();
+        };
+    </script>
+
+    <style>
+        /* ESTILOS DO JOGO TERRARIA */
+        .game-area {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 25px;
+            border: 3px solid #b366ff;
+            box-shadow: 0 0 50px rgba(155, 60, 255, 0.3);
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .game-info p {
+            margin: 0;
+            text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
+        }
+
+        .game-info span {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        #vidas {
+            font-size: 28px;
+            color: #ff4444;
+        }
+
+        #botaoReiniciar {
+            background: linear-gradient(135deg, #b366ff, #7a00cc);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(155, 60, 255, 0.4);
+        }
+
+        #botaoReiniciar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(200, 100, 255, 0.6);
+        }
+
+        /* TABULEIRO */
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(20, 10, 30, 0.8);
+            border-radius: 20px;
+            border: 3px solid #7a00cc;
+        }
+
+        /* BLOCOS */
+        .bloco {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            user-select: none;
+        }
+
+        .bloco:hover {
+            transform: scale(1.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .bloco.minerado {
+            transform: scale(0.8);
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .bloco.minerado:hover {
+            transform: scale(0.8);
+        }
+
+        /* ANIMAÇÃO DE TREME TERRA */
+        @keyframes treme {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        .game-dica {
+            color: #d9b3ff;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 15px;
+            text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
+        }
+
+        /* 📱 RESPONSIVO */
+        @media (max-width: 700px) {
+            .game-board {
+                gap: 5px;
+                padding: 10px;
+            }
+            .bloco {
+                font-size: 22px;
+                border-radius: 6px;
+            }
+            .game-info {
+                font-size: 16px;
+            }
+            .game-info span {
+                font-size: 20px;
+            }
+            #vidas {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .game-board {
+                gap: 3px;
+                padding: 6px;
+            }
+            .bloco {
+                font-size: 16px;
+                border-radius: 4px;
+            }
+            .game-info {
+                font-size: 14px;
+            }
+            .game-info span {
+                font-size: 16px;
+            }
+            #vidas {
+                font-size: 18px;
+            }
+            #botaoReiniciar {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
 </body>
 </html>
