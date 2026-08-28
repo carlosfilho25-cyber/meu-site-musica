@@ -1,205 +1,153 @@
-/* ========== ESTILOS GERAIS ========== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none;
-}
-
+/* 🟣🖤 FUNDO ROXO COM PRETO */
 body {
     background: linear-gradient(135deg, #0a0015, #2d1b69, #0a0015);
+    background-size: 400% 400%;
+    animation: fundoMovimento 10s infinite ease-in-out;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Courier New', monospace;
-    padding: 20px;
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
 }
 
-/* ========== JANELA DO JOGO ========== */
-.game-window {
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 30px;
-    padding: 25px;
-    border: 4px solid #b366ff;
-    box-shadow: 0 0 60px rgba(155, 60, 255, 0.4);
-    max-width: 900px;
-    width: 100%;
+@keyframes fundoMovimento {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* ========== CABEÇALHO ========== */
-.game-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff;
-    padding: 0 10px 15px 10px;
-    border-bottom: 2px solid #b366ff;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.game-header h2 {
-    font-size: 28px;
-    color: #ffcc00;
-    text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
-}
-
-.game-stats {
-    display: flex;
-    gap: 25px;
-    font-size: 18px;
-    flex-wrap: wrap;
-}
-
-.game-stats span {
-    color: #ffcc00;
-    font-weight: bold;
-    font-size: 22px;
-}
-
-#vidasDisplay {
-    color: #ff4444;
-    font-size: 26px;
-}
-
-/* ========== CONTROLES ========== */
-.controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 15px 0;
-    flex-wrap: wrap;
-}
-
-.controls button {
-    background: linear-gradient(135deg, #b366ff, #7a00cc);
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(155, 60, 255, 0.3);
-    font-family: 'Courier New', monospace;
-}
-
-.controls button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(200, 100, 255, 0.6);
-}
-
-.controls button.danger {
-    background: linear-gradient(135deg, #ff4444, #cc0000);
-}
-
-.controls button.danger:hover {
-    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
-}
-
-/* ========== MAPA ========== */
-#mapa {
-    display: grid;
-    gap: 3px;
-    background: #1a0a2e;
-    padding: 10px;
-    border-radius: 15px;
-    border: 3px solid #7a00cc;
-    margin: 10px 0;
-    aspect-ratio: 1 / 1;
-    max-height: 600px;
-    margin: 10px auto;
-}
-
-.bloco-mapa {
-    aspect-ratio: 1;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-}
-
-.bloco-mapa:hover {
-    transform: scale(1.05);
-    z-index: 2;
-}
-
-/* JOGADOR */
-.bloco-mapa.jogador {
-    background: #00ff88 !important;
-    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
-    border-color: #00ff88;
-    animation: pulseJogador 0.8s infinite alternate;
-}
-
-@keyframes pulseJogador {
-    0% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.4); }
-    100% { box-shadow: 0 0 50px rgba(0, 255, 136, 0.8); }
-}
-
-/* MONSTRO (SLIME) */
-.bloco-mapa.monstro {
-    background: #00ff44 !important;
-    box-shadow: 0 0 30px rgba(0, 255, 68, 0.5);
-    border-color: #00ff44;
-    animation: pulseMonstro 0.5s infinite alternate;
-}
-
-@keyframes pulseMonstro {
-    0% { transform: scale(0.9); }
-    100% { transform: scale(1.1); }
-}
-
-/* ========== MENSAGEM ========== */
-#mensagem {
+/* 🎤 TÍTULO */
+h1 {
+    color: #ffffff;
+    font-size: 70px;
     text-align: center;
-    color: #ffcc00;
-    font-size: 20px;
-    padding: 10px;
-    min-height: 40px;
-    text-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+    font-family: 'Arial Black', Arial, sans-serif;
+    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d;
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+    animation: piscaTitulo 2.5s infinite ease-in-out;
 }
 
-/* ========== LEGENDA ========== */
-.legenda {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px 0 5px 0;
+@keyframes piscaTitulo {
+    0% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d; }
+    50% { text-shadow: 0 0 40px #d9b3ff, 0 0 80px #b366ff, 0 0 120px #7a00cc, 0 0 180px #4d0099; }
+    100% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d; }
+}
+
+.subtitulo {
     color: #d9b3ff;
-    font-size: 14px;
-    flex-wrap: wrap;
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
+    margin-bottom: 40px;
 }
 
-.legenda-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+.secao-titulo {
+    color: #ffffff;
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc;
+    margin: 50px 0 30px 0;
+    border-bottom: 3px solid #b366ff;
+    padding-bottom: 15px;
 }
 
-.legenda-cor {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+/* 🎵 MÚSICAS */
+.grid-musicas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
-/* ========== RESPONSIVO ========== */
+.grid-musicas iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+    border: 3px solid #b366ff;
+    box-shadow: 0 0 30px rgba(155, 60, 255, 0.6);
+    transition: all 0.4s ease-in-out;
+    animation: auraRoxa 3s infinite ease-in-out;
+}
+
+.grid-musicas iframe:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(200, 100, 255, 1);
+    border-color: #d9b3ff;
+}
+
+/* 🎮 JOGOS */
+.grid-jogos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.jogo-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+    border: 2px solid rgba(155, 60, 255, 0.3);
+    transition: all 0.4s ease;
+}
+
+.jogo-card:hover {
+    transform: scale(1.03);
+    border-color: #d9b3ff;
+    box-shadow: 0 0 40px rgba(155, 60, 255, 0.4);
+}
+
+.jogo-card h3 {
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 0 15px 0;
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
+}
+
+.jogo-card iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    border: 2px solid rgba(155, 60, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.jogo-card iframe:hover {
+    border-color: #d9b3ff;
+    box-shadow: 0 0 30px rgba(155, 60, 255, 0.5);
+}
+
+@keyframes auraRoxa {
+    0% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4); }
+    50% { box-shadow: 0 0 50px rgba(200, 100, 255, 0.9); }
+    100% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4); }
+}
+
+.rodape {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    color: #d9b3ff;
+    border-top: 2px solid #b366ff;
+    font-size: 18px;
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
+}
+
+@media (max-width: 900px) {
+    .grid-musicas, .grid-jogos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    h1 { font-size: 45px; }
+}
+
 @media (max-width: 600px) {
-    .game-header h2 { font-size: 20px; }
-    .game-stats { font-size: 14px; gap: 12px; }
-    .bloco-mapa { font-size: 16px; }
-    .controls button { padding: 8px 16px; font-size: 14px; }
-    .legenda { font-size: 12px; gap: 10px; }
-}
-
-@media (max-width: 400px) {
-    .bloco-mapa { font-size: 12px; }
+    .grid-musicas, .grid-jogos {
+        grid-template-columns: 1fr;
+    }
+    h1 { font-size: 30px; }
+    .secao-titulo { font-size: 28px; }
 }
