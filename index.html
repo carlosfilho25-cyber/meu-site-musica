@@ -2,153 +2,22 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎯 TIRO AO ALVO - Músicas & Games</title>
     <style>
-        /* ============================================================
-           🟣🖤 ESTILOS GERAIS
-           ============================================================ */
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
+        /* ===== ESTILOS GERAIS ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body {
             background: linear-gradient(135deg, #0a0015, #2d1b69, #0a0015);
-            background-size: 400% 400%;
-            animation: fundoMovimento 10s infinite ease-in-out;
             min-height: 100vh;
             padding: 15px;
-            font-family: 'Segoe UI', 'Courier New', monospace;
-            transition: all 0.5s ease;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
-        
-        /* TEMA CLARO */
-        body.tema-claro {
-            background: linear-gradient(135deg, #f5f0ff, #d9b3ff, #f5f0ff);
-        }
-        
-        body.tema-claro .jogo-card-grande {
-            background: rgba(255, 255, 255, 0.95);
-        }
-        
-        body.tema-claro .game-header h2,
-        body.tema-claro .game-stats div,
-        body.tema-claro .secao-titulo,
-        body.tema-claro .titulo-principal,
-        body.tema-claro .subtitulo,
-        body.tema-claro .legenda,
-        body.tema-claro .jogo-card h3,
-        body.tema-claro .video-titulo,
-        body.tema-claro .video-artista,
-        body.tema-claro .rodape,
-        body.tema-claro .sobre-box p,
-        body.tema-claro .sobre-box li,
-        body.tema-claro .menu a,
-        body.tema-claro .topo-info span,
-        body.tema-claro .barra-vida .label {
-            color: #1a0a2e !important;
-        }
-        
-        body.tema-claro .jogo-card,
-        body.tema-claro .video-card {
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        body.tema-claro #gameArea,
-        body.tema-claro #arena {
-            background: #e8e0f0;
-        }
-        
-        body.tema-claro .menu {
-            border-color: rgba(155, 60, 255, 0.5);
-        }
-        
-        body.tema-claro .topo-info button {
-            color: #1a0a2e;
-            background: rgba(155, 60, 255, 0.2);
-        }
-        
-        body.tema-claro .topo-info button:hover {
-            background: #b366ff;
-            color: #fff;
-        }
-        
-        body.tema-claro .chao {
-            background: repeating-linear-gradient(90deg, #d9b3ff 0px, #d9b3ff 20px, #c9a3ef 20px, #c9a3ef 40px);
-        }
-        
-        body.tema-claro #mensagemLuta,
-        body.tema-claro #mensagemGame {
-            background: rgba(255, 255, 255, 0.8);
-            color: #1a0a2e;
-        }
-        
-        /* ANIMAÇÕES */
-        @keyframes fundoMovimento {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes piscaTitulo {
-            0% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099; }
-            50% { text-shadow: 0 0 40px #d9b3ff, 0 0 80px #b366ff, 0 0 120px #7a00cc; }
-            100% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099; }
-        }
-        
-        @keyframes pulseAlvo {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
-        }
-        
-        @keyframes brilhoCard {
-            0% { box-shadow: 0 0 20px rgba(155, 60, 255, 0.2); }
-            50% { box-shadow: 0 0 40px rgba(155, 60, 255, 0.4); }
-            100% { box-shadow: 0 0 20px rgba(155, 60, 255, 0.2); }
-        }
-        
-        @keyframes soco {
-            0% { transform: scale(1); }
-            30% { transform: scale(1.3) translateX(30px); }
-            60% { transform: scale(1.3) translateX(30px); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes defesa {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.8); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes dano {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-30px) rotate(-5deg); }
-            50% { transform: translateX(30px) rotate(5deg); }
-            75% { transform: translateX(-15px); }
-            100% { transform: translateX(0); }
-        }
-        
-        @keyframes morte {
-            0% { transform: translateY(0) rotate(0); opacity: 1; }
-            50% { transform: translateY(-50px) rotate(20deg); opacity: 1; }
-            100% { transform: translateY(100px) rotate(90deg); opacity: 0; }
-        }
-        
-        /* ============================================================
-           TOPO
-           ============================================================ */
-        .topo {
-            text-align: center;
-            padding: 15px 0;
-        }
-        
+
+        /* ===== TOPO ===== */
+        .topo { text-align: center; padding: 15px 0; }
         .topo-conteudo {
             display: flex;
             justify-content: space-between;
@@ -159,21 +28,10 @@
             margin: 0 auto;
             padding: 0 10px;
         }
-        
-        .topo-info {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .topo-info span {
-            color: #d9b3ff;
-            font-size: 14px;
-        }
-        
+        .topo-info { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .topo-info span { color: #d9b3ff; font-size: 14px; }
         .topo-info button {
-            background: rgba(155, 60, 255, 0.3);
+            background: rgba(155,60,255,0.3);
             color: #fff;
             border: 2px solid #b366ff;
             padding: 6px 14px;
@@ -181,45 +39,28 @@
             font-size: 13px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Segoe UI', 'Courier New', monospace;
         }
-        
-        .topo-info button:hover {
-            background: #b366ff;
-            transform: scale(1.05);
-        }
+        .topo-info button:hover { background: #b366ff; transform: scale(1.05); }
         
         .titulo-principal {
-            color: #ffffff;
+            color: #fff;
             font-size: 36px;
             font-family: 'Arial Black', Arial, sans-serif;
             text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099;
-            letter-spacing: 3px;
-            animation: piscaTitulo 2.5s infinite ease-in-out;
         }
-        
-        .subtitulo {
-            color: #d9b3ff;
-            font-size: 15px;
-            text-align: center;
-            margin-top: 8px;
-            padding: 0 10px;
-        }
-        
-        /* ============================================================
-           MENU
-           ============================================================ */
+        .subtitulo { color: #d9b3ff; font-size: 15px; text-align: center; margin-top: 8px; }
+
+        /* ===== MENU ===== */
         .menu {
             display: flex;
             justify-content: center;
             gap: 8px;
             padding: 12px 0;
             flex-wrap: wrap;
-            border-top: 2px solid rgba(155, 60, 255, 0.3);
-            border-bottom: 2px solid rgba(155, 60, 255, 0.3);
+            border-top: 2px solid rgba(155,60,255,0.3);
+            border-bottom: 2px solid rgba(155,60,255,0.3);
             margin: 15px 0 30px 0;
         }
-        
         .menu a {
             color: #d9b3ff;
             text-decoration: none;
@@ -228,25 +69,15 @@
             padding: 6px 14px;
             border-radius: 10px;
             transition: all 0.3s ease;
-            background: rgba(155, 60, 255, 0.1);
+            background: rgba(155,60,255,0.1);
             border: 2px solid transparent;
         }
-        
-        .menu a:hover {
-            background: rgba(155, 60, 255, 0.3);
-            border-color: #b366ff;
-            transform: scale(1.05);
-        }
-        
-        /* ============================================================
-           SEÇÕES
-           ============================================================ */
-        section {
-            scroll-margin-top: 70px;
-        }
-        
+        .menu a:hover { background: rgba(155,60,255,0.3); border-color: #b366ff; transform: scale(1.05); }
+
+        /* ===== SEÇÕES ===== */
+        section { scroll-margin-top: 70px; }
         .secao-titulo {
-            color: #ffffff;
+            color: #fff;
             font-size: 28px;
             text-align: center;
             text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc;
@@ -254,10 +85,8 @@
             border-bottom: 3px solid #b366ff;
             padding-bottom: 12px;
         }
-        
-        /* ============================================================
-           JOGOS LADO A LADO
-           ============================================================ */
+
+        /* ===== JOGOS LADO A LADO ===== */
         .jogos-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -265,42 +94,19 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-        
         .jogo-card-grande {
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0,0,0,0.85);
             border-radius: 25px;
             padding: 20px;
             border: 4px solid #b366ff;
-            box-shadow: 0 0 60px rgba(155, 60, 255, 0.4);
+            box-shadow: 0 0 60px rgba(155,60,255,0.4);
             transition: all 0.3s ease;
         }
-        
-        .jogo-card-grande:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 80px rgba(155, 60, 255, 0.6);
-        }
-        
-        .luta-card {
-            border-color: #ff4444 !important;
-            box-shadow: 0 0 60px rgba(255, 0, 0, 0.3) !important;
-        }
-        
-        .luta-card:hover {
-            box-shadow: 0 0 80px rgba(255, 0, 0, 0.5) !important;
-        }
-        
-        .tiro-card {
-            border-color: #b366ff !important;
-            box-shadow: 0 0 60px rgba(155, 60, 255, 0.3) !important;
-        }
-        
-        .tiro-card:hover {
-            box-shadow: 0 0 80px rgba(155, 60, 255, 0.5) !important;
-        }
-        
-        /* ============================================================
-           JOGO DE LUTA
-           ============================================================ */
+        .jogo-card-grande:hover { transform: translateY(-3px); box-shadow: 0 0 80px rgba(155,60,255,0.6); }
+        .luta-card { border-color: #ff4444 !important; box-shadow: 0 0 60px rgba(255,0,0,0.3) !important; }
+        .tiro-card { border-color: #b366ff !important; box-shadow: 0 0 60px rgba(155,60,255,0.3) !important; }
+
+        /* ===== HEADER DOS JOGOS ===== */
         .game-header {
             display: flex;
             justify-content: space-between;
@@ -311,64 +117,48 @@
             flex-wrap: wrap;
             gap: 6px;
         }
-        
         .game-header h2 {
             font-size: 18px;
             color: #ffcc00;
-            text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+            text-shadow: 0 0 20px rgba(255,204,0,0.5);
         }
-        
         .game-stats {
             display: flex;
             gap: 5px;
             font-size: 11px;
             flex-wrap: wrap;
         }
-        
         .game-stats div {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             padding: 2px 8px;
             border-radius: 6px;
             color: #fff;
         }
-        
-        .game-stats span {
-            color: #ffcc00;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        
+        .game-stats span { color: #ffcc00; font-weight: bold; font-size: 14px; }
+
+        /* ===== BARRA DE VIDA ===== */
         .barra-vida-container {
             display: flex;
             justify-content: space-between;
             gap: 15px;
             margin: 8px 0;
         }
-        
         .barra-vida {
             flex: 1;
             height: 18px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             border-radius: 10px;
             overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255,255,255,0.2);
             position: relative;
         }
-        
         .barra-vida .preenchimento {
             height: 100%;
             border-radius: 8px;
             transition: width 0.3s ease;
         }
-        
-        .barra-vida.jogador .preenchimento {
-            background: linear-gradient(90deg, #00ff88, #00cc55);
-        }
-        
-        .barra-vida.inimigo .preenchimento {
-            background: linear-gradient(90deg, #ff4444, #cc0000);
-        }
-        
+        .barra-vida.jogador .preenchimento { background: linear-gradient(90deg, #00ff88, #00cc55); }
+        .barra-vida.inimigo .preenchimento { background: linear-gradient(90deg, #ff4444, #cc0000); }
         .barra-vida .label {
             position: absolute;
             top: 50%;
@@ -377,9 +167,10 @@
             color: #fff;
             font-size: 10px;
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 0 10px rgba(0,0,0,0.8);
         }
-        
+
+        /* ===== ARENA - LUTA ===== */
         #arena {
             position: relative;
             width: 100%;
@@ -389,9 +180,7 @@
             border: 3px solid #ff4444;
             margin: 10px 0;
             overflow: hidden;
-            image-rendering: pixelated;
         }
-        
         .chao {
             position: absolute;
             bottom: 0;
@@ -401,7 +190,6 @@
             background: repeating-linear-gradient(90deg, #2d1b69 0px, #2d1b69 20px, #3d2b79 20px, #3d2b79 40px);
             border-top: 3px solid #ff4444;
         }
-        
         .chao::after {
             content: '';
             position: absolute;
@@ -412,44 +200,46 @@
             background: repeating-linear-gradient(90deg, #ff4444 0px, #ff4444 4px, transparent 4px, transparent 8px);
             opacity: 0.3;
         }
-        
+
         .lutador {
             position: absolute;
             bottom: 50px;
             font-size: 60px;
             transition: all 0.15s ease;
             user-select: none;
-            image-rendering: pixelated;
             z-index: 10;
         }
-        
-        .lutador.jogador {
-            left: 100px;
-            filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.3));
+        .lutador.jogador { left: 100px; filter: drop-shadow(0 0 30px rgba(0,255,136,0.3)); }
+        .lutador.inimigo { right: 100px; filter: drop-shadow(0 0 30px rgba(255,0,0,0.3)); }
+        .lutador.atacando { animation: soco 0.3s ease; }
+        .lutador.defendendo { filter: drop-shadow(0 0 40px rgba(0,200,255,0.8)) !important; animation: defesa 0.5s ease; }
+        .lutador.dano { animation: dano 0.4s ease; }
+        .lutador.morto { animation: morte 0.8s ease forwards; }
+
+        @keyframes soco {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.3) translateX(30px); }
+            60% { transform: scale(1.3) translateX(30px); }
+            100% { transform: scale(1); }
         }
-        
-        .lutador.inimigo {
-            right: 100px;
-            filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.3));
+        @keyframes defesa {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.8); }
+            100% { transform: scale(1); }
         }
-        
-        .lutador.atacando {
-            animation: soco 0.3s ease;
+        @keyframes dano {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-30px) rotate(-5deg); }
+            50% { transform: translateX(30px) rotate(5deg); }
+            75% { transform: translateX(-15px); }
+            100% { transform: translateX(0); }
         }
-        
-        .lutador.defendendo {
-            filter: drop-shadow(0 0 40px rgba(0, 200, 255, 0.8)) !important;
-            animation: defesa 0.5s ease;
+        @keyframes morte {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            50% { transform: translateY(-50px) rotate(20deg); opacity: 1; }
+            100% { transform: translateY(100px) rotate(90deg); opacity: 0; }
         }
-        
-        .lutador.dano {
-            animation: dano 0.4s ease;
-        }
-        
-        .lutador.morto {
-            animation: morte 0.8s ease forwards;
-        }
-        
+
         #mensagemLuta {
             position: absolute;
             bottom: 12px;
@@ -458,30 +248,27 @@
             color: #ffcc00;
             font-size: 13px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0,0,0,0.7);
             padding: 6px 14px;
             border-radius: 10px;
-            border: 1px solid rgba(255, 68, 68, 0.2);
+            border: 1px solid rgba(255,68,68,0.2);
             z-index: 20;
             max-width: 90%;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
         }
-        
-        /* ============================================================
-           TIRO AO ALVO
-           ============================================================ */
+
+        /* ===== TIRO AO ALVO ===== */
         .barra-tempo {
             width: 100%;
             height: 6px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             border-radius: 10px;
             margin: 8px 0 12px 0;
             overflow: hidden;
-            border: 1px solid rgba(155, 60, 255, 0.2);
+            border: 1px solid rgba(155,60,255,0.2);
         }
-        
         #barraProgresso {
             height: 100%;
             width: 100%;
@@ -489,7 +276,7 @@
             transition: width 0.5s ease, background 0.5s ease;
             background: linear-gradient(90deg, #00ccff, #00ff88);
         }
-        
+
         #gameArea {
             position: relative;
             width: 100%;
@@ -503,24 +290,25 @@
             touch-action: none;
             min-height: 250px;
         }
-        
+
         #alvo {
             position: absolute;
             font-size: 40px;
             cursor: pointer;
             display: none;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            transition: transform 0.15s ease;
             user-select: none;
-            text-shadow: 0 0 30px rgba(255, 200, 0, 0.5);
+            text-shadow: 0 0 30px rgba(255,200,0,0.5);
             animation: pulseAlvo 0.6s infinite alternate;
             z-index: 10;
             touch-action: none;
         }
-        
-        #alvo:active {
-            transform: scale(1.6) !important;
+        #alvo:active { transform: scale(1.6) !important; }
+        @keyframes pulseAlvo {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
         }
-        
+
         #mensagemGame {
             position: absolute;
             bottom: 12px;
@@ -529,20 +317,18 @@
             color: #d9b3ff;
             font-size: 13px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0,0,0,0.7);
             padding: 6px 14px;
             border-radius: 10px;
-            border: 1px solid rgba(155, 60, 255, 0.2);
+            border: 1px solid rgba(155,60,255,0.2);
             z-index: 20;
             max-width: 90%;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
         }
-        
-        /* ============================================================
-           CONTROLES
-           ============================================================ */
+
+        /* ===== CONTROLES ===== */
         .controls {
             display: flex;
             justify-content: center;
@@ -550,7 +336,6 @@
             padding: 10px 0 3px 0;
             flex-wrap: wrap;
         }
-        
         .controls button {
             background: linear-gradient(135deg, #b366ff, #7a00cc);
             color: #fff;
@@ -561,49 +346,15 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 25px rgba(155, 60, 255, 0.3);
-            font-family: 'Segoe UI', 'Courier New', monospace;
+            box-shadow: 0 0 25px rgba(155,60,255,0.3);
         }
-        
-        .controls button:hover:not(:disabled) {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(200, 100, 255, 0.6);
-        }
-        
-        .controls button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .controls button.azul {
-            background: linear-gradient(135deg, #4488ff, #0044cc);
-            box-shadow: 0 0 25px rgba(0, 100, 255, 0.3);
-        }
-        
-        .controls button.azul:hover:not(:disabled) {
-            box-shadow: 0 0 40px rgba(0, 100, 255, 0.6);
-        }
-        
-        .controls button.verde {
-            background: linear-gradient(135deg, #44ff88, #00cc55);
-            box-shadow: 0 0 25px rgba(0, 255, 136, 0.3);
-        }
-        
-        .controls button.verde:hover:not(:disabled) {
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
-        }
-        
-        .controls button.danger {
-            background: linear-gradient(135deg, #ff4444, #cc0000);
-        }
-        
-        .controls button.danger:hover:not(:disabled) {
-            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
-        }
-        
-        /* ============================================================
-           LEGENDA
-           ============================================================ */
+        .controls button:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 0 40px rgba(200,100,255,0.6); }
+        .controls button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .controls button.azul { background: linear-gradient(135deg, #4488ff, #0044cc); }
+        .controls button.verde { background: linear-gradient(135deg, #44ff88, #00cc55); }
+        .controls button.danger { background: linear-gradient(135deg, #ff4444, #cc0000); }
+
+        /* ===== LEGENDA ===== */
         .legenda {
             display: flex;
             justify-content: center;
@@ -613,29 +364,18 @@
             font-size: 12px;
             flex-wrap: wrap;
         }
-        
-        .legenda-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .legenda-item span {
-            font-size: 18px;
-        }
-        
+        .legenda-item { display: flex; align-items: center; gap: 4px; }
+        .legenda-item span { font-size: 18px; }
         .legenda-item .tecla {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             padding: 1px 6px;
             border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.2);
             font-weight: bold;
             color: #ffcc00;
         }
-        
-        /* ============================================================
-           MÚSICAS E VÍDEOS
-           ============================================================ */
+
+        /* ===== MÚSICAS E VÍDEOS ===== */
         .grid-musicas {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -643,7 +383,6 @@
             max-width: 1300px;
             margin: 0 auto;
         }
-        
         .grid-jogos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -651,34 +390,19 @@
             max-width: 1300px;
             margin: 0 auto;
         }
-        
+
         .video-card {
-            background: rgba(20, 10, 40, 0.8);
+            background: rgba(20,10,40,0.8);
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.4s ease;
-            border: 2px solid rgba(155, 60, 255, 0.2);
-            box-shadow: 0 0 30px rgba(155, 60, 255, 0.1);
-            animation: brilhoCard 3s infinite ease-in-out;
+            border: 2px solid rgba(155,60,255,0.2);
+            box-shadow: 0 0 30px rgba(155,60,255,0.1);
         }
-        
-        .video-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-color: #b366ff;
-            box-shadow: 0 0 50px rgba(155, 60, 255, 0.4);
-        }
-        
-        .video-card iframe {
-            width: 100%;
-            height: 180px;
-            display: none;
-            border: none;
-        }
-        
-        .video-card iframe.show {
-            display: block;
-        }
-        
+        .video-card:hover { transform: translateY(-5px); border-color: #b366ff; }
+        .video-card iframe { width: 100%; height: 180px; display: none; border: none; }
+        .video-card iframe.show { display: block; }
+
         .video-thumb {
             position: relative;
             width: 100%;
@@ -686,9 +410,7 @@
             background: #0a0015;
             cursor: pointer;
             overflow: hidden;
-            transition: all 0.3s ease;
         }
-        
         .video-thumb img {
             position: absolute;
             top: 0;
@@ -698,16 +420,9 @@
             object-fit: cover;
             transition: all 0.3s ease;
         }
-        
-        .video-thumb:hover img {
-            transform: scale(1.05);
-            filter: brightness(0.7);
-        }
-        
-        .video-thumb:hover .play-btn {
-            transform: scale(1.2);
-        }
-        
+        .video-thumb:hover img { transform: scale(1.05); filter: brightness(0.7); }
+        .video-thumb:hover .play-btn { transform: scale(1.2); }
+
         .play-btn {
             position: absolute;
             top: 50%;
@@ -715,7 +430,7 @@
             transform: translate(-50%, -50%);
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255,255,255,0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -723,145 +438,55 @@
             font-size: 24px;
             color: #7a00cc;
             transition: all 0.3s ease;
-            box-shadow: 0 0 40px rgba(155, 60, 255, 0.4);
+            box-shadow: 0 0 40px rgba(155,60,255,0.4);
         }
-        
         .video-duracao {
             position: absolute;
             bottom: 8px;
             right: 8px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0,0,0,0.8);
             color: #fff;
             padding: 2px 8px;
             border-radius: 4px;
             font-size: 11px;
             font-weight: bold;
         }
-        
-        .video-info {
-            padding: 10px 12px;
-        }
-        
-        .video-titulo {
-            color: #ffffff;
-            font-size: 14px;
-            margin: 0 0 3px 0;
-            font-weight: bold;
-        }
-        
-        .video-artista {
-            color: #d9b3ff;
-            font-size: 12px;
-            margin: 0;
-            opacity: 0.8;
-        }
-        
-        .video-loading {
-            display: none;
-            text-align: center;
-            color: #d9b3ff;
-            padding: 8px;
-            font-size: 12px;
-        }
-        
+        .video-info { padding: 10px 12px; }
+        .video-titulo { color: #fff; font-size: 14px; margin: 0 0 3px 0; font-weight: bold; }
+        .video-artista { color: #d9b3ff; font-size: 12px; margin: 0; opacity: 0.8; }
+        .video-loading { display: none; text-align: center; color: #d9b3ff; padding: 8px; font-size: 12px; }
+
         .jogo-card {
-            background: rgba(20, 10, 40, 0.8);
+            background: rgba(20,10,40,0.8);
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.4s ease;
-            border: 2px solid rgba(155, 60, 255, 0.2);
-            box-shadow: 0 0 30px rgba(155, 60, 255, 0.1);
-            animation: brilhoCard 3s infinite ease-in-out;
+            border: 2px solid rgba(155,60,255,0.2);
         }
-        
-        .jogo-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-color: #b366ff;
-            box-shadow: 0 0 50px rgba(155, 60, 255, 0.4);
-        }
-        
-        .jogo-card .video-thumb {
-            padding-top: 56.25%;
-        }
-        
-        .jogo-card iframe {
-            width: 100%;
-            height: 180px;
-            display: none;
-            border: none;
-        }
-        
-        .jogo-card iframe.show {
-            display: block;
-        }
-        
-        .jogo-card h3 {
-            color: #ffffff;
-            font-size: 14px;
-            padding: 10px 12px 0 12px;
-            margin: 0;
-        }
-        
-        .jogo-card .video-artista {
-            padding: 0 12px 10px 12px;
-        }
-        
-        /* ============================================================
-           SOBRE
-           ============================================================ */
+        .jogo-card:hover { transform: translateY(-5px); border-color: #b366ff; }
+        .jogo-card .video-thumb { padding-top: 56.25%; }
+        .jogo-card iframe { width: 100%; height: 180px; display: none; border: none; }
+        .jogo-card iframe.show { display: block; }
+        .jogo-card h3 { color: #fff; font-size: 14px; padding: 10px 12px 0 12px; margin: 0; }
+        .jogo-card .video-artista { padding: 0 12px 10px 12px; }
+
+        /* ===== SOBRE ===== */
         .sobre-box {
             max-width: 700px;
             margin: 30px auto;
             padding: 25px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0,0,0,0.6);
             border-radius: 20px;
             border: 2px solid #b366ff;
-            box-shadow: 0 0 40px rgba(155, 60, 255, 0.2);
         }
-        
-        .sobre-box h2 {
-            color: #ffffff;
-            font-size: 24px;
-            text-align: center;
-            text-shadow: 0 0 20px #b366ff;
-            margin-bottom: 15px;
-        }
-        
-        .sobre-box p {
-            color: #d9b3ff;
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 8px;
-        }
-        
-        .sobre-box ul {
-            list-style: none;
-            padding: 0;
-            margin: 12px 0;
-        }
-        
-        .sobre-box ul li {
-            color: #d9b3ff;
-            font-size: 14px;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(155, 60, 255, 0.1);
-        }
-        
-        .sobre-box ul li:last-child {
-            border-bottom: none;
-        }
-        
-        .sobre-versao {
-            text-align: center;
-            color: #b366ff !important;
-            font-size: 13px;
-            margin-top: 12px;
-            opacity: 0.7;
-        }
-        
-        /* ============================================================
-           RODAPÉ
-           ============================================================ */
+        .sobre-box h2 { color: #fff; font-size: 24px; text-align: center; margin-bottom: 15px; }
+        .sobre-box p { color: #d9b3ff; font-size: 15px; line-height: 1.8; margin-bottom: 8px; }
+        .sobre-box ul { list-style: none; padding: 0; margin: 12px 0; }
+        .sobre-box ul li { color: #d9b3ff; font-size: 14px; padding: 5px 0; border-bottom: 1px solid rgba(155,60,255,0.1); }
+        .sobre-box ul li:last-child { border-bottom: none; }
+        .sobre-versao { text-align: center; color: #b366ff !important; font-size: 13px; margin-top: 12px; opacity: 0.7; }
+
+        /* ===== RODAPÉ ===== */
         .rodape {
             margin-top: 40px;
             padding: 20px;
@@ -870,118 +495,215 @@
             border-top: 2px solid #b366ff;
             font-size: 14px;
         }
-        
-        .social {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 10px 0;
-            flex-wrap: wrap;
-        }
-        
+        .social { display: flex; justify-content: center; gap: 15px; margin: 10px 0; flex-wrap: wrap; }
         .social a {
             color: #d9b3ff;
             text-decoration: none;
             font-size: 13px;
-            transition: all 0.3s ease;
             padding: 3px 10px;
             border-radius: 8px;
-            background: rgba(155, 60, 255, 0.1);
+            background: rgba(155,60,255,0.1);
+            transition: all 0.3s ease;
         }
-        
-        .social a:hover {
-            background: rgba(155, 60, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        .visitas-rodape {
-            font-size: 12px;
-            opacity: 0.6;
-            margin-top: 5px;
-        }
-        
-        /* ============================================================
-           RESPONSIVO
-           ============================================================ */
-        @media (max-width: 1024px) {
-            .jogos-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-        }
-        
+        .social a:hover { background: rgba(155,60,255,0.3); transform: scale(1.05); }
+        .visitas-rodape { font-size: 12px; opacity: 0.6; margin-top: 5px; }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 1024px) { .jogos-container { grid-template-columns: 1fr 1fr; gap: 20px; } }
         @media (max-width: 768px) {
-            body { padding: 10px; }
+            .jogos-container { grid-template-columns: 1fr; gap: 25px; }
             .titulo-principal { font-size: 28px; }
-            .menu a { font-size: 12px; padding: 5px 10px; }
             .secao-titulo { font-size: 22px; }
-            
-            .jogos-container {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .jogo-card-grande { padding: 15px; }
-            
             #gameArea, #arena { height: 280px; }
-            #alvo { font-size: 35px; }
             .lutador { font-size: 50px; }
-            
-            .game-header h2 { font-size: 16px; }
-            .game-stats { font-size: 10px; }
-            .game-stats span { font-size: 13px; }
-            
-            #mensagemGame, #mensagemLuta { font-size: 12px; padding: 5px 12px; white-space: normal; }
-            
-            .controls button { padding: 7px 14px; font-size: 12px; }
-            
-            .grid-musicas, .grid-jogos {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-            }
-            
-            .video-card iframe, .jogo-card iframe { height: 150px; }
-            
-            .play-btn { width: 40px; height: 40px; font-size: 18px; }
-            .legenda { font-size: 11px; gap: 8px; }
-            .barra-vida { height: 15px; }
-            .barra-vida .label { font-size: 9px; }
+            #alvo { font-size: 35px; }
+            .grid-musicas, .grid-jogos { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
         }
-        
         @media (max-width: 480px) {
             .titulo-principal { font-size: 22px; }
             .topo-conteudo { flex-direction: column; align-items: center; gap: 5px; }
             .topo-info { justify-content: center; }
-            .menu a { font-size: 11px; padding: 4px 8px; }
-            
-            .jogo-card-grande { padding: 10px; border-width: 3px; }
-            
-            #gameArea, #arena { height: 220px; min-height: 180px; }
-            #alvo { font-size: 30px; }
+            #gameArea, #arena { height: 220px; }
             .lutador { font-size: 40px; }
-            
-            .grid-musicas, .grid-jogos {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            
+            #alvo { font-size: 30px; }
+            .grid-musicas, .grid-jogos { grid-template-columns: 1fr 1fr; gap: 10px; }
             .video-card iframe, .jogo-card iframe { height: 120px; }
-            .video-titulo { font-size: 12px; }
-            .video-artista { font-size: 10px; }
-            .play-btn { width: 35px; height: 35px; font-size: 16px; }
-            
             .controls button { padding: 5px 10px; font-size: 11px; }
-            .secao-titulo { font-size: 18px; }
-            .legenda { font-size: 10px; gap: 5px; }
-            .barra-vida { height: 12px; }
-            .barra-vida .label { font-size: 8px; }
-            .game-header h2 { font-size: 14px; }
-            .game-stats { font-size: 9px; }
-            .game-stats span { font-size: 11px; }
         }
-        
         @media (max-width: 360px) {
-            .grid-musicas, .grid-jogos {
-                grid-template-columns: 1fr;
-            }
-            #gameArea, #arena { height: 180px
+            .grid-musicas, .grid-jogos { grid-template-columns: 1fr; }
+            #gameArea, #arena { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOPO ===== -->
+    <div class="topo">
+        <div class="topo-conteudo">
+            <h1 class="titulo-principal">🎯 TIRO AO ALVO</h1>
+            <div class="topo-info">
+                <span id="contadorVisitas">👀 0 visitas</span>
+                <button id="toggleTheme">🌓 Tema</button>
+            </div>
+        </div>
+        <p class="subtitulo">🥊 Luta + 🎯 Tiro + 🎵 Músicas + 🎮 Gameplays = DIVERSÃO TOTAL!</p>
+    </div>
+
+    <!-- ===== MENU ===== -->
+    <nav class="menu">
+        <a href="#jogos">🎮 Jogos</a>
+        <a href="#musicas">🎵 Músicas</a>
+        <a href="#gameplays">🎮 Gameplays</a>
+        <a href="#sobre">📖 Sobre</a>
+    </nav>
+
+    <!-- ===== JOGOS LADO A LADO ===== -->
+    <section id="jogos">
+        <h2 class="secao-titulo">🎮 Escolha seu Jogo</h2>
+        <div class="jogos-container">
+            
+            <!-- LUTA -->
+            <div class="jogo-card-grande luta-card">
+                <div class="game-header">
+                    <h2>🥊 PIXEL FIGHT</h2>
+                    <div class="game-stats">
+                        <div>🏆 <span id="vitorias">0</span></div>
+                        <div>🔄 <span id="rodadas">0</span></div>
+                    </div>
+                </div>
+
+                <div class="barra-vida-container">
+                    <div class="barra-vida jogador">
+                        <div class="preenchimento" id="vidaJogadorBarra" style="width:100%"></div>
+                        <div class="label">🧑 VOCÊ <span id="vidaJogador">100</span>%</div>
+                    </div>
+                    <div class="barra-vida inimigo">
+                        <div class="preenchimento" id="vidaInimigoBarra" style="width:100%"></div>
+                        <div class="label">👾 INIMIGO <span id="vidaInimigo">100</span>%</div>
+                    </div>
+                </div>
+
+                <div id="arena">
+                    <div class="chao"></div>
+                    <div id="jogadorLuta" class="lutador jogador">🧑</div>
+                    <div id="inimigoLuta" class="lutador inimigo">👾</div>
+                    <div id="mensagemLuta">🥊 A/D andar | W socar | S defender</div>
+                </div>
+
+                <div class="controls">
+                    <button class="azul" id="btnEsquerda">⬅️ A</button>
+                    <button class="azul" id="btnDireita">➡️ D</button>
+                    <button class="verde" id="btnSocar">🥊 W</button>
+                    <button id="btnDefender">🛡️ S</button>
+                    <button id="btnReiniciarLuta">🔄 Reiniciar</button>
+                </div>
+
+                <div class="legenda">
+                    <div class="legenda-item"><span class="tecla">A</span> Esquerda</div>
+                    <div class="legenda-item"><span class="tecla">D</span> Direita</div>
+                    <div class="legenda-item"><span class="tecla">W</span> Socar 🥊</div>
+                    <div class="legenda-item"><span class="tecla">S</span> Defender 🛡️</div>
+                </div>
+            </div>
+
+            <!-- TIRO AO ALVO -->
+            <div class="jogo-card-grande tiro-card">
+                <div class="game-header">
+                    <h2>🎯 TIRO AO ALVO</h2>
+                    <div class="game-stats">
+                        <div>💥 <span id="pontosDisplay">0</span></div>
+                        <div>⏱️ <span id="tempoDisplay">30</span>s</div>
+                        <div>🎯 <span id="acertosDisplay">0</span></div>
+                        <div>🏆 <span id="recordeDisplay">0</span></div>
+                    </div>
+                </div>
+
+                <div class="barra-tempo">
+                    <div id="barraProgresso" style="width:100%"></div>
+                </div>
+
+                <div id="gameArea">
+                    <div id="alvo" class="alvo">🎯</div>
+                    <div id="mensagemGame">🎯 Clique em "INICIAR" para começar!</div>
+                </div>
+
+                <div class="controls">
+                    <button id="btnIniciar">🚀 INICIAR</button>
+                    <button id="btnReiniciar">🔄 Reiniciar</button>
+                </div>
+
+                <div class="legenda">
+                    <div class="legenda-item"><span>🎯</span> Alvo</div>
+                    <div class="legenda-item"><span>💥</span> Tiro certeiro!</div>
+                    <div class="legenda-item"><span>⏱️</span> 30 segundos</div>
+                    <div class="legenda-item"><span>🏆</span> Recorde</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== MÚSICAS ===== -->
+    <section id="musicas">
+        <h2 class="secao-titulo">🎵 Músicas Geek</h2>
+        <div class="grid-musicas">
+            <div class="video-card">
+                <div class="video-thumb" data-id="fMvNUINWdjc">
+                    <img src="https://img.youtube.com/vi/fMvNUINWdjc/maxresdefault.jpg" alt="Tipo Sasuke" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">3:45</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">Tipo Sasuke 😎</h4>
+                    <p class="video-artista">MHRAP | Style Trap</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/fMvNUINWdjc?autoplay=0&rel=0" title="Tipo Sasuke" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumb" data-id="8kxcZ7ouQSc">
+                    <img src="https://img.youtube.com/vi/8kxcZ7ouQSc/maxresdefault.jpg" alt="Vibe Hashirama" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">4:12</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">Vibe Hashirama 🍀</h4>
+                    <p class="video-artista">MHRAP | Vale do FIM</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/8kxcZ7ouQSc?autoplay=0&rel=0" title="Vibe Hashirama" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumb" data-id="ZRDvW2QhEw8">
+                    <img src="https://img.youtube.com/vi/ZRDvW2QhEw8/maxresdefault.jpg" alt="Rap do Sharingan" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">3:58</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">Rap do Sharingan 👁️</h4>
+                    <p class="video-artista">NERD HITS</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/ZRDvW2QhEw8?autoplay=0&rel=0" title="Rap do Sharingan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumb" data-id="CDY9PqjmgVc">
+                    <img src="https://img.youtube.com/vi/CDY9PqjmgVc/maxresdefault.jpg" alt="NEW GEN" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">3:32</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">NEW GEN ⚡</h4>
+                    <p class="video-artista">M4rkim | Blue Lock</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/CDY9PqjmgVc?autoplay=0&rel=0" title="NEW GEN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumb" data-id="nwTm5r24DUg">
+                    <img src="https://img.youtube.com/vi/nwTm5r24DUg/maxres
