@@ -168,7 +168,7 @@
                 <iframe src="https://www.youtube.com/embed/yZQPFLO3Q3A?autoplay=0&rel=0&modestbranding=1" title="AGONIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
-            <!-- 🆕 Música 7 - Homem-Aranha -->
+            <!-- Música 7 - Homem-Aranha -->
             <div class="video-card">
                 <div class="video-thumb" data-id="zd6H4riH29w">
                     <img src="https://img.youtube.com/vi/zd6H4riH29w/maxresdefault.jpg" alt="Homem-Aranha VS Rei do Crime" loading="lazy">
@@ -181,6 +181,21 @@
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
                 <iframe src="https://www.youtube.com/embed/zd6H4riH29w?autoplay=0&rel=0&modestbranding=1" title="Homem-Aranha VS Rei do Crime" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- 🆕 Música 8 - Japão X França (Blue Lock) -->
+            <div class="video-card">
+                <div class="video-thumb" data-id="ZRbLHXhcqZA">
+                    <img src="https://img.youtube.com/vi/ZRbLHXhcqZA/maxresdefault.jpg" alt="Japão X França" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">4:30</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">Japão X França ⚽</h4>
+                    <p class="video-artista">Kaito | Blue Lock</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/ZRbLHXhcqZA?autoplay=0&rel=0&modestbranding=1" title="Japão X França" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -244,7 +259,7 @@
                 <iframe src="https://www.youtube.com/embed/dAVKjOHJfjI?autoplay=0&rel=0&modestbranding=1" title="Spider-Man 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
-            <!-- 🆕 GAMEPLAY 6 - BATMAN ARKHAM KNIGHT -->
+            <!-- Gameplay 6 - Batman -->
             <div class="jogo-card">
                 <div class="video-thumb" data-id="-cFpk2_0xEw">
                     <img src="https://img.youtube.com/vi/-cFpk2_0xEw/maxresdefault.jpg" alt="Batman Arkham Knight" loading="lazy">
@@ -254,6 +269,18 @@
                 <p class="video-artista">RTX 5090 | 4K 120FPS</p>
                 <div class="video-loading">⏳ Carregando...</div>
                 <iframe src="https://www.youtube.com/embed/-cFpk2_0xEw?autoplay=0&rel=0&modestbranding=1" title="Batman Arkham Knight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- 🆕 Gameplay 7 - Marvel's Avengers RTX 5090 -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="g57sKAvxmLc">
+                    <img src="https://img.youtube.com/vi/g57sKAvxmLc/maxresdefault.jpg" alt="Marvel's Avengers" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🟣 Marvel's Avengers</h3>
+                <p class="video-artista">RTX 5090 | 4K HDR</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/g57sKAvxmLc?autoplay=0&rel=0&modestbranding=1" title="Marvel's Avengers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -356,7 +383,6 @@
         let intervaloAlvo = null;
         let recorde = localStorage.getItem('recordeTiroAlvo') || 0;
         let velocidadeAlvo = 800;
-        let alvosErrados = 0;
 
         recordeDisplay.textContent = recorde;
 
@@ -384,7 +410,6 @@
         function esconderAlvo() {
             if (jogoAtivo && alvo.style.display !== 'none') {
                 alvo.style.display = 'none';
-                alvosErrados++;
                 if (pontos > 0) {
                     pontos--;
                     pontosDisplay.textContent = pontos;
@@ -398,7 +423,6 @@
             
             pontos++;
             acertos++;
-            alvosErrados = 0;
             pontosDisplay.textContent = pontos;
             acertosDisplay.textContent = acertos;
 
@@ -494,7 +518,6 @@
             tempoRestante = 30;
             tempoMaximo = 30;
             velocidadeAlvo = 800;
-            alvosErrados = 0;
             jogoAtivo = true;
             
             pontosDisplay.textContent = pontos;
@@ -532,55 +555,4 @@
 
         function finalizarJogo() {
             jogoAtivo = false;
-            clearInterval(temporizador);
-            clearInterval(intervaloAlvo);
-            alvo.style.display = 'none';
-            
-            if (pontos > recorde) {
-                recorde = pontos;
-                localStorage.setItem('recordeTiroAlvo', recorde);
-                recordeDisplay.textContent = recorde;
-                mensagemGame.textContent = `🏆 NOVO RECORDE! ${pontos} pontos! 🏆`;
-                mensagemGame.style.color = '#ffdd00';
-            } else {
-                mensagemGame.textContent = `⏰ FIM DE JOGO! ${pontos} pontos. Recorde: ${recorde}`;
-                mensagemGame.style.color = '#ffcc00';
-            }
-            
-            document.getElementById('btnIniciar').textContent = '🚀 INICIAR JOGO';
-            document.getElementById('btnIniciar').disabled = false;
-        }
-
-        function reiniciarJogo() {
-            clearInterval(temporizador);
-            clearInterval(intervaloAlvo);
-            jogoAtivo = false;
-            pontos = 0;
-            acertos = 0;
-            tempoRestante = 30;
-            tempoMaximo = 30;
-            velocidadeAlvo = 800;
-            alvosErrados = 0;
-            
-            pontosDisplay.textContent = pontos;
-            acertosDisplay.textContent = acertos;
-            tempoDisplay.textContent = tempoRestante;
-            atualizarBarra();
-            alvo.style.display = 'none';
-            
-            mensagemGame.textContent = '🔄 Jogo reiniciado! Clique em "INICIAR" para jogar!';
-            mensagemGame.style.color = '#d9b3ff';
-            
-            document.getElementById('btnIniciar').textContent = '🚀 INICIAR JOGO';
-            document.getElementById('btnIniciar').disabled = false;
-        }
-
-        document.getElementById('btnIniciar').addEventListener('click', iniciarJogo);
-        document.getElementById('btnReiniciar').addEventListener('click', reiniciarJogo);
-
-        mensagemGame.textContent = '🎯 Clique em "INICIAR JOGO" para começar!';
-        atualizarBarra();
-    </script>
-
-</body>
-</html>
+            clearInterval(temporizador
