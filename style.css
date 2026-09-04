@@ -17,17 +17,21 @@ body {
     background-size: 400% 400%;
     animation: fundoMovimento 10s infinite ease-in-out;
     min-height: 100vh;
-    padding: 20px;
-    font-family: 'Courier New', monospace;
+    padding: 15px;
+    font-family: 'Segoe UI', 'Courier New', monospace;
     transition: all 0.5s ease;
 }
+
+/* ============================================================
+   🌓 TEMA CLARO
+   ============================================================ */
 
 body.tema-claro {
     background: linear-gradient(135deg, #f5f0ff, #d9b3ff, #f5f0ff);
 }
 
 body.tema-claro .game-window {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     border-color: #b366ff;
 }
 
@@ -40,14 +44,22 @@ body.tema-claro .game-dica,
 body.tema-claro .legenda,
 body.tema-claro .jogo-card h3,
 body.tema-claro .video-titulo,
+body.tema-claro .video-artista,
 body.tema-claro .rodape,
 body.tema-claro .sobre-box p,
-body.tema-claro .sobre-box li {
+body.tema-claro .sobre-box li,
+body.tema-claro .menu a,
+body.tema-claro .topo-info span,
+body.tema-claro .game-stats div {
     color: #1a0a2e !important;
 }
 
 body.tema-claro .jogo-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.tema-claro .jogo-card:hover {
+    background: rgba(255, 255, 255, 1);
 }
 
 body.tema-claro #gameArea {
@@ -55,68 +67,28 @@ body.tema-claro #gameArea {
     border-color: #b366ff;
 }
 
-body.tema-claro .menu a {
-    color: #1a0a2e;
+body.tema-claro .menu {
+    border-color: rgba(155, 60, 255, 0.5);
 }
 
-@keyframes fundoMovimento {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+body.tema-claro .menu a:hover {
+    background: rgba(155, 60, 255, 0.2);
 }
 
-/* ============================================================
-   🔝 TOPO
-   ============================================================ */
-
-.topo {
-    text-align: center;
-    padding: 20px 0;
+body.tema-claro .video-card {
+    background: rgba(255, 255, 255, 0.9);
 }
 
-.topo-conteudo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+body.tema-claro .video-card:hover {
+    background: rgba(255, 255, 255, 1);
 }
 
-.topo-info {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    flex-wrap: wrap;
+body.tema-claro .barra-tempo {
+    background: rgba(0, 0, 0, 0.1);
 }
 
-.topo-info span {
-    color: #d9b3ff;
-    font-size: 16px;
-    text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
-}
-
-.topo-info button {
-    background: rgba(155, 60, 255, 0.3);
-    color: #fff;
-    border: 2px solid #b366ff;
-    padding: 8px 18px;
-    border-radius: 12px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Courier New', monospace;
-}
-
-.topo-info button:hover {
-    background: #b366ff;
-    transform: scale(1.05);
-}
-
-body.tema-claro .topo-info span {
-    color: #1a0a2e;
+body.tema-claro .sobre-box {
+    background: rgba(255, 255, 255, 0.9);
 }
 
 body.tema-claro .topo-info button {
@@ -124,13 +96,23 @@ body.tema-claro .topo-info button {
     background: rgba(155, 60, 255, 0.2);
 }
 
-.titulo-principal {
-    color: #ffffff;
-    font-size: 50px;
-    font-family: 'Arial Black', Arial, sans-serif;
-    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099;
-    letter-spacing: 4px;
-    animation: piscaTitulo 2.5s infinite ease-in-out;
+body.tema-claro .topo-info button:hover {
+    background: #b366ff;
+    color: #fff;
+}
+
+body.tema-claro .game-dica {
+    background: rgba(155, 60, 255, 0.1);
+}
+
+/* ============================================================
+   🎬 ANIMAÇÕES
+   ============================================================ */
+
+@keyframes fundoMovimento {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes piscaTitulo {
@@ -139,13 +121,93 @@ body.tema-claro .topo-info button {
     100% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099; }
 }
 
+@keyframes pulseAlvo {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+}
+
+@keyframes pulseJogador {
+    0% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.4); }
+    100% { box-shadow: 0 0 50px rgba(0, 255, 136, 0.8); }
+}
+
+@keyframes pulseMonstro {
+    0% { transform: scale(0.9); }
+    100% { transform: scale(1.1); }
+}
+
+@keyframes brilhoCard {
+    0% { box-shadow: 0 0 20px rgba(155, 60, 255, 0.2); }
+    50% { box-shadow: 0 0 40px rgba(155, 60, 255, 0.4); }
+    100% { box-shadow: 0 0 20px rgba(155, 60, 255, 0.2); }
+}
+
+/* ============================================================
+   🔝 TOPO
+   ============================================================ */
+
+.topo {
+    text-align: center;
+    padding: 15px 0;
+}
+
+.topo-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.topo-info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.topo-info span {
+    color: #d9b3ff;
+    font-size: 14px;
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
+}
+
+.topo-info button {
+    background: rgba(155, 60, 255, 0.3);
+    color: #fff;
+    border: 2px solid #b366ff;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', 'Courier New', monospace;
+}
+
+.topo-info button:hover {
+    background: #b366ff;
+    transform: scale(1.05);
+}
+
+.titulo-principal {
+    color: #ffffff;
+    font-size: 36px;
+    font-family: 'Arial Black', Arial, sans-serif;
+    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099;
+    letter-spacing: 3px;
+    animation: piscaTitulo 2.5s infinite ease-in-out;
+}
+
 .subtitulo {
     color: #d9b3ff;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
-    margin-top: 10px;
-    padding: 0 20px;
+    margin-top: 8px;
+    padding: 0 10px;
 }
 
 /* ============================================================
@@ -155,21 +217,21 @@ body.tema-claro .topo-info button {
 .menu {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    padding: 15px 0;
+    gap: 8px;
+    padding: 12px 0;
     flex-wrap: wrap;
     border-top: 2px solid rgba(155, 60, 255, 0.3);
     border-bottom: 2px solid rgba(155, 60, 255, 0.3);
-    margin: 20px 0 40px 0;
+    margin: 15px 0 30px 0;
 }
 
 .menu a {
     color: #d9b3ff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
-    padding: 8px 20px;
-    border-radius: 12px;
+    padding: 6px 14px;
+    border-radius: 10px;
     transition: all 0.3s ease;
     background: rgba(155, 60, 255, 0.1);
     border: 2px solid transparent;
@@ -179,34 +241,39 @@ body.tema-claro .topo-info button {
     background: rgba(155, 60, 255, 0.3);
     border-color: #b366ff;
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(155, 60, 255, 0.3);
 }
 
-body.tema-claro .menu {
-    border-color: rgba(155, 60, 255, 0.5);
+/* ============================================================
+   📝 SEÇÕES
+   ============================================================ */
+
+section {
+    scroll-margin-top: 70px;
 }
 
-body.tema-claro .menu a {
-    background: rgba(155, 60, 255, 0.1);
+.secao-titulo {
+    color: #ffffff;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc;
+    margin: 40px 0 25px 0;
+    border-bottom: 3px solid #b366ff;
+    padding-bottom: 12px;
 }
 
 /* ============================================================
    🎯 JOGO
    ============================================================ */
 
-section {
-    scroll-margin-top: 80px;
-}
-
 .game-window {
     background: rgba(0, 0, 0, 0.85);
-    border-radius: 30px;
-    padding: 25px;
+    border-radius: 25px;
+    padding: 20px;
     border: 4px solid #b366ff;
     box-shadow: 0 0 60px rgba(155, 60, 255, 0.4);
     max-width: 700px;
     width: 100%;
-    margin: 0 auto 50px auto;
+    margin: 0 auto 40px auto;
     transition: all 0.3s ease;
 }
 
@@ -215,36 +282,36 @@ section {
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    padding: 0 0 15px 0;
+    padding: 0 0 12px 0;
     border-bottom: 2px solid #b366ff;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .game-header h2 {
-    font-size: 24px;
+    font-size: 20px;
     color: #ffcc00;
     text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
 }
 
 .game-stats {
     display: flex;
-    gap: 12px;
-    font-size: 14px;
+    gap: 6px;
+    font-size: 12px;
     flex-wrap: wrap;
 }
 
 .game-stats div {
     background: rgba(255, 255, 255, 0.05);
-    padding: 4px 10px;
-    border-radius: 8px;
+    padding: 3px 8px;
+    border-radius: 6px;
     color: #fff;
 }
 
 .game-stats span {
     color: #ffcc00;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 /* ========== BARRA DE PROGRESSO ========== */
@@ -262,7 +329,7 @@ section {
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    transition: width 0.5s ease;
+    transition: width 0.5s ease, background 0.5s ease;
     background: linear-gradient(90deg, #00ccff, #00ff88);
 }
 
@@ -278,6 +345,7 @@ section {
     overflow: hidden;
     cursor: crosshair;
     touch-action: none;
+    min-height: 300px;
 }
 
 /* ========== ALVO ========== */
@@ -286,21 +354,16 @@ section {
     font-size: 45px;
     cursor: pointer;
     display: none;
-    transition: transform 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
     user-select: none;
     text-shadow: 0 0 30px rgba(255, 200, 0, 0.5);
-    animation: pulseAlvo 0.8s infinite alternate;
+    animation: pulseAlvo 0.6s infinite alternate;
     z-index: 10;
     touch-action: none;
 }
 
 #alvo:active {
-    transform: scale(1.5) !important;
-}
-
-@keyframes pulseAlvo {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.15); }
+    transform: scale(1.6) !important;
 }
 
 /* ========== MENSAGEM ========== */
@@ -310,26 +373,26 @@ section {
     left: 50%;
     transform: translateX(-50%);
     color: #d9b3ff;
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
     text-shadow: 0 0 20px rgba(155, 60, 255, 0.3);
     background: rgba(0, 0, 0, 0.7);
-    padding: 8px 20px;
+    padding: 8px 16px;
     border-radius: 12px;
     border: 1px solid rgba(155, 60, 255, 0.2);
-    white-space: nowrap;
     z-index: 20;
     max-width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* ========== CONTROLES ========== */
 .controls {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    padding: 15px 0 5px 0;
+    gap: 10px;
+    padding: 12px 0 5px 0;
     flex-wrap: wrap;
 }
 
@@ -337,8 +400,694 @@ section {
     background: linear-gradient(135deg, #b366ff, #7a00cc);
     color: #fff;
     border: none;
-    padding: 10px 25px;
+    padding: 10px 22px;
     border-radius: 12px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
-    cursor: pointer
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(155, 60, 255, 0.3);
+    font-family: 'Segoe UI', 'Courier New', monospace;
+}
+
+.controls button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(200, 100, 255, 0.6);
+}
+
+.controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.controls button.danger {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+}
+
+.controls button.danger:hover:not(:disabled) {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+}
+
+/* ========== DICAS ========== */
+.game-dica {
+    text-align: center;
+    color: #d9b3ff;
+    font-size: 14px;
+    padding: 10px;
+    background: rgba(155, 60, 255, 0.08);
+    border-radius: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(155, 60, 255, 0.15);
+    line-height: 1.8;
+}
+
+/* ========== LEGENDA ========== */
+.legenda {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 12px 0 5px 0;
+    color: #d9b3ff;
+    font-size: 13px;
+    flex-wrap: wrap;
+}
+
+.legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legenda-item span {
+    font-size: 20px;
+}
+
+/* ============================================================
+   🎵 MÚSICAS E VÍDEOS
+   ============================================================ */
+
+.grid-musicas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.grid-jogos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ========== CARDS DE VÍDEO ========== */
+.video-card {
+    background: rgba(20, 10, 40, 0.8);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(155, 60, 255, 0.2);
+    box-shadow: 0 0 30px rgba(155, 60, 255, 0.1);
+    animation: brilhoCard 3s infinite ease-in-out;
+}
+
+.video-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    border-color: #b366ff;
+    box-shadow: 0 0 50px rgba(155, 60, 255, 0.4);
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 200px;
+    display: none;
+    border: none;
+}
+
+.video-card iframe.show {
+    display: block;
+}
+
+/* ========== THUMBNAIL DO VÍDEO ========== */
+.video-thumb {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background: #0a0015;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.video-thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.video-thumb:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+}
+
+.video-thumb:hover .play-btn {
+    transform: scale(1.2);
+}
+
+/* ========== BOTÃO PLAY ========== */
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #7a00cc;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 40px rgba(155, 60, 255, 0.4);
+}
+
+/* ========== DURAÇÃO DO VÍDEO ========== */
+.video-duracao {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ========== INFORMAÇÕES DO VÍDEO ========== */
+.video-info {
+    padding: 12px 15px;
+}
+
+.video-titulo {
+    color: #ffffff;
+    font-size: 16px;
+    margin: 0 0 4px 0;
+    font-weight: bold;
+}
+
+.video-artista {
+    color: #d9b3ff;
+    font-size: 13px;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* ========== LOADING ========== */
+.video-loading {
+    display: none;
+    text-align: center;
+    color: #d9b3ff;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* ============================================================
+   🎮 CARDS DE JOGOS
+   ============================================================ */
+
+.jogo-card {
+    background: rgba(20, 10, 40, 0.8);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(155, 60, 255, 0.2);
+    box-shadow: 0 0 30px rgba(155, 60, 255, 0.1);
+    animation: brilhoCard 3s infinite ease-in-out;
+}
+
+.jogo-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    border-color: #b366ff;
+    box-shadow: 0 0 50px rgba(155, 60, 255, 0.4);
+}
+
+.jogo-card .video-thumb {
+    padding-top: 56.25%;
+}
+
+.jogo-card iframe {
+    width: 100%;
+    height: 200px;
+    display: none;
+    border: none;
+}
+
+.jogo-card iframe.show {
+    display: block;
+}
+
+.jogo-card h3 {
+    color: #ffffff;
+    font-size: 15px;
+    padding: 12px 15px 0 15px;
+    margin: 0;
+}
+
+.jogo-card .video-artista {
+    padding: 0 15px 12px 15px;
+}
+
+/* ============================================================
+   📖 SOBRE
+   ============================================================ */
+
+.sobre-box {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    border: 2px solid #b366ff;
+    box-shadow: 0 0 40px rgba(155, 60, 255, 0.2);
+}
+
+.sobre-box h2 {
+    color: #ffffff;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: 0 0 20px #b366ff;
+    margin-bottom: 20px;
+}
+
+.sobre-box p {
+    color: #d9b3ff;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.sobre-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.sobre-box ul li {
+    color: #d9b3ff;
+    font-size: 15px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(155, 60, 255, 0.1);
+}
+
+.sobre-box ul li:last-child {
+    border-bottom: none;
+}
+
+.sobre-versao {
+    text-align: center;
+    color: #b366ff !important;
+    font-size: 14px;
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+/* ============================================================
+   🦶 RODAPÉ
+   ============================================================ */
+
+.rodape {
+    margin-top: 50px;
+    padding: 25px 20px;
+    text-align: center;
+    color: #d9b3ff;
+    border-top: 2px solid #b366ff;
+    font-size: 15px;
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+}
+
+.social a {
+    color: #d9b3ff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    padding: 4px 12px;
+    border-radius: 8px;
+    background: rgba(155, 60, 255, 0.1);
+}
+
+.social a:hover {
+    background: rgba(155, 60, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.visitas-rodape {
+    font-size: 13px;
+    opacity: 0.6;
+    margin-top: 5px;
+}
+
+/* ============================================================
+   📱 RESPONSIVO - CELULAR
+   ============================================================ */
+
+/* TABLET E CELULAR GRANDE */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .titulo-principal {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    .subtitulo {
+        font-size: 13px;
+    }
+
+    .menu {
+        gap: 5px;
+        padding: 10px 0;
+    }
+
+    .menu a {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .secao-titulo {
+        font-size: 22px;
+        margin: 30px 0 20px 0;
+    }
+
+    .game-window {
+        padding: 15px;
+        border-width: 3px;
+    }
+
+    .game-header h2 {
+        font-size: 17px;
+    }
+
+    .game-stats {
+        font-size: 10px;
+        gap: 4px;
+    }
+
+    .game-stats span {
+        font-size: 13px;
+    }
+
+    #gameArea {
+        height: 300px;
+        min-height: 250px;
+    }
+
+    #alvo {
+        font-size: 35px;
+    }
+
+    #mensagemGame {
+        font-size: 12px;
+        padding: 6px 12px;
+        white-space: normal;
+        max-width: 95%;
+    }
+
+    .controls button {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .grid-musicas,
+    .grid-jogos {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+    }
+
+    .video-card iframe,
+    .jogo-card iframe {
+        height: 160px;
+    }
+
+    .video-titulo {
+        font-size: 14px;
+    }
+
+    .video-artista {
+        font-size: 12px;
+    }
+
+    .sobre-box {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .sobre-box h2 {
+        font-size: 22px;
+    }
+
+    .sobre-box p,
+    .sobre-box ul li {
+        font-size: 14px;
+    }
+
+    .play-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .barra-tempo {
+        height: 6px;
+    }
+
+    .game-dica {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .legenda {
+        font-size: 11px;
+        gap: 10px;
+    }
+
+    .legenda-item span {
+        font-size: 16px;
+    }
+
+    .rodape {
+        font-size: 13px;
+        padding: 20px 15px;
+    }
+}
+
+/* CELULAR PEQUENO */
+@media (max-width: 480px) {
+    .titulo-principal {
+        font-size: 22px;
+    }
+
+    .topo-conteudo {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .topo-info {
+        justify-content: center;
+    }
+
+    .topo-info span {
+        font-size: 12px;
+    }
+
+    .topo-info button {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+
+    .menu a {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    .game-window {
+        padding: 10px;
+        border-width: 2px;
+        border-radius: 16px;
+    }
+
+    .game-header h2 {
+        font-size: 14px;
+    }
+
+    .game-stats {
+        font-size: 9px;
+        gap: 3px;
+    }
+
+    .game-stats div {
+        padding: 2px 6px;
+    }
+
+    .game-stats span {
+        font-size: 11px;
+    }
+
+    #gameArea {
+        height: 250px;
+        min-height: 200px;
+        border-width: 2px;
+    }
+
+    #alvo {
+        font-size: 30px;
+    }
+
+    #mensagemGame {
+        font-size: 11px;
+        padding: 4px 10px;
+        bottom: 10px;
+    }
+
+    .controls {
+        gap: 6px;
+        padding: 8px 0 2px 0;
+    }
+
+    .controls button {
+        padding: 6px 12px;
+        font-size: 11px;
+        border-radius: 8px;
+    }
+
+    .grid-musicas,
+    .grid-jogos {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .video-card iframe,
+    .jogo-card iframe {
+        height: 120px;
+    }
+
+    .video-titulo {
+        font-size: 12px;
+    }
+
+    .video-artista {
+        font-size: 10px;
+    }
+
+    .video-info {
+        padding: 8px 10px;
+    }
+
+    .jogo-card h3 {
+        font-size: 12px;
+        padding: 8px 10px 0 10px;
+    }
+
+    .jogo-card .video-artista {
+        padding: 0 10px 8px 10px;
+    }
+
+    .play-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .video-duracao {
+        font-size: 10px;
+        padding: 2px 6px;
+        bottom: 5px;
+        right: 5px;
+    }
+
+    .sobre-box {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    .sobre-box h2 {
+        font-size: 18px;
+    }
+
+    .sobre-box p,
+    .sobre-box ul li {
+        font-size: 12px;
+    }
+
+    .game-dica {
+        font-size: 11px;
+        padding: 6px;
+        line-height: 1.5;
+    }
+
+    .legenda {
+        font-size: 10px;
+        gap: 6px;
+        padding: 8px 0 2px 0;
+    }
+
+    .legenda-item span {
+        font-size: 14px;
+    }
+
+    .rodape {
+        font-size: 11px;
+        padding: 15px 10px;
+        margin-top: 30px;
+    }
+
+    .social {
+        gap: 10px;
+    }
+
+    .social a {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .secao-titulo {
+        font-size: 18px;
+        margin: 25px 0 15px 0;
+        padding-bottom: 8px;
+    }
+
+    .barra-tempo {
+        height: 5px;
+        margin: 5px 0 10px 0;
+    }
+}
+
+/* CELULAR MUITO PEQUENO */
+@media (max-width: 360px) {
+    .grid-musicas,
+    .grid-jogos {
+        grid-template-columns: 1fr;
+    }
+
+    .video-card iframe,
+    .jogo-card iframe {
+        height: 180px;
+    }
+
+    #gameArea {
+        height: 200px;
+        min-height: 180px;
+    }
+
+    #alvo {
+        font-size: 25px;
+    }
+
+    .titulo-principal {
+        font-size: 18px;
+    }
+
+    .menu a {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+}
