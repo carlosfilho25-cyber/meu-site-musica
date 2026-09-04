@@ -8,13 +8,55 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: linear-gradient(135deg, #0a0015, #2d1b69, #0a0015);
     background-size: 400% 400%;
     animation: fundoMovimento 10s infinite ease-in-out;
     min-height: 100vh;
-    padding: 30px;
+    padding: 20px;
     font-family: 'Courier New', monospace;
+    transition: all 0.5s ease;
+}
+
+body.tema-claro {
+    background: linear-gradient(135deg, #f5f0ff, #d9b3ff, #f5f0ff);
+}
+
+body.tema-claro .game-window {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #b366ff;
+}
+
+body.tema-claro .game-header h2,
+body.tema-claro .game-stats div,
+body.tema-claro .secao-titulo,
+body.tema-claro .titulo-principal,
+body.tema-claro .subtitulo,
+body.tema-claro .game-dica,
+body.tema-claro .legenda,
+body.tema-claro .jogo-card h3,
+body.tema-claro .video-titulo,
+body.tema-claro .rodape,
+body.tema-claro .sobre-box p,
+body.tema-claro .sobre-box li {
+    color: #1a0a2e !important;
+}
+
+body.tema-claro .jogo-card {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+body.tema-claro #gameArea {
+    background: #e8e0f0;
+    border-color: #b366ff;
+}
+
+body.tema-claro .menu a {
+    color: #1a0a2e;
 }
 
 @keyframes fundoMovimento {
@@ -24,51 +66,137 @@ body {
 }
 
 /* ============================================================
-   🎤 TÍTULOS
+   🔝 TOPO
    ============================================================ */
+
+.topo {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.topo-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.topo-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.topo-info span {
+    color: #d9b3ff;
+    font-size: 16px;
+    text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
+}
+
+.topo-info button {
+    background: rgba(155, 60, 255, 0.3);
+    color: #fff;
+    border: 2px solid #b366ff;
+    padding: 8px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+}
+
+.topo-info button:hover {
+    background: #b366ff;
+    transform: scale(1.05);
+}
+
+body.tema-claro .topo-info span {
+    color: #1a0a2e;
+}
+
+body.tema-claro .topo-info button {
+    color: #1a0a2e;
+    background: rgba(155, 60, 255, 0.2);
+}
 
 .titulo-principal {
     color: #ffffff;
-    font-size: 70px;
-    text-align: center;
+    font-size: 50px;
     font-family: 'Arial Black', Arial, sans-serif;
-    text-shadow: 
-        0 0 20px #b366ff,
-        0 0 40px #7a00cc,
-        0 0 80px #4d0099,
-        0 0 120px #26004d;
-    letter-spacing: 8px;
-    margin-bottom: 10px;
+    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099;
+    letter-spacing: 4px;
     animation: piscaTitulo 2.5s infinite ease-in-out;
 }
 
 @keyframes piscaTitulo {
-    0% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d; }
-    50% { text-shadow: 0 0 40px #d9b3ff, 0 0 80px #b366ff, 0 0 120px #7a00cc, 0 0 180px #4d0099; }
-    100% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099, 0 0 120px #26004d; }
+    0% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099; }
+    50% { text-shadow: 0 0 40px #d9b3ff, 0 0 80px #b366ff, 0 0 120px #7a00cc; }
+    100% { text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099; }
 }
 
 .subtitulo {
     color: #d9b3ff;
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
     text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
-    margin-bottom: 40px;
-}
-
-.secao-titulo {
-    color: #ffffff;
-    font-size: 40px;
-    text-align: center;
-    text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc;
-    margin: 50px 0 30px 0;
-    border-bottom: 3px solid #b366ff;
-    padding-bottom: 15px;
+    margin-top: 10px;
+    padding: 0 20px;
 }
 
 /* ============================================================
-   🎯 JOGO TIRO AO ALVO
+   🧭 MENU
    ============================================================ */
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px 0;
+    flex-wrap: wrap;
+    border-top: 2px solid rgba(155, 60, 255, 0.3);
+    border-bottom: 2px solid rgba(155, 60, 255, 0.3);
+    margin: 20px 0 40px 0;
+}
+
+.menu a {
+    color: #d9b3ff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: rgba(155, 60, 255, 0.1);
+    border: 2px solid transparent;
+}
+
+.menu a:hover {
+    background: rgba(155, 60, 255, 0.3);
+    border-color: #b366ff;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(155, 60, 255, 0.3);
+}
+
+body.tema-claro .menu {
+    border-color: rgba(155, 60, 255, 0.5);
+}
+
+body.tema-claro .menu a {
+    background: rgba(155, 60, 255, 0.1);
+}
+
+/* ============================================================
+   🎯 JOGO
+   ============================================================ */
+
+section {
+    scroll-margin-top: 80px;
+}
 
 .game-window {
     background: rgba(0, 0, 0, 0.85);
@@ -79,6 +207,7 @@ body {
     max-width: 700px;
     width: 100%;
     margin: 0 auto 50px auto;
+    transition: all 0.3s ease;
 }
 
 .game-header {
@@ -86,95 +215,120 @@ body {
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    padding: 0 10px 15px 10px;
+    padding: 0 0 15px 0;
     border-bottom: 2px solid #b366ff;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .game-header h2 {
-    font-size: 28px;
+    font-size: 24px;
     color: #ffcc00;
     text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
 }
 
 .game-stats {
     display: flex;
-    gap: 20px;
-    font-size: 16px;
+    gap: 12px;
+    font-size: 14px;
     flex-wrap: wrap;
 }
 
 .game-stats div {
     background: rgba(255, 255, 255, 0.05);
-    padding: 5px 12px;
-    border-radius: 10px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    color: #fff;
 }
 
 .game-stats span {
     color: #ffcc00;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+/* ========== BARRA DE PROGRESSO ========== */
+.barra-tempo {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 10px 0 15px 0;
+    overflow: hidden;
+    border: 1px solid rgba(155, 60, 255, 0.2);
+}
+
+#barraProgresso {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    background: linear-gradient(90deg, #00ccff, #00ff88);
 }
 
 /* ========== ÁREA DO JOGO ========== */
 #gameArea {
     position: relative;
     width: 100%;
-    height: 450px;
+    height: 400px;
     background: linear-gradient(180deg, #1a0a2e, #0a0015);
     border-radius: 20px;
     border: 3px solid #7a00cc;
-    margin: 15px 0;
+    margin: 0 0 15px 0;
     overflow: hidden;
     cursor: crosshair;
+    touch-action: none;
 }
 
 /* ========== ALVO ========== */
 #alvo {
     position: absolute;
-    font-size: 50px;
+    font-size: 45px;
     cursor: pointer;
     display: none;
-    transition: transform 0.2s ease;
+    transition: transform 0.15s ease;
     user-select: none;
     text-shadow: 0 0 30px rgba(255, 200, 0, 0.5);
     animation: pulseAlvo 0.8s infinite alternate;
     z-index: 10;
+    touch-action: none;
 }
 
-#alvo:hover {
-    transform: scale(1.3) !important;
+#alvo:active {
+    transform: scale(1.5) !important;
 }
 
 @keyframes pulseAlvo {
     0% { transform: scale(1); }
-    100% { transform: scale(1.2); }
+    100% { transform: scale(1.15); }
 }
 
-/* ========== MENSAGEM DO JOGO ========== */
+/* ========== MENSAGEM ========== */
 #mensagemGame {
     position: absolute;
-    bottom: 20px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     color: #d9b3ff;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     text-shadow: 0 0 20px rgba(155, 60, 255, 0.3);
     background: rgba(0, 0, 0, 0.7);
-    padding: 10px 25px;
-    border-radius: 15px;
+    padding: 8px 20px;
+    border-radius: 12px;
     border: 1px solid rgba(155, 60, 255, 0.2);
     white-space: nowrap;
     z-index: 20;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ========== CONTROLES ========== */
 .controls {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     padding: 15px 0 5px 0;
     flex-wrap: wrap;
 }
@@ -183,184 +337,8 @@ body {
     background: linear-gradient(135deg, #b366ff, #7a00cc);
     color: #fff;
     border: none;
-    padding: 12px 30px;
-    border-radius: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(155, 60, 255, 0.3);
-    font-family: 'Courier New', monospace;
-}
-
-.controls button:hover:not(:disabled) {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(200, 100, 255, 0.6);
-}
-
-.controls button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.controls button.danger {
-    background: linear-gradient(135deg, #ff4444, #cc0000);
-}
-
-.controls button.danger:hover:not(:disabled) {
-    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
-}
-
-/* ========== DICA ========== */
-.game-dica {
-    text-align: center;
-    color: #d9b3ff;
+    padding: 10px 25px;
+    border-radius: 12px;
     font-size: 16px;
-    padding: 10px;
-    background: rgba(155, 60, 255, 0.1);
-    border-radius: 15px;
-    margin: 10px 0;
-    border: 1px solid rgba(155, 60, 255, 0.2);
-    line-height: 1.8;
-}
-
-/* ========== LEGENDA ========== */
-.legenda {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    padding: 15px 0 5px 0;
-    color: #d9b3ff;
-    font-size: 14px;
-    flex-wrap: wrap;
-}
-
-.legenda-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.legenda-item span {
-    font-size: 22px;
-}
-
-/* ============================================================
-   🎵 MÚSICAS E JOGOS
-   ============================================================ */
-
-.grid-musicas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-.grid-musicas iframe {
-    width: 100%;
-    height: 250px;
-    border-radius: 20px;
-    border: 3px solid #b366ff;
-    box-shadow: 0 0 30px rgba(155, 60, 255, 0.6);
-    transition: all 0.4s ease-in-out;
-    animation: auraRoxa 3s infinite ease-in-out;
-}
-
-.grid-musicas iframe:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 50px rgba(200, 100, 255, 1);
-    border-color: #d9b3ff;
-}
-
-.grid-jogos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-.jogo-card {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 15px;
-    border: 2px solid rgba(155, 60, 255, 0.3);
-    transition: all 0.4s ease;
-}
-
-.jogo-card:hover {
-    transform: scale(1.03);
-    border-color: #d9b3ff;
-    box-shadow: 0 0 40px rgba(155, 60, 255, 0.4);
-}
-
-.jogo-card h3 {
-    color: #ffffff;
-    font-size: 18px;
-    text-align: center;
-    margin: 0 0 15px 0;
-    text-shadow: 0 0 15px rgba(155, 60, 255, 0.5);
-}
-
-.jogo-card iframe {
-    width: 100%;
-    height: 200px;
-    border-radius: 15px;
-    border: 2px solid rgba(155, 60, 255, 0.3);
-    transition: all 0.3s ease;
-}
-
-.jogo-card iframe:hover {
-    border-color: #d9b3ff;
-    box-shadow: 0 0 30px rgba(155, 60, 255, 0.5);
-}
-
-@keyframes auraRoxa {
-    0% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4); }
-    50% { box-shadow: 0 0 50px rgba(200, 100, 255, 0.9); }
-    100% { box-shadow: 0 0 30px rgba(155, 60, 255, 0.4); }
-}
-
-/* ============================================================
-   🦶 RODAPÉ
-   ============================================================ */
-
-.rodape {
-    margin-top: 60px;
-    padding: 20px;
-    text-align: center;
-    color: #d9b3ff;
-    border-top: 2px solid #b366ff;
-    font-size: 18px;
-    text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
-}
-
-/* ============================================================
-   📱 RESPONSIVO
-   ============================================================ */
-
-@media (max-width: 900px) {
-    .grid-musicas, .grid-jogos {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .titulo-principal { font-size: 45px; }
-    #gameArea { height: 350px; }
-    #alvo { font-size: 40px; }
-}
-
-@media (max-width: 600px) {
-    .grid-musicas, .grid-jogos {
-        grid-template-columns: 1fr;
-    }
-    .titulo-principal { font-size: 30px; }
-    .secao-titulo { font-size: 28px; }
-    .game-window { padding: 15px; }
-    #gameArea { height: 300px; }
-    #alvo { font-size: 35px; }
-    .game-stats { font-size: 13px; gap: 10px; }
-    .game-stats span { font-size: 16px; }
-    #mensagemGame { font-size: 14px; padding: 8px 15px; white-space: normal; }
-    .controls button { padding: 8px 18px; font-size: 14px; }
-}
+    font-weight: bold;
+    cursor: pointer
