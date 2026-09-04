@@ -30,9 +30,8 @@ body.tema-claro {
     background: linear-gradient(135deg, #f5f0ff, #d9b3ff, #f5f0ff);
 }
 
-body.tema-claro .game-window {
+body.tema-claro .jogo-card-grande {
     background: rgba(255, 255, 255, 0.95);
-    border-color: #b366ff;
 }
 
 body.tema-claro .game-header h2,
@@ -101,8 +100,12 @@ body.tema-claro .game-dica {
     background: rgba(155, 60, 255, 0.1);
 }
 
-body.tema-claro .luta-window {
-    background: rgba(255, 255, 255, 0.95);
+body.tema-claro .luta-card {
+    border-color: #ff4444 !important;
+}
+
+body.tema-claro .tiro-card {
+    border-color: #b366ff !important;
 }
 
 body.tema-claro .chao {
@@ -262,22 +265,61 @@ section {
 }
 
 /* ============================================================
-   🥊 JOGO DE LUTA
+   🎮 JOGOS LADO A LADO
    ============================================================ */
 
-.luta-window {
+.jogos-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.jogo-card-grande {
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 25px;
+    padding: 20px;
+    border: 4px solid #b366ff;
+    box-shadow: 0 0 60px rgba(155, 60, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.jogo-card-grande:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 80px rgba(155, 60, 255, 0.6);
+}
+
+.luta-card {
     border-color: #ff4444 !important;
     box-shadow: 0 0 60px rgba(255, 0, 0, 0.3) !important;
 }
 
+.luta-card:hover {
+    box-shadow: 0 0 80px rgba(255, 0, 0, 0.5) !important;
+}
+
+.tiro-card {
+    border-color: #b366ff !important;
+    box-shadow: 0 0 60px rgba(155, 60, 255, 0.3) !important;
+}
+
+.tiro-card:hover {
+    box-shadow: 0 0 80px rgba(155, 60, 255, 0.5) !important;
+}
+
+/* ============================================================
+   🥊 JOGO DE LUTA
+   ============================================================ */
+
 #arena {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 350px;
     background: linear-gradient(180deg, #1a0a2e, #0a0015);
     border-radius: 20px;
     border: 3px solid #ff4444;
-    margin: 15px 0;
+    margin: 10px 0;
     overflow: hidden;
     image-rendering: pixelated;
 }
@@ -287,7 +329,7 @@ section {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 50px;
     background: repeating-linear-gradient(
         90deg,
         #2d1b69 0px,
@@ -317,8 +359,8 @@ section {
 
 .lutador {
     position: absolute;
-    bottom: 60px;
-    font-size: 70px;
+    bottom: 50px;
+    font-size: 60px;
     transition: all 0.15s ease;
     user-select: none;
     filter: drop-shadow(0 0 20px rgba(255, 200, 0, 0.3));
@@ -382,16 +424,16 @@ section {
 
 #mensagemLuta {
     position: absolute;
-    bottom: 15px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     color: #ffcc00;
-    font-size: 15px;
+    font-size: 13px;
     text-align: center;
     text-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
     background: rgba(0, 0, 0, 0.7);
-    padding: 8px 16px;
-    border-radius: 12px;
+    padding: 6px 14px;
+    border-radius: 10px;
     border: 1px solid rgba(255, 68, 68, 0.2);
     z-index: 20;
     max-width: 90%;
@@ -404,13 +446,13 @@ section {
 .barra-vida-container {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    margin: 10px 0;
+    gap: 15px;
+    margin: 8px 0;
 }
 
 .barra-vida {
     flex: 1;
-    height: 20px;
+    height: 18px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     overflow: hidden;
@@ -438,7 +480,7 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
@@ -447,45 +489,33 @@ section {
    🎯 JOGO TIRO AO ALVO
    ============================================================ */
 
-.game-window {
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 25px;
-    padding: 20px;
-    border: 4px solid #b366ff;
-    box-shadow: 0 0 60px rgba(155, 60, 255, 0.4);
-    max-width: 700px;
-    width: 100%;
-    margin: 0 auto 40px auto;
-    transition: all 0.3s ease;
-}
-
 .game-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    padding: 0 0 12px 0;
+    padding: 0 0 10px 0;
     border-bottom: 2px solid #b366ff;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
 }
 
 .game-header h2 {
-    font-size: 20px;
+    font-size: 18px;
     color: #ffcc00;
     text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
 }
 
 .game-stats {
     display: flex;
-    gap: 6px;
-    font-size: 12px;
+    gap: 5px;
+    font-size: 11px;
     flex-wrap: wrap;
 }
 
 .game-stats div {
     background: rgba(255, 255, 255, 0.05);
-    padding: 3px 8px;
+    padding: 2px 8px;
     border-radius: 6px;
     color: #fff;
 }
@@ -493,16 +523,16 @@ section {
 .game-stats span {
     color: #ffcc00;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 /* ========== BARRA DE PROGRESSO ========== */
 .barra-tempo {
     width: 100%;
-    height: 8px;
+    height: 6px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    margin: 10px 0 15px 0;
+    margin: 8px 0 12px 0;
     overflow: hidden;
     border: 1px solid rgba(155, 60, 255, 0.2);
 }
@@ -519,21 +549,21 @@ section {
 #gameArea {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 350px;
     background: linear-gradient(180deg, #1a0a2e, #0a0015);
     border-radius: 20px;
     border: 3px solid #7a00cc;
-    margin: 0 0 15px 0;
+    margin: 0 0 12px 0;
     overflow: hidden;
     cursor: crosshair;
     touch-action: none;
-    min-height: 300px;
+    min-height: 250px;
 }
 
 /* ========== ALVO ========== */
 #alvo {
     position: absolute;
-    font-size: 45px;
+    font-size: 40px;
     cursor: pointer;
     display: none;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -551,16 +581,16 @@ section {
 /* ========== MENSAGEM ========== */
 #mensagemGame {
     position: absolute;
-    bottom: 15px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     color: #d9b3ff;
-    font-size: 15px;
+    font-size: 13px;
     text-align: center;
     text-shadow: 0 0 20px rgba(155, 60, 255, 0.3);
     background: rgba(0, 0, 0, 0.7);
-    padding: 8px 16px;
-    border-radius: 12px;
+    padding: 6px 14px;
+    border-radius: 10px;
     border: 1px solid rgba(155, 60, 255, 0.2);
     z-index: 20;
     max-width: 90%;
@@ -573,8 +603,8 @@ section {
 .controls {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    padding: 12px 0 5px 0;
+    gap: 8px;
+    padding: 10px 0 3px 0;
     flex-wrap: wrap;
 }
 
@@ -582,9 +612,9 @@ section {
     background: linear-gradient(135deg, #b366ff, #7a00cc);
     color: #fff;
     border: none;
-    padding: 10px 22px;
-    border-radius: 12px;
-    font-size: 15px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -628,43 +658,30 @@ section {
     box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
 }
 
-/* ========== DICAS ========== */
-.game-dica {
-    text-align: center;
-    color: #d9b3ff;
-    font-size: 14px;
-    padding: 10px;
-    background: rgba(155, 60, 255, 0.08);
-    border-radius: 15px;
-    margin: 10px 0;
-    border: 1px solid rgba(155, 60, 255, 0.15);
-    line-height: 1.8;
-}
-
 /* ========== LEGENDA ========== */
 .legenda {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    padding: 12px 0 5px 0;
+    gap: 12px;
+    padding: 10px 0 3px 0;
     color: #d9b3ff;
-    font-size: 13px;
+    font-size: 12px;
     flex-wrap: wrap;
 }
 
 .legenda-item {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
 }
 
 .legenda-item span {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .legenda-item .tecla {
     background: rgba(255, 255, 255, 0.1);
-    padding: 2px 8px;
+    padding: 1px 6px;
     border-radius: 4px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-weight: bold;
@@ -677,16 +694,16 @@ section {
 
 .grid-musicas {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
     max-width: 1300px;
     margin: 0 auto;
 }
 
 .grid-jogos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
     max-width: 1300px;
     margin: 0 auto;
 }
@@ -710,7 +727,7 @@ section {
 
 .video-card iframe {
     width: 100%;
-    height: 200px;
+    height: 180px;
     display: none;
     border: none;
 }
@@ -755,14 +772,14 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 24px;
     color: #7a00cc;
     transition: all 0.3s ease;
     box-shadow: 0 0 40px rgba(155, 60, 255, 0.4);
@@ -771,31 +788,31 @@ section {
 /* ========== DURAÇÃO DO VÍDEO ========== */
 .video-duracao {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 8px;
+    right: 8px;
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
     font-weight: bold;
 }
 
 /* ========== INFORMAÇÕES DO VÍDEO ========== */
 .video-info {
-    padding: 12px 15px;
+    padding: 10px 12px;
 }
 
 .video-titulo {
     color: #ffffff;
-    font-size: 16px;
-    margin: 0 0 4px 0;
+    font-size: 14px;
+    margin: 0 0 3px 0;
     font-weight: bold;
 }
 
 .video-artista {
     color: #d9b3ff;
-    font-size: 13px;
+    font-size: 12px;
     margin: 0;
     opacity: 0.8;
 }
@@ -805,8 +822,8 @@ section {
     display: none;
     text-align: center;
     color: #d9b3ff;
-    padding: 10px;
-    font-size: 14px;
+    padding: 8px;
+    font-size: 12px;
 }
 
 /* ============================================================
@@ -835,7 +852,7 @@ section {
 
 .jogo-card iframe {
     width: 100%;
-    height: 200px;
+    height: 180px;
     display: none;
     border: none;
 }
@@ -846,13 +863,13 @@ section {
 
 .jogo-card h3 {
     color: #ffffff;
-    font-size: 15px;
-    padding: 12px 15px 0 15px;
+    font-size: 14px;
+    padding: 10px 12px 0 12px;
     margin: 0;
 }
 
 .jogo-card .video-artista {
-    padding: 0 15px 12px 15px;
+    padding: 0 12px 10px 12px;
 }
 
 /* ============================================================
@@ -862,7 +879,7 @@ section {
 .sobre-box {
     max-width: 700px;
     margin: 30px auto;
-    padding: 30px;
+    padding: 25px;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 20px;
     border: 2px solid #b366ff;
@@ -871,29 +888,29 @@ section {
 
 .sobre-box h2 {
     color: #ffffff;
-    font-size: 28px;
+    font-size: 24px;
     text-align: center;
     text-shadow: 0 0 20px #b366ff;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .sobre-box p {
     color: #d9b3ff;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.8;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .sobre-box ul {
     list-style: none;
     padding: 0;
-    margin: 15px 0;
+    margin: 12px 0;
 }
 
 .sobre-box ul li {
     color: #d9b3ff;
-    font-size: 15px;
-    padding: 6px 0;
+    font-size: 14px;
+    padding: 5px 0;
     border-bottom: 1px solid rgba(155, 60, 255, 0.1);
 }
 
@@ -904,8 +921,8 @@ section {
 .sobre-versao {
     text-align: center;
     color: #b366ff !important;
-    font-size: 14px;
-    margin-top: 15px;
+    font-size: 13px;
+    margin-top: 12px;
     opacity: 0.7;
 }
 
@@ -914,29 +931,29 @@ section {
    ============================================================ */
 
 .rodape {
-    margin-top: 50px;
-    padding: 25px 20px;
+    margin-top: 40px;
+    padding: 20px;
     text-align: center;
     color: #d9b3ff;
     border-top: 2px solid #b366ff;
-    font-size: 15px;
+    font-size: 14px;
     text-shadow: 0 0 15px rgba(155, 60, 255, 0.3);
 }
 
 .social {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin: 12px 0;
+    gap: 15px;
+    margin: 10px 0;
     flex-wrap: wrap;
 }
 
 .social a {
     color: #d9b3ff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     transition: all 0.3s ease;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 8px;
     background: rgba(155, 60, 255, 0.1);
 }
@@ -947,7 +964,7 @@ section {
 }
 
 .visitas-rodape {
-    font-size: 13px;
+    font-size: 12px;
     opacity: 0.6;
     margin-top: 5px;
 }
@@ -956,7 +973,15 @@ section {
    📱 RESPONSIVO - CELULAR
    ============================================================ */
 
-/* TABLET E CELULAR GRANDE */
+/* TABLET */
+@media (max-width: 1024px) {
+    .jogos-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+/* CELULAR GRANDE */
 @media (max-width: 768px) {
     body { padding: 10px; }
     .titulo-principal { font-size: 28px; letter-spacing: 2px; }
@@ -965,40 +990,45 @@ section {
     .menu a { font-size: 12px; padding: 5px 10px; }
     .secao-titulo { font-size: 22px; margin: 30px 0 20px 0; }
     
-    .game-window { padding: 15px; border-width: 3px; }
-    .game-header h2 { font-size: 17px; }
-    .game-stats { font-size: 10px; gap: 4px; }
-    .game-stats span { font-size: 13px; }
+    .jogos-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
     
-    #gameArea, #arena { height: 300px; min-height: 250px; }
+    .jogo-card-grande { padding: 15px; }
+    
+    #gameArea, #arena { height: 280px; min-height: 220px; }
     #alvo { font-size: 35px; }
     .lutador { font-size: 50px; }
     
-    #mensagemGame, #mensagemLuta { font-size: 12px; padding: 6px 12px; white-space: normal; max-width: 95%; }
+    .game-header h2 { font-size: 16px; }
+    .game-stats { font-size: 10px; gap: 4px; }
+    .game-stats span { font-size: 13px; }
     
-    .controls button { padding: 8px 16px; font-size: 13px; }
+    #mensagemGame, #mensagemLuta { font-size: 12px; padding: 5px 12px; white-space: normal; max-width: 95%; }
+    
+    .controls button { padding: 7px 14px; font-size: 12px; }
     
     .grid-musicas, .grid-jogos {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 15px;
     }
     
-    .video-card iframe, .jogo-card iframe { height: 160px; }
-    .video-titulo { font-size: 14px; }
-    .video-artista { font-size: 12px; }
+    .video-card iframe, .jogo-card iframe { height: 150px; }
+    .video-titulo { font-size: 13px; }
+    .video-artista { font-size: 11px; }
     
-    .sobre-box { padding: 20px; margin: 20px auto; }
-    .sobre-box h2 { font-size: 22px; }
-    .sobre-box p, .sobre-box ul li { font-size: 14px; }
+    .sobre-box { padding: 18px; margin: 20px auto; }
+    .sobre-box h2 { font-size: 20px; }
+    .sobre-box p, .sobre-box ul li { font-size: 13px; }
     
-    .play-btn { width: 45px; height: 45px; font-size: 20px; }
-    .barra-tempo { height: 6px; }
-    .game-dica { font-size: 12px; padding: 8px; }
-    .legenda { font-size: 11px; gap: 10px; }
+    .play-btn { width: 40px; height: 40px; font-size: 18px; }
+    .barra-tempo { height: 5px; }
+    .legenda { font-size: 11px; gap: 8px; }
     .legenda-item span { font-size: 16px; }
-    .rodape { font-size: 13px; padding: 20px 15px; }
-    .barra-vida { height: 16px; }
-    .barra-vida .label { font-size: 10px; }
+    .rodape { font-size: 12px; padding: 15px; }
+    .barra-vida { height: 15px; }
+    .barra-vida .label { font-size: 9px; }
     .barra-vida-container { gap: 10px; }
 }
 
@@ -1011,12 +1041,4 @@ section {
     .topo-info button { font-size: 11px; padding: 4px 10px; }
     .menu a { font-size: 11px; padding: 4px 8px; }
     
-    .game-window { padding: 10px; border-width: 2px; border-radius: 16px; }
-    .game-header h2 { font-size: 14px; }
-    .game-stats { font-size: 9px; gap: 3px; }
-    .game-stats div { padding: 2px 6px; }
-    .game-stats span { font-size: 11px; }
-    
-    #gameArea, #arena { height: 250px; min-height: 200px; border-width: 2px; }
-    #alvo { font-size: 30px; }
-    .lutador { font
+    .jogo-card-grande { padding: 10px; border-width: 
