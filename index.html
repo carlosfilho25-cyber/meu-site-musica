@@ -167,6 +167,21 @@
                 <div class="video-loading">⏳ Carregando...</div>
                 <iframe src="https://www.youtube.com/embed/yZQPFLO3Q3A?autoplay=0&rel=0&modestbranding=1" title="AGONIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+
+            <!-- 🆕 Música 7 - Homem-Aranha -->
+            <div class="video-card">
+                <div class="video-thumb" data-id="zd6H4riH29w">
+                    <img src="https://img.youtube.com/vi/zd6H4riH29w/maxresdefault.jpg" alt="Homem-Aranha VS Rei do Crime" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">4:15</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">Homem-Aranha VS Rei do Crime 🕷️</h4>
+                    <p class="video-artista">AniRap ft. Henrique Mendonça</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/zd6H4riH29w?autoplay=0&rel=0&modestbranding=1" title="Homem-Aranha VS Rei do Crime" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </div>
     </section>
 
@@ -227,6 +242,18 @@
                 <p class="video-artista">4K 120FPS HDR</p>
                 <div class="video-loading">⏳ Carregando...</div>
                 <iframe src="https://www.youtube.com/embed/dAVKjOHJfjI?autoplay=0&rel=0&modestbranding=1" title="Spider-Man 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- 🆕 GAMEPLAY 6 - BATMAN ARKHAM KNIGHT -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="-cFpk2_0xEw">
+                    <img src="https://img.youtube.com/vi/-cFpk2_0xEw/maxresdefault.jpg" alt="Batman Arkham Knight" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🦇 Batman: Arkham Knight</h3>
+                <p class="video-artista">RTX 5090 | 4K 120FPS</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/-cFpk2_0xEw?autoplay=0&rel=0&modestbranding=1" title="Batman Arkham Knight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -291,22 +318,15 @@
                 const videoId = this.dataset.id;
 
                 if (videoId && iframe) {
-                    // MOSTRA LOADING
                     if (loading) loading.style.display = 'block';
-                    
-                    // ESCONDE O THUMB
                     thumbContainer.style.display = 'none';
-                    
-                    // CRIA OU ATUALIZA O IFRAME COM AUTOPLAY
                     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
                     iframe.style.display = 'block';
                     
-                    // ESCONDE LOADING QUANDO CARREGAR
                     iframe.addEventListener('load', function() {
                         if (loading) loading.style.display = 'none';
                     });
                     
-                    // ESCONDE LOADING APÓS 5 SEGUNDOS (SEGURANÇA)
                     setTimeout(() => {
                         if (loading) loading.style.display = 'none';
                     }, 5000);
@@ -335,7 +355,7 @@
         let temporizador = null;
         let intervaloAlvo = null;
         let recorde = localStorage.getItem('recordeTiroAlvo') || 0;
-        let velocidadeAlvo = 800; // TEMPO ENTRE ALVOS (ms)
+        let velocidadeAlvo = 800;
         let alvosErrados = 0;
 
         recordeDisplay.textContent = recorde;
@@ -346,7 +366,6 @@
             const areaWidth = gameArea.clientWidth - 70;
             const areaHeight = gameArea.clientHeight - 70;
             
-            // POSIÇÃO ALEATÓRIA COM MARGEM
             const x = 10 + Math.random() * Math.max(0, areaWidth - 20);
             const y = 10 + Math.random() * Math.max(0, areaHeight - 20);
             
@@ -355,11 +374,9 @@
             alvo.style.display = 'block';
             alvo.style.transform = 'scale(1)';
             
-            // EMOJIS DIFERENTES PARA VARIEDADE
             const emojis = ['🎯', '👾', '💀', '🧟', '🕷️', '🐉', '⚡', '🔥', '🌟', '🎪'];
             alvo.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             
-            // CORES DIFERENTES PARA CADA ALVO
             const cores = ['#ff4444', '#ff8800', '#ffcc00', '#44ff88', '#4488ff', '#cc44ff'];
             alvo.style.textShadow = `0 0 40px ${cores[Math.floor(Math.random() * cores.length)]}`;
         }
@@ -368,7 +385,6 @@
             if (jogoAtivo && alvo.style.display !== 'none') {
                 alvo.style.display = 'none';
                 alvosErrados++;
-                // PERDE 1 PONTO POR DEIXAR O ALVO ESCAPAR
                 if (pontos > 0) {
                     pontos--;
                     pontosDisplay.textContent = pontos;
@@ -376,22 +392,19 @@
             }
         }
 
-        // CLIQUE NO ALVO - GANHA PONTO
         alvo.addEventListener('click', function(e) {
             if (!jogoAtivo || this.style.display === 'none') return;
             e.stopPropagation();
             
             pontos++;
             acertos++;
-            alvosErrados = 0; // RESETA ERROS CONSECUTIVOS
+            alvosErrados = 0;
             pontosDisplay.textContent = pontos;
             acertosDisplay.textContent = acertos;
 
-            // EFEITO VISUAL DO TIRO
             this.style.transform = 'scale(2)';
             this.style.boxShadow = '0 0 80px rgba(255, 200, 0, 1)';
             
-            // EFEITO DE EXPLOSÃO
             const boom = document.createElement('div');
             boom.textContent = '💥';
             boom.style.cssText = `
@@ -407,20 +420,17 @@
             `;
             gameArea.appendChild(boom);
             
-            // ANIMAÇÃO DA EXPLOSÃO
             setTimeout(() => {
                 boom.style.opacity = '0';
                 boom.style.transform = 'scale(2.5)';
                 setTimeout(() => boom.remove(), 800);
             }, 100);
 
-            // BÔNUS: A CADA 5 ACERTOS, +1 SEGUNDO E AUMENTA VELOCIDADE
             if (acertos % 5 === 0 && acertos > 0) {
                 tempoRestante += 1;
                 tempoDisplay.textContent = tempoRestante;
                 atualizarBarra();
                 
-                // AUMENTA A VELOCIDADE DOS ALVOS (MÁXIMO 300ms)
                 if (velocidadeAlvo > 350) {
                     velocidadeAlvo -= 30;
                     clearInterval(intervaloAlvo);
@@ -444,13 +454,11 @@
                 }, 1000);
             }
 
-            // MOVE O ALVO APÓS O TIRO
             setTimeout(() => {
                 if (jogoAtivo) moverAlvo();
             }, 150);
         });
 
-        // CLICOU NA ÁREA - PERDE PONTO
         gameArea.addEventListener('click', function(e) {
             if (!jogoAtivo || e.target !== this) return;
             if (pontos > 0) {
@@ -469,7 +477,6 @@
             const percentual = (tempoRestante / tempoMaximo) * 100;
             barraProgresso.style.width = Math.max(0, percentual) + '%';
             
-            // MUDA A COR CONFORME O TEMPO
             if (percentual < 20) {
                 barraProgresso.style.background = 'linear-gradient(90deg, #ff4444, #ff8800)';
             } else if (percentual < 50) {
@@ -482,7 +489,6 @@
         function iniciarJogo() {
             if (jogoAtivo) return;
             
-            // RESET
             pontos = 0;
             acertos = 0;
             tempoRestante = 30;
@@ -499,7 +505,6 @@
             mensagemGame.style.color = '#88ff88';
             moverAlvo();
 
-            // CRONÔMETRO
             temporizador = setInterval(() => {
                 tempoRestante--;
                 tempoDisplay.textContent = tempoRestante;
@@ -510,7 +515,6 @@
                 }
             }, 1000);
 
-            // MOVIMENTA OS ALVOS
             intervaloAlvo = setInterval(() => {
                 if (jogoAtivo) {
                     if (Math.random() < 0.35) {
@@ -532,7 +536,6 @@
             clearInterval(intervaloAlvo);
             alvo.style.display = 'none';
             
-            // SALVA RECORDE
             if (pontos > recorde) {
                 recorde = pontos;
                 localStorage.setItem('recordeTiroAlvo', recorde);

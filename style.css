@@ -126,16 +126,6 @@ body.tema-claro .game-dica {
     100% { transform: scale(1.15); }
 }
 
-@keyframes pulseJogador {
-    0% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.4); }
-    100% { box-shadow: 0 0 50px rgba(0, 255, 136, 0.8); }
-}
-
-@keyframes pulseMonstro {
-    0% { transform: scale(0.9); }
-    100% { transform: scale(1.1); }
-}
-
 @keyframes brilhoCard {
     0% { box-shadow: 0 0 20px rgba(155, 60, 255, 0.2); }
     50% { box-shadow: 0 0 40px rgba(155, 60, 255, 0.4); }
