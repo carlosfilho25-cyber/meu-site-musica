@@ -17,19 +17,76 @@
                 <button id="toggleTheme">🌓 Tema</button>
             </div>
         </div>
-        <p class="subtitulo">🎯 Acerte os alvos antes que eles desapareçam! 30 segundos de pura adrenalina!</p>
+        <p class="subtitulo">🎯 Jogos + Músicas + Gameplays = DIVERSÃO TOTAL!</p>
     </div>
 
     <!-- ==================== MENU ==================== -->
     <nav class="menu">
-        <a href="#jogo">🎯 Jogo</a>
+        <a href="#luta">🥊 Luta</a>
+        <a href="#jogo">🎯 Tiro</a>
         <a href="#musicas">🎵 Músicas</a>
         <a href="#gameplays">🎮 Gameplays</a>
         <a href="#sobre">📖 Sobre</a>
     </nav>
 
-    <!-- ==================== JOGO ==================== -->
+    <!-- ============================================================
+         🥊 JOGO DE LUTA - PIXEL FIGHT
+         ============================================================ -->
+    <section id="luta">
+        <h2 class="secao-titulo">🥊 PIXEL FIGHT</h2>
+        <div class="game-window luta-window">
+            <div class="game-header">
+                <h2>🥊 PIXEL FIGHT</h2>
+                <div class="game-stats">
+                    <div>🏆 <span id="vitorias">0</span></div>
+                    <div>🔄 <span id="rodadas">0</span></div>
+                </div>
+            </div>
+
+            <!-- BARRA DE VIDA -->
+            <div class="barra-vida-container">
+                <div class="barra-vida jogador">
+                    <div class="preenchimento" id="vidaJogadorBarra" style="width:100%"></div>
+                    <div class="label">🧑 VOCÊ <span id="vidaJogador">100</span>%</div>
+                </div>
+                <div class="barra-vida inimigo">
+                    <div class="preenchimento" id="vidaInimigoBarra" style="width:100%"></div>
+                    <div class="label">👾 INIMIGO <span id="vidaInimigo">100</span>%</div>
+                </div>
+            </div>
+
+            <!-- ARENA -->
+            <div id="arena">
+                <div class="chao"></div>
+                <div id="jogadorLuta" class="lutador jogador">🧑</div>
+                <div id="inimigoLuta" class="lutador inimigo">👾</div>
+                <div id="mensagemLuta">🥊 Pressione A e D para andar, W para socar, S para defender!</div>
+            </div>
+
+            <!-- CONTROLES DA LUTA -->
+            <div class="controls">
+                <button class="azul" id="btnEsquerda">⬅️ A</button>
+                <button class="azul" id="btnDireita">➡️ D</button>
+                <button class="verde" id="btnSocar">🥊 W</button>
+                <button id="btnDefender">🛡️ S</button>
+                <button id="btnReiniciarLuta">🔄 Reiniciar</button>
+            </div>
+
+            <!-- LEGENDA DA LUTA -->
+            <div class="legenda">
+                <div class="legenda-item"><span class="tecla">A</span> Esquerda</div>
+                <div class="legenda-item"><span class="tecla">D</span> Direita</div>
+                <div class="legenda-item"><span class="tecla">W</span> Socar 🥊</div>
+                <div class="legenda-item"><span class="tecla">S</span> Defender 🛡️</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         🎯 TIRO AO ALVO
+         ============================================================ -->
     <section id="jogo">
+        <h2 class="secao-titulo">🎯 TIRO AO ALVO</h2>
         <div class="game-window">
             <div class="game-header">
                 <h2>🎯 TIRO AO ALVO</h2>
@@ -74,7 +131,9 @@
         </div>
     </section>
 
-    <!-- ==================== MÚSICAS ==================== -->
+    <!-- ============================================================
+         🎵 MÚSICAS
+         ============================================================ -->
     <section id="musicas">
         <h2 class="secao-titulo">🎵 Músicas Geek</h2>
         <div class="grid-musicas">
@@ -90,7 +149,7 @@
                     <p class="video-artista">MHRAP | Style Trap</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/fMvNUINWdjc?autoplay=0&rel=0&modestbranding=1" title="Tipo Sasuke" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/fMvNUINWdjc?autoplay=0&rel=0&modestbranding=1&volume=100" title="Tipo Sasuke" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- Música 2 -->
@@ -105,7 +164,7 @@
                     <p class="video-artista">MHRAP | Vale do FIM</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/8kxcZ7ouQSc?autoplay=0&rel=0&modestbranding=1" title="Vibe Hashirama" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/8kxcZ7ouQSc?autoplay=0&rel=0&modestbranding=1&volume=100" title="Vibe Hashirama" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- Música 3 -->
@@ -120,7 +179,7 @@
                     <p class="video-artista">NERD HITS</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/ZRDvW2QhEw8?autoplay=0&rel=0&modestbranding=1" title="Rap do Sharingan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/ZRDvW2QhEw8?autoplay=0&rel=0&modestbranding=1&volume=100" title="Rap do Sharingan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- Música 4 -->
@@ -135,7 +194,7 @@
                     <p class="video-artista">M4rkim | Blue Lock</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/CDY9PqjmgVc?autoplay=0&rel=0&modestbranding=1" title="NEW GEN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/CDY9PqjmgVc?autoplay=0&rel=0&modestbranding=1&volume=100" title="NEW GEN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- Música 5 -->
@@ -150,7 +209,7 @@
                     <p class="video-artista">M4rkim | Blue Lock</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/nwTm5r24DUg?autoplay=0&rel=0&modestbranding=1" title="Paris X Gen" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/nwTm5r24DUg?autoplay=0&rel=0&modestbranding=1&volume=100" title="Paris X Gen" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- Música 6 -->
@@ -165,7 +224,7 @@
                     <p class="video-artista">7 Minutoz | FNAF</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/yZQPFLO3Q3A?autoplay=0&rel=0&modestbranding=1" title="AGONIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/yZQPFLO3Q3A?autoplay=0&rel=0&modestbranding=1&volume=100" title="AGONIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- Música 7 - Homem-Aranha -->
@@ -180,10 +239,10 @@
                     <p class="video-artista">AniRap ft. Henrique Mendonça</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/zd6H4riH29w?autoplay=0&rel=0&modestbranding=1" title="Homem-Aranha VS Rei do Crime" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/zd6H4riH29w?autoplay=0&rel=0&modestbranding=1&volume=100" title="Homem-Aranha VS Rei do Crime" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
-            <!-- 🆕 Música 8 - Japão X França (Blue Lock) -->
+            <!-- Música 8 - Japão X França -->
             <div class="video-card">
                 <div class="video-thumb" data-id="ZRbLHXhcqZA">
                     <img src="https://img.youtube.com/vi/ZRbLHXhcqZA/maxresdefault.jpg" alt="Japão X França" loading="lazy">
@@ -195,15 +254,18 @@
                     <p class="video-artista">Kaito | Blue Lock</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/ZRbLHXhcqZA?autoplay=0&rel=0&modestbranding=1" title="Japão X França" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/ZRbLHXhcqZA?autoplay=0&rel=0&modestbranding=1&volume=100" title="Japão X França" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </section>
 
-    <!-- ==================== GAMEPLAYS ==================== -->
+    <!-- ============================================================
+         🎮 GAMEPLAYS
+         ============================================================ -->
     <section id="gameplays">
         <h2 class="secao-titulo">🎮 Gameplays Insanos</h2>
         <div class="grid-jogos">
+            <!-- Gameplay 1 - CS2 -->
             <div class="jogo-card">
                 <div class="video-thumb" data-id="Td7R4m5p73s">
                     <img src="https://img.youtube.com/vi/Td7R4m5p73s/maxresdefault.jpg" alt="CS2" loading="lazy">
@@ -212,9 +274,10 @@
                 <h3>🟣 CS2 - 3700 ELO</h3>
                 <p class="video-artista">Faceit Gameplay</p>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/Td7R4m5p73s?autoplay=0&rel=0&modestbranding=1" title="CS2 Gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/Td7R4m5p73s?autoplay=0&rel=0&modestbranding=1&volume=100" title="CS2 Gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+            <!-- Gameplay 2 - Cyberpunk -->
             <div class="jogo-card">
                 <div class="video-thumb" data-id="iKdwk5nu5ws">
                     <img src="https://img.youtube.com/vi/iKdwk5nu5ws/maxresdefault.jpg" alt="Cyberpunk" loading="lazy">
@@ -223,9 +286,10 @@
                 <h3>🟣 Cyberpunk 2077 MODS</h3>
                 <p class="video-artista">10 MODS Absurdos</p>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/iKdwk5nu5ws?autoplay=0&rel=0&modestbranding=1" title="Cyberpunk MODS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/iKdwk5nu5ws?autoplay=0&rel=0&modestbranding=1&volume=100" title="Cyberpunk MODS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+            <!-- Gameplay 3 - Halo -->
             <div class="jogo-card">
                 <div class="video-thumb" data-id="7oETYzF27lQ">
                     <img src="https://img.youtube.com/vi/7oETYzF27lQ/maxresdefault.jpg" alt="Halo" loading="lazy">
@@ -234,9 +298,10 @@
                 <h3>🟢 Halo Infinite [4K]</h3>
                 <p class="video-artista">Multiplayer Gameplay</p>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/7oETYzF27lQ?autoplay=0&rel=0&modestbranding=1" title="Halo Infinite" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/7oETYzF27lQ?autoplay=0&rel=0&modestbranding=1&volume=100" title="Halo Infinite" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+            <!-- Gameplay 4 - God of War -->
             <div class="jogo-card">
                 <div class="video-thumb" data-id="UEIqHfLggaA">
                     <img src="https://img.youtube.com/vi/UEIqHfLggaA/maxresdefault.jpg" alt="God of War" loading="lazy">
@@ -245,9 +310,10 @@
                 <h3>🔵 God of War Ragnarok</h3>
                 <p class="video-artista">4K 60FPS HDR</p>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/UEIqHfLggaA?autoplay=0&rel=0&modestbranding=1" title="God of War" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/UEIqHfLggaA?autoplay=0&rel=0&modestbranding=1&volume=100" title="God of War" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+            <!-- Gameplay 5 - Spider-Man -->
             <div class="jogo-card">
                 <div class="video-thumb" data-id="dAVKjOHJfjI">
                     <img src="https://img.youtube.com/vi/dAVKjOHJfjI/maxresdefault.jpg" alt="Spider-Man" loading="lazy">
@@ -256,22 +322,22 @@
                 <h3>🔵 Spider-Man 2</h3>
                 <p class="video-artista">4K 120FPS HDR</p>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/dAVKjOHJfjI?autoplay=0&rel=0&modestbranding=1" title="Spider-Man 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dAVKjOHJfjI?autoplay=0&rel=0&modestbranding=1&volume=100" title="Spider-Man 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <!-- Gameplay 6 - Batman -->
             <div class="jogo-card">
                 <div class="video-thumb" data-id="-cFpk2_0xEw">
-                    <img src="https://img.youtube.com/vi/-cFpk2_0xEw/maxresdefault.jpg" alt="Batman Arkham Knight" loading="lazy">
+                    <img src="https://img.youtube.com/vi/-cFpk2_0xEw/maxresdefault.jpg" alt="Batman" loading="lazy">
                     <div class="play-btn">▶</div>
                 </div>
                 <h3>🦇 Batman: Arkham Knight</h3>
                 <p class="video-artista">RTX 5090 | 4K 120FPS</p>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/-cFpk2_0xEw?autoplay=0&rel=0&modestbranding=1" title="Batman Arkham Knight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/-cFpk2_0xEw?autoplay=0&rel=0&modestbranding=1&volume=100" title="Batman Arkham Knight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
-            <!-- 🆕 Gameplay 7 - Marvel's Avengers RTX 5090 -->
+            <!-- Gameplay 7 - Marvel's Avengers -->
             <div class="jogo-card">
                 <div class="video-thumb" data-id="g57sKAvxmLc">
                     <img src="https://img.youtube.com/vi/g57sKAvxmLc/maxresdefault.jpg" alt="Marvel's Avengers" loading="lazy">
@@ -280,28 +346,33 @@
                 <h3>🟣 Marvel's Avengers</h3>
                 <p class="video-artista">RTX 5090 | 4K HDR</p>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/g57sKAvxmLc?autoplay=0&rel=0&modestbranding=1" title="Marvel's Avengers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/g57sKAvxmLc?autoplay=0&rel=0&modestbranding=1&volume=100" title="Marvel's Avengers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </section>
 
-    <!-- ==================== SOBRE ==================== -->
+    <!-- ============================================================
+         📖 SOBRE
+         ============================================================ -->
     <section id="sobre">
         <div class="sobre-box">
             <h2>📖 Sobre o Site</h2>
             <p>🎯 <strong>TIRO AO ALVO</strong> é um site criado por <strong>Carlos</strong> para fãs de música geek e games!</p>
             <p>🎮 Aqui você encontra:</p>
             <ul>
+                <li>🥊 Jogo de luta Pixel Fight (Mortal Kombat style)</li>
                 <li>🎯 Jogo de tiro ao alvo com recordes</li>
                 <li>🎵 As melhores músicas geek em HD</li>
                 <li>🎮 Gameplays insanos em 4K</li>
             </ul>
-            <p>💡 Dica: Ative o som e clique nos alvos!</p>
-            <p class="sobre-versao">📌 Versão 2.0 - Atualizado em 2026</p>
+            <p>💡 Dica: Use as teclas A/D/W/S no jogo de luta!</p>
+            <p class="sobre-versao">📌 Versão 3.0 - Atualizado em 2026</p>
         </div>
     </section>
 
-    <!-- ==================== RODAPÉ ==================== -->
+    <!-- ============================================================
+         🦶 RODAPÉ
+         ============================================================ -->
     <footer class="rodape">
         <p>🎯 Criado por Carlos - 2026 💥</p>
         <div class="social">
@@ -312,7 +383,9 @@
         <p class="visitas-rodape">👀 <span id="visitasRodape">0</span> visitas</p>
     </footer>
 
-    <!-- ==================== JAVASCRIPT ==================== -->
+    <!-- ============================================================
+         🚀 JAVASCRIPT - TUDO JUNTO!
+         ============================================================ -->
     <script>
         // ============================================================
         // 📊 CONTADOR DE VISITAS
@@ -347,7 +420,7 @@
                 if (videoId && iframe) {
                     if (loading) loading.style.display = 'block';
                     thumbContainer.style.display = 'none';
-                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&volume=100`;
                     iframe.style.display = 'block';
                     
                     iframe.addEventListener('load', function() {
@@ -362,197 +435,124 @@
         });
 
         // ============================================================
-        // 🎯 TIRO AO ALVO - JOGO MELHORADO
+        // 🥊 JOGO DE LUTA - PIXEL FIGHT
         // ============================================================
 
-        const gameArea = document.getElementById('gameArea');
-        const alvo = document.getElementById('alvo');
-        const pontosDisplay = document.getElementById('pontosDisplay');
-        const tempoDisplay = document.getElementById('tempoDisplay');
-        const acertosDisplay = document.getElementById('acertosDisplay');
-        const recordeDisplay = document.getElementById('recordeDisplay');
-        const mensagemGame = document.getElementById('mensagemGame');
-        const barraProgresso = document.getElementById('barraProgresso');
+        const jogadorLuta = document.getElementById('jogadorLuta');
+        const inimigoLuta = document.getElementById('inimigoLuta');
+        const arena = document.getElementById('arena');
+        const mensagemLuta = document.getElementById('mensagemLuta');
+        const vidaJogador = document.getElementById('vidaJogador');
+        const vidaInimigo = document.getElementById('vidaInimigo');
+        const vidaJogadorBarra = document.getElementById('vidaJogadorBarra');
+        const vidaInimigoBarra = document.getElementById('vidaInimigoBarra');
+        const vitoriasDisplay = document.getElementById('vitorias');
+        const rodadasDisplay = document.getElementById('rodadas');
 
-        let pontos = 0;
-        let acertos = 0;
-        let tempoRestante = 30;
-        let tempoMaximo = 30;
-        let jogoAtivo = false;
-        let temporizador = null;
-        let intervaloAlvo = null;
-        let recorde = localStorage.getItem('recordeTiroAlvo') || 0;
-        let velocidadeAlvo = 800;
+        const estadoLuta = {
+            jogador: { x: 100, vida: 100, maxVida: 100, atacando: false, defendendo: false, dano: false, morto: false },
+            inimigo: { x: 500, vida: 100, maxVida: 100, atacando: false, defendendo: false, dano: false, morto: false },
+            vitorias: 0,
+            rodadas: 0,
+            jogoAtivo: true,
+            ultimoAtaque: 0,
+            intervaloInimigo: null
+        };
 
-        recordeDisplay.textContent = recorde;
+        const VELOCIDADE_LUTA = 8;
+        const DISTANCIA_MINIMA_LUTA = 80;
+        const TEMPO_RECARGA_LUTA = 500;
 
-        function moverAlvo() {
-            if (!jogoAtivo) return;
-            
-            const areaWidth = gameArea.clientWidth - 70;
-            const areaHeight = gameArea.clientHeight - 70;
-            
-            const x = 10 + Math.random() * Math.max(0, areaWidth - 20);
-            const y = 10 + Math.random() * Math.max(0, areaHeight - 20);
-            
-            alvo.style.left = Math.max(5, x) + 'px';
-            alvo.style.top = Math.max(5, y) + 'px';
-            alvo.style.display = 'block';
-            alvo.style.transform = 'scale(1)';
-            
-            const emojis = ['🎯', '👾', '💀', '🧟', '🕷️', '🐉', '⚡', '🔥', '🌟', '🎪'];
-            alvo.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            
-            const cores = ['#ff4444', '#ff8800', '#ffcc00', '#44ff88', '#4488ff', '#cc44ff'];
-            alvo.style.textShadow = `0 0 40px ${cores[Math.floor(Math.random() * cores.length)]}`;
+        function atualizarDisplayLuta() {
+            vidaJogador.textContent = Math.max(0, Math.round(estadoLuta.jogador.vida));
+            vidaInimigo.textContent = Math.max(0, Math.round(estadoLuta.inimigo.vida));
+            vidaJogadorBarra.style.width = Math.max(0, (estadoLuta.jogador.vida / estadoLuta.jogador.maxVida) * 100) + '%';
+            vidaInimigoBarra.style.width = Math.max(0, (estadoLuta.inimigo.vida / estadoLuta.inimigo.maxVida) * 100) + '%';
+            vitoriasDisplay.textContent = estadoLuta.vitorias;
+            rodadasDisplay.textContent = estadoLuta.rodadas;
         }
 
-        function esconderAlvo() {
-            if (jogoAtivo && alvo.style.display !== 'none') {
-                alvo.style.display = 'none';
-                if (pontos > 0) {
-                    pontos--;
-                    pontosDisplay.textContent = pontos;
-                }
-            }
+        function posicionarLutadores() {
+            jogadorLuta.style.left = estadoLuta.jogador.x + 'px';
+            inimigoLuta.style.left = estadoLuta.inimigo.x + 'px';
         }
 
-        alvo.addEventListener('click', function(e) {
-            if (!jogoAtivo || this.style.display === 'none') return;
-            e.stopPropagation();
-            
-            pontos++;
-            acertos++;
-            pontosDisplay.textContent = pontos;
-            acertosDisplay.textContent = acertos;
+        function limparAnimacoesLuta() {
+            jogadorLuta.classList.remove('atacando', 'defendendo', 'dano', 'morto');
+            inimigoLuta.classList.remove('atacando', 'defendendo', 'dano', 'morto');
+        }
 
-            this.style.transform = 'scale(2)';
-            this.style.boxShadow = '0 0 80px rgba(255, 200, 0, 1)';
-            
-            const boom = document.createElement('div');
-            boom.textContent = '💥';
-            boom.style.cssText = `
-                position: absolute;
-                left: ${parseInt(this.style.left) + 10}px;
-                top: ${parseInt(this.style.top) - 10}px;
-                font-size: 60px;
-                pointer-events: none;
-                transition: all 0.8s ease;
-                opacity: 1;
-                z-index: 100;
-                transform: scale(0.5);
-            `;
-            gameArea.appendChild(boom);
-            
-            setTimeout(() => {
-                boom.style.opacity = '0';
-                boom.style.transform = 'scale(2.5)';
-                setTimeout(() => boom.remove(), 800);
-            }, 100);
-
-            if (acertos % 5 === 0 && acertos > 0) {
-                tempoRestante += 1;
-                tempoDisplay.textContent = tempoRestante;
-                atualizarBarra();
-                
-                if (velocidadeAlvo > 350) {
-                    velocidadeAlvo -= 30;
-                    clearInterval(intervaloAlvo);
-                    intervaloAlvo = setInterval(() => {
-                        if (jogoAtivo) {
-                            if (Math.random() < 0.35) {
-                                esconderAlvo();
-                                setTimeout(() => { if (jogoAtivo) moverAlvo(); }, 300);
-                            } else {
-                                moverAlvo();
-                            }
-                        }
-                    }, velocidadeAlvo);
-                }
-                
-                mensagemGame.textContent = `⚡ +1s! Velocidade aumentada!`;
-                mensagemGame.style.color = '#ffcc00';
-                setTimeout(() => {
-                    mensagemGame.textContent = '🎯 Continue atirando!';
-                    mensagemGame.style.color = '#d9b3ff';
-                }, 1000);
+        function darDanoLuta(alvo, dano) {
+            if (alvo.morto) return false;
+            if (alvo.defendendo) {
+                dano = Math.floor(dano * 0.2);
+                alvo.defendendo = false;
+                mostrarMensagemLuta('🛡️ Defendeu! Dano reduzido!', '#4488ff');
             }
-
-            setTimeout(() => {
-                if (jogoAtivo) moverAlvo();
-            }, 150);
-        });
-
-        gameArea.addEventListener('click', function(e) {
-            if (!jogoAtivo || e.target !== this) return;
-            if (pontos > 0) {
-                pontos--;
-                pontosDisplay.textContent = pontos;
-                mensagemGame.textContent = '❌ Errou! -1 ponto!';
-                mensagemGame.style.color = '#ff4444';
-                setTimeout(() => {
-                    mensagemGame.textContent = '🎯 Continue atirando!';
-                    mensagemGame.style.color = '#d9b3ff';
-                }, 800);
-            }
-        });
-
-        function atualizarBarra() {
-            const percentual = (tempoRestante / tempoMaximo) * 100;
-            barraProgresso.style.width = Math.max(0, percentual) + '%';
             
-            if (percentual < 20) {
-                barraProgresso.style.background = 'linear-gradient(90deg, #ff4444, #ff8800)';
-            } else if (percentual < 50) {
-                barraProgresso.style.background = 'linear-gradient(90deg, #ff8800, #ffcc00)';
+            alvo.vida -= dano;
+            alvo.dano = true;
+            
+            if (alvo === estadoLuta.jogador) {
+                jogadorLuta.classList.add('dano');
+                setTimeout(() => jogadorLuta.classList.remove('dano'), 400);
             } else {
-                barraProgresso.style.background = 'linear-gradient(90deg, #00ccff, #00ff88)';
+                inimigoLuta.classList.add('dano');
+                setTimeout(() => inimigoLuta.classList.remove('dano'), 400);
             }
+            
+            if (alvo.vida <= 0) {
+                alvo.vida = 0;
+                alvo.morto = true;
+                if (alvo === estadoLuta.jogador) {
+                    jogadorLuta.classList.add('morto');
+                    mostrarMensagemLuta('💀 VOCÊ PERDEU!', '#ff4444');
+                } else {
+                    inimigoLuta.classList.add('morto');
+                    estadoLuta.vitorias++;
+                    mostrarMensagemLuta('🏆 VOCÊ VENCEU!', '#ffcc00');
+                }
+                estadoLuta.jogoAtivo = false;
+                clearInterval(estadoLuta.intervaloInimigo);
+                atualizarDisplayLuta();
+                return true;
+            }
+            
+            atualizarDisplayLuta();
+            return true;
         }
 
-        function iniciarJogo() {
-            if (jogoAtivo) return;
+        function atacarLuta(atacante, defensor) {
+            const agora = Date.now();
+            if (agora - estadoLuta.ultimoAtaque < TEMPO_RECARGA_LUTA) {
+                mostrarMensagemLuta('⏳ Aguarde para atacar novamente!', '#ff8800');
+                return;
+            }
+            if (!estadoLuta.jogoAtivo || atacante.morto) return;
+
+            const distancia = Math.abs(atacante.x - defensor.x);
+            if (distancia > 120) {
+                mostrarMensagemLuta('📏 Muito longe! Aproxime-se!', '#ff8800');
+                return;
+            }
+
+            estadoLuta.ultimoAtaque = agora;
+            atacante.atacando = true;
             
-            pontos = 0;
-            acertos = 0;
-            tempoRestante = 30;
-            tempoMaximo = 30;
-            velocidadeAlvo = 800;
-            jogoAtivo = true;
+            if (atacante === estadoLuta.jogador) {
+                jogadorLuta.classList.add('atacando');
+                setTimeout(() => jogadorLuta.classList.remove('atacando'), 300);
+            } else {
+                inimigoLuta.classList.add('atacando');
+                setTimeout(() => inimigoLuta.classList.remove('atacando'), 300);
+            }
+
+            const danoBase = 10 + Math.floor(Math.random() * 15);
+            let defendeu = false;
             
-            pontosDisplay.textContent = pontos;
-            acertosDisplay.textContent = acertos;
-            tempoDisplay.textContent = tempoRestante;
-            atualizarBarra();
-            mensagemGame.textContent = '🎯 VAI COMEÇAR!';
-            mensagemGame.style.color = '#88ff88';
-            moverAlvo();
-
-            temporizador = setInterval(() => {
-                tempoRestante--;
-                tempoDisplay.textContent = tempoRestante;
-                atualizarBarra();
-                
-                if (tempoRestante <= 0) {
-                    finalizarJogo();
-                }
-            }, 1000);
-
-            intervaloAlvo = setInterval(() => {
-                if (jogoAtivo) {
-                    if (Math.random() < 0.35) {
-                        esconderAlvo();
-                        setTimeout(() => { if (jogoAtivo) moverAlvo(); }, 300);
-                    } else {
-                        moverAlvo();
-                    }
-                }
-            }, velocidadeAlvo);
-
-            document.getElementById('btnIniciar').textContent = '⏳ JOGANDO...';
-            document.getElementById('btnIniciar').disabled = true;
-        }
-
-        function finalizarJogo() {
-            jogoAtivo = false;
-            clearInterval(temporizador
+            if (defensor.defendendo) {
+                defensor.defendendo = false;
+                defendeu = true;
+                const danoReduzido = Math.floor(danoBase * 0.2);
+                darDanoLuta(defensor, danoReduzido);
+                mostrarMensagemLuta('🛡️ Defendeu! -' + dan

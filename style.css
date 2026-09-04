@@ -50,19 +50,23 @@ body.tema-claro .sobre-box p,
 body.tema-claro .sobre-box li,
 body.tema-claro .menu a,
 body.tema-claro .topo-info span,
-body.tema-claro .game-stats div {
+body.tema-claro .game-stats div,
+body.tema-claro .barra-vida .label {
     color: #1a0a2e !important;
 }
 
-body.tema-claro .jogo-card {
+body.tema-claro .jogo-card,
+body.tema-claro .video-card {
     background: rgba(255, 255, 255, 0.9);
 }
 
-body.tema-claro .jogo-card:hover {
+body.tema-claro .jogo-card:hover,
+body.tema-claro .video-card:hover {
     background: rgba(255, 255, 255, 1);
 }
 
-body.tema-claro #gameArea {
+body.tema-claro #gameArea,
+body.tema-claro #arena {
     background: #e8e0f0;
     border-color: #b366ff;
 }
@@ -73,14 +77,6 @@ body.tema-claro .menu {
 
 body.tema-claro .menu a:hover {
     background: rgba(155, 60, 255, 0.2);
-}
-
-body.tema-claro .video-card {
-    background: rgba(255, 255, 255, 0.9);
-}
-
-body.tema-claro .video-card:hover {
-    background: rgba(255, 255, 255, 1);
 }
 
 body.tema-claro .barra-tempo {
@@ -103,6 +99,20 @@ body.tema-claro .topo-info button:hover {
 
 body.tema-claro .game-dica {
     background: rgba(155, 60, 255, 0.1);
+}
+
+body.tema-claro .luta-window {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+body.tema-claro .chao {
+    background: repeating-linear-gradient(90deg, #d9b3ff 0px, #d9b3ff 20px, #c9a3ef 20px, #c9a3ef 40px);
+}
+
+body.tema-claro #mensagemLuta,
+body.tema-claro #mensagemGame {
+    background: rgba(255, 255, 255, 0.8);
+    color: #1a0a2e;
 }
 
 /* ============================================================
@@ -252,7 +262,189 @@ section {
 }
 
 /* ============================================================
-   🎯 JOGO
+   🥊 JOGO DE LUTA
+   ============================================================ */
+
+.luta-window {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.3) !important;
+}
+
+#arena {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(180deg, #1a0a2e, #0a0015);
+    border-radius: 20px;
+    border: 3px solid #ff4444;
+    margin: 15px 0;
+    overflow: hidden;
+    image-rendering: pixelated;
+}
+
+.chao {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: repeating-linear-gradient(
+        90deg,
+        #2d1b69 0px,
+        #2d1b69 20px,
+        #3d2b79 20px,
+        #3d2b79 40px
+    );
+    border-top: 3px solid #ff4444;
+}
+
+.chao::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ff4444 0px,
+        #ff4444 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    opacity: 0.3;
+}
+
+.lutador {
+    position: absolute;
+    bottom: 60px;
+    font-size: 70px;
+    transition: all 0.15s ease;
+    user-select: none;
+    filter: drop-shadow(0 0 20px rgba(255, 200, 0, 0.3));
+    image-rendering: pixelated;
+    z-index: 10;
+}
+
+.lutador.jogador {
+    left: 100px;
+    filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.3));
+}
+
+.lutador.inimigo {
+    right: 100px;
+    filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.3));
+}
+
+.lutador.atacando {
+    animation: soco 0.3s ease;
+}
+
+.lutador.defendendo {
+    filter: drop-shadow(0 0 40px rgba(0, 200, 255, 0.8)) !important;
+    animation: defesa 0.5s ease;
+}
+
+.lutador.dano {
+    animation: dano 0.4s ease;
+}
+
+.lutador.morto {
+    animation: morte 0.8s ease forwards;
+}
+
+@keyframes soco {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.3) translateX(30px); }
+    60% { transform: scale(1.3) translateX(30px); }
+    100% { transform: scale(1); }
+}
+
+@keyframes defesa {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8); }
+    100% { transform: scale(1); }
+}
+
+@keyframes dano {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-30px) rotate(-5deg); }
+    50% { transform: translateX(30px) rotate(5deg); }
+    75% { transform: translateX(-15px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes morte {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    50% { transform: translateY(-50px) rotate(20deg); opacity: 1; }
+    100% { transform: translateY(100px) rotate(90deg); opacity: 0; }
+}
+
+#mensagemLuta {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffcc00;
+    font-size: 15px;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 68, 68, 0.2);
+    z-index: 20;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ========== BARRA DE VIDA DA LUTA ========== */
+.barra-vida-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.barra-vida {
+    flex: 1;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.barra-vida .preenchimento {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.3s ease;
+}
+
+.barra-vida.jogador .preenchimento {
+    background: linear-gradient(90deg, #00ff88, #00cc55);
+}
+
+.barra-vida.inimigo .preenchimento {
+    background: linear-gradient(90deg, #ff4444, #cc0000);
+}
+
+.barra-vida .label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* ============================================================
+   🎯 JOGO TIRO AO ALVO
    ============================================================ */
 
 .game-window {
@@ -410,6 +602,24 @@ section {
     cursor: not-allowed;
 }
 
+.controls button.azul {
+    background: linear-gradient(135deg, #4488ff, #0044cc);
+    box-shadow: 0 0 25px rgba(0, 100, 255, 0.3);
+}
+
+.controls button.azul:hover:not(:disabled) {
+    box-shadow: 0 0 40px rgba(0, 100, 255, 0.6);
+}
+
+.controls button.verde {
+    background: linear-gradient(135deg, #44ff88, #00cc55);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.3);
+}
+
+.controls button.verde:hover:not(:disabled) {
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
+}
+
 .controls button.danger {
     background: linear-gradient(135deg, #ff4444, #cc0000);
 }
@@ -450,6 +660,15 @@ section {
 
 .legenda-item span {
     font-size: 20px;
+}
+
+.legenda-item .tecla {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    color: #ffcc00;
 }
 
 /* ============================================================
@@ -739,345 +958,65 @@ section {
 
 /* TABLET E CELULAR GRANDE */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    .titulo-principal {
-        font-size: 28px;
-        letter-spacing: 2px;
-    }
-
-    .subtitulo {
-        font-size: 13px;
-    }
-
-    .menu {
-        gap: 5px;
-        padding: 10px 0;
-    }
-
-    .menu a {
-        font-size: 12px;
-        padding: 5px 10px;
-    }
-
-    .secao-titulo {
-        font-size: 22px;
-        margin: 30px 0 20px 0;
-    }
-
-    .game-window {
-        padding: 15px;
-        border-width: 3px;
-    }
-
-    .game-header h2 {
-        font-size: 17px;
-    }
-
-    .game-stats {
-        font-size: 10px;
-        gap: 4px;
-    }
-
-    .game-stats span {
-        font-size: 13px;
-    }
-
-    #gameArea {
-        height: 300px;
-        min-height: 250px;
-    }
-
-    #alvo {
-        font-size: 35px;
-    }
-
-    #mensagemGame {
-        font-size: 12px;
-        padding: 6px 12px;
-        white-space: normal;
-        max-width: 95%;
-    }
-
-    .controls button {
-        padding: 8px 16px;
-        font-size: 13px;
-    }
-
-    .grid-musicas,
-    .grid-jogos {
+    body { padding: 10px; }
+    .titulo-principal { font-size: 28px; letter-spacing: 2px; }
+    .subtitulo { font-size: 13px; }
+    .menu { gap: 5px; padding: 10px 0; }
+    .menu a { font-size: 12px; padding: 5px 10px; }
+    .secao-titulo { font-size: 22px; margin: 30px 0 20px 0; }
+    
+    .game-window { padding: 15px; border-width: 3px; }
+    .game-header h2 { font-size: 17px; }
+    .game-stats { font-size: 10px; gap: 4px; }
+    .game-stats span { font-size: 13px; }
+    
+    #gameArea, #arena { height: 300px; min-height: 250px; }
+    #alvo { font-size: 35px; }
+    .lutador { font-size: 50px; }
+    
+    #mensagemGame, #mensagemLuta { font-size: 12px; padding: 6px 12px; white-space: normal; max-width: 95%; }
+    
+    .controls button { padding: 8px 16px; font-size: 13px; }
+    
+    .grid-musicas, .grid-jogos {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 15px;
     }
-
-    .video-card iframe,
-    .jogo-card iframe {
-        height: 160px;
-    }
-
-    .video-titulo {
-        font-size: 14px;
-    }
-
-    .video-artista {
-        font-size: 12px;
-    }
-
-    .sobre-box {
-        padding: 20px;
-        margin: 20px auto;
-    }
-
-    .sobre-box h2 {
-        font-size: 22px;
-    }
-
-    .sobre-box p,
-    .sobre-box ul li {
-        font-size: 14px;
-    }
-
-    .play-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-    }
-
-    .barra-tempo {
-        height: 6px;
-    }
-
-    .game-dica {
-        font-size: 12px;
-        padding: 8px;
-    }
-
-    .legenda {
-        font-size: 11px;
-        gap: 10px;
-    }
-
-    .legenda-item span {
-        font-size: 16px;
-    }
-
-    .rodape {
-        font-size: 13px;
-        padding: 20px 15px;
-    }
+    
+    .video-card iframe, .jogo-card iframe { height: 160px; }
+    .video-titulo { font-size: 14px; }
+    .video-artista { font-size: 12px; }
+    
+    .sobre-box { padding: 20px; margin: 20px auto; }
+    .sobre-box h2 { font-size: 22px; }
+    .sobre-box p, .sobre-box ul li { font-size: 14px; }
+    
+    .play-btn { width: 45px; height: 45px; font-size: 20px; }
+    .barra-tempo { height: 6px; }
+    .game-dica { font-size: 12px; padding: 8px; }
+    .legenda { font-size: 11px; gap: 10px; }
+    .legenda-item span { font-size: 16px; }
+    .rodape { font-size: 13px; padding: 20px 15px; }
+    .barra-vida { height: 16px; }
+    .barra-vida .label { font-size: 10px; }
+    .barra-vida-container { gap: 10px; }
 }
 
 /* CELULAR PEQUENO */
 @media (max-width: 480px) {
-    .titulo-principal {
-        font-size: 22px;
-    }
-
-    .topo-conteudo {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .topo-info {
-        justify-content: center;
-    }
-
-    .topo-info span {
-        font-size: 12px;
-    }
-
-    .topo-info button {
-        font-size: 11px;
-        padding: 4px 10px;
-    }
-
-    .menu a {
-        font-size: 11px;
-        padding: 4px 8px;
-    }
-
-    .game-window {
-        padding: 10px;
-        border-width: 2px;
-        border-radius: 16px;
-    }
-
-    .game-header h2 {
-        font-size: 14px;
-    }
-
-    .game-stats {
-        font-size: 9px;
-        gap: 3px;
-    }
-
-    .game-stats div {
-        padding: 2px 6px;
-    }
-
-    .game-stats span {
-        font-size: 11px;
-    }
-
-    #gameArea {
-        height: 250px;
-        min-height: 200px;
-        border-width: 2px;
-    }
-
-    #alvo {
-        font-size: 30px;
-    }
-
-    #mensagemGame {
-        font-size: 11px;
-        padding: 4px 10px;
-        bottom: 10px;
-    }
-
-    .controls {
-        gap: 6px;
-        padding: 8px 0 2px 0;
-    }
-
-    .controls button {
-        padding: 6px 12px;
-        font-size: 11px;
-        border-radius: 8px;
-    }
-
-    .grid-musicas,
-    .grid-jogos {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-
-    .video-card iframe,
-    .jogo-card iframe {
-        height: 120px;
-    }
-
-    .video-titulo {
-        font-size: 12px;
-    }
-
-    .video-artista {
-        font-size: 10px;
-    }
-
-    .video-info {
-        padding: 8px 10px;
-    }
-
-    .jogo-card h3 {
-        font-size: 12px;
-        padding: 8px 10px 0 10px;
-    }
-
-    .jogo-card .video-artista {
-        padding: 0 10px 8px 10px;
-    }
-
-    .play-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-    }
-
-    .video-duracao {
-        font-size: 10px;
-        padding: 2px 6px;
-        bottom: 5px;
-        right: 5px;
-    }
-
-    .sobre-box {
-        padding: 15px;
-        margin: 15px auto;
-    }
-
-    .sobre-box h2 {
-        font-size: 18px;
-    }
-
-    .sobre-box p,
-    .sobre-box ul li {
-        font-size: 12px;
-    }
-
-    .game-dica {
-        font-size: 11px;
-        padding: 6px;
-        line-height: 1.5;
-    }
-
-    .legenda {
-        font-size: 10px;
-        gap: 6px;
-        padding: 8px 0 2px 0;
-    }
-
-    .legenda-item span {
-        font-size: 14px;
-    }
-
-    .rodape {
-        font-size: 11px;
-        padding: 15px 10px;
-        margin-top: 30px;
-    }
-
-    .social {
-        gap: 10px;
-    }
-
-    .social a {
-        font-size: 11px;
-        padding: 3px 8px;
-    }
-
-    .secao-titulo {
-        font-size: 18px;
-        margin: 25px 0 15px 0;
-        padding-bottom: 8px;
-    }
-
-    .barra-tempo {
-        height: 5px;
-        margin: 5px 0 10px 0;
-    }
-}
-
-/* CELULAR MUITO PEQUENO */
-@media (max-width: 360px) {
-    .grid-musicas,
-    .grid-jogos {
-        grid-template-columns: 1fr;
-    }
-
-    .video-card iframe,
-    .jogo-card iframe {
-        height: 180px;
-    }
-
-    #gameArea {
-        height: 200px;
-        min-height: 180px;
-    }
-
-    #alvo {
-        font-size: 25px;
-    }
-
-    .titulo-principal {
-        font-size: 18px;
-    }
-
-    .menu a {
-        font-size: 10px;
-        padding: 3px 6px;
-    }
-}
+    .titulo-principal { font-size: 22px; }
+    .topo-conteudo { flex-direction: column; align-items: center; gap: 5px; }
+    .topo-info { justify-content: center; }
+    .topo-info span { font-size: 12px; }
+    .topo-info button { font-size: 11px; padding: 4px 10px; }
+    .menu a { font-size: 11px; padding: 4px 8px; }
+    
+    .game-window { padding: 10px; border-width: 2px; border-radius: 16px; }
+    .game-header h2 { font-size: 14px; }
+    .game-stats { font-size: 9px; gap: 3px; }
+    .game-stats div { padding: 2px 6px; }
+    .game-stats span { font-size: 11px; }
+    
+    #gameArea, #arena { height: 250px; min-height: 200px; border-width: 2px; }
+    #alvo { font-size: 30px; }
+    .lutador { font
