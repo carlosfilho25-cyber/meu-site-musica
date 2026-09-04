@@ -2,543 +2,13 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
     <title>🎯 TIRO AO ALVO - Músicas & Games</title>
-    <style>
-        /* ===== ESTILOS GERAIS ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            background: linear-gradient(135deg, #0a0015, #2d1b69, #0a0015);
-            min-height: 100vh;
-            padding: 15px;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-
-        /* ===== TOPO ===== */
-        .topo { text-align: center; padding: 15px 0; }
-        .topo-conteudo {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-        .topo-info { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-        .topo-info span { color: #d9b3ff; font-size: 14px; }
-        .topo-info button {
-            background: rgba(155,60,255,0.3);
-            color: #fff;
-            border: 2px solid #b366ff;
-            padding: 6px 14px;
-            border-radius: 10px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .topo-info button:hover { background: #b366ff; transform: scale(1.05); }
-        
-        .titulo-principal {
-            color: #fff;
-            font-size: 36px;
-            font-family: 'Arial Black', Arial, sans-serif;
-            text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc, 0 0 80px #4d0099;
-        }
-        .subtitulo { color: #d9b3ff; font-size: 15px; text-align: center; margin-top: 8px; }
-
-        /* ===== MENU ===== */
-        .menu {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 0;
-            flex-wrap: wrap;
-            border-top: 2px solid rgba(155,60,255,0.3);
-            border-bottom: 2px solid rgba(155,60,255,0.3);
-            margin: 15px 0 30px 0;
-        }
-        .menu a {
-            color: #d9b3ff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            padding: 6px 14px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            background: rgba(155,60,255,0.1);
-            border: 2px solid transparent;
-        }
-        .menu a:hover { background: rgba(155,60,255,0.3); border-color: #b366ff; transform: scale(1.05); }
-
-        /* ===== SEÇÕES ===== */
-        section { scroll-margin-top: 70px; }
-        .secao-titulo {
-            color: #fff;
-            font-size: 28px;
-            text-align: center;
-            text-shadow: 0 0 20px #b366ff, 0 0 40px #7a00cc;
-            margin: 40px 0 25px 0;
-            border-bottom: 3px solid #b366ff;
-            padding-bottom: 12px;
-        }
-
-        /* ===== JOGOS LADO A LADO ===== */
-        .jogos-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .jogo-card-grande {
-            background: rgba(0,0,0,0.85);
-            border-radius: 25px;
-            padding: 20px;
-            border: 4px solid #b366ff;
-            box-shadow: 0 0 60px rgba(155,60,255,0.4);
-            transition: all 0.3s ease;
-        }
-        .jogo-card-grande:hover { transform: translateY(-3px); box-shadow: 0 0 80px rgba(155,60,255,0.6); }
-        .luta-card { border-color: #ff4444 !important; box-shadow: 0 0 60px rgba(255,0,0,0.3) !important; }
-        .tiro-card { border-color: #b366ff !important; box-shadow: 0 0 60px rgba(155,60,255,0.3) !important; }
-
-        /* ===== HEADER DOS JOGOS ===== */
-        .game-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #fff;
-            padding: 0 0 10px 0;
-            border-bottom: 2px solid #b366ff;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .game-header h2 {
-            font-size: 18px;
-            color: #ffcc00;
-            text-shadow: 0 0 20px rgba(255,204,0,0.5);
-        }
-        .game-stats {
-            display: flex;
-            gap: 5px;
-            font-size: 11px;
-            flex-wrap: wrap;
-        }
-        .game-stats div {
-            background: rgba(255,255,255,0.05);
-            padding: 2px 8px;
-            border-radius: 6px;
-            color: #fff;
-        }
-        .game-stats span { color: #ffcc00; font-weight: bold; font-size: 14px; }
-
-        /* ===== BARRA DE VIDA ===== */
-        .barra-vida-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin: 8px 0;
-        }
-        .barra-vida {
-            flex: 1;
-            height: 18px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.2);
-            position: relative;
-        }
-        .barra-vida .preenchimento {
-            height: 100%;
-            border-radius: 8px;
-            transition: width 0.3s ease;
-        }
-        .barra-vida.jogador .preenchimento { background: linear-gradient(90deg, #00ff88, #00cc55); }
-        .barra-vida.inimigo .preenchimento { background: linear-gradient(90deg, #ff4444, #cc0000); }
-        .barra-vida .label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            font-size: 10px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(0,0,0,0.8);
-        }
-
-        /* ===== ARENA - LUTA ===== */
-        #arena {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(180deg, #1a0a2e, #0a0015);
-            border-radius: 20px;
-            border: 3px solid #ff4444;
-            margin: 10px 0;
-            overflow: hidden;
-        }
-        .chao {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background: repeating-linear-gradient(90deg, #2d1b69 0px, #2d1b69 20px, #3d2b79 20px, #3d2b79 40px);
-            border-top: 3px solid #ff4444;
-        }
-        .chao::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: repeating-linear-gradient(90deg, #ff4444 0px, #ff4444 4px, transparent 4px, transparent 8px);
-            opacity: 0.3;
-        }
-
-        .lutador {
-            position: absolute;
-            bottom: 50px;
-            font-size: 60px;
-            transition: all 0.15s ease;
-            user-select: none;
-            z-index: 10;
-        }
-        .lutador.jogador { left: 100px; filter: drop-shadow(0 0 30px rgba(0,255,136,0.3)); }
-        .lutador.inimigo { right: 100px; filter: drop-shadow(0 0 30px rgba(255,0,0,0.3)); }
-        .lutador.atacando { animation: soco 0.3s ease; }
-        .lutador.defendendo { filter: drop-shadow(0 0 40px rgba(0,200,255,0.8)) !important; animation: defesa 0.5s ease; }
-        .lutador.dano { animation: dano 0.4s ease; }
-        .lutador.morto { animation: morte 0.8s ease forwards; }
-
-        @keyframes soco {
-            0% { transform: scale(1); }
-            30% { transform: scale(1.3) translateX(30px); }
-            60% { transform: scale(1.3) translateX(30px); }
-            100% { transform: scale(1); }
-        }
-        @keyframes defesa {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.8); }
-            100% { transform: scale(1); }
-        }
-        @keyframes dano {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-30px) rotate(-5deg); }
-            50% { transform: translateX(30px) rotate(5deg); }
-            75% { transform: translateX(-15px); }
-            100% { transform: translateX(0); }
-        }
-        @keyframes morte {
-            0% { transform: translateY(0) rotate(0); opacity: 1; }
-            50% { transform: translateY(-50px) rotate(20deg); opacity: 1; }
-            100% { transform: translateY(100px) rotate(90deg); opacity: 0; }
-        }
-
-        #mensagemLuta {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ffcc00;
-            font-size: 13px;
-            text-align: center;
-            background: rgba(0,0,0,0.7);
-            padding: 6px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,68,68,0.2);
-            z-index: 20;
-            max-width: 90%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* ===== TIRO AO ALVO ===== */
-        .barra-tempo {
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            margin: 8px 0 12px 0;
-            overflow: hidden;
-            border: 1px solid rgba(155,60,255,0.2);
-        }
-        #barraProgresso {
-            height: 100%;
-            width: 100%;
-            border-radius: 10px;
-            transition: width 0.5s ease, background 0.5s ease;
-            background: linear-gradient(90deg, #00ccff, #00ff88);
-        }
-
-        #gameArea {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(180deg, #1a0a2e, #0a0015);
-            border-radius: 20px;
-            border: 3px solid #7a00cc;
-            margin: 0 0 12px 0;
-            overflow: hidden;
-            cursor: crosshair;
-            touch-action: none;
-            min-height: 250px;
-        }
-
-        #alvo {
-            position: absolute;
-            font-size: 40px;
-            cursor: pointer;
-            display: none;
-            transition: transform 0.15s ease;
-            user-select: none;
-            text-shadow: 0 0 30px rgba(255,200,0,0.5);
-            animation: pulseAlvo 0.6s infinite alternate;
-            z-index: 10;
-            touch-action: none;
-        }
-        #alvo:active { transform: scale(1.6) !important; }
-        @keyframes pulseAlvo {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
-        }
-
-        #mensagemGame {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #d9b3ff;
-            font-size: 13px;
-            text-align: center;
-            background: rgba(0,0,0,0.7);
-            padding: 6px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(155,60,255,0.2);
-            z-index: 20;
-            max-width: 90%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* ===== CONTROLES ===== */
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 0 3px 0;
-            flex-wrap: wrap;
-        }
-        .controls button {
-            background: linear-gradient(135deg, #b366ff, #7a00cc);
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 25px rgba(155,60,255,0.3);
-        }
-        .controls button:hover:not(:disabled) { transform: scale(1.05); box-shadow: 0 0 40px rgba(200,100,255,0.6); }
-        .controls button:disabled { opacity: 0.5; cursor: not-allowed; }
-        .controls button.azul { background: linear-gradient(135deg, #4488ff, #0044cc); }
-        .controls button.verde { background: linear-gradient(135deg, #44ff88, #00cc55); }
-        .controls button.danger { background: linear-gradient(135deg, #ff4444, #cc0000); }
-
-        /* ===== LEGENDA ===== */
-        .legenda {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            padding: 10px 0 3px 0;
-            color: #d9b3ff;
-            font-size: 12px;
-            flex-wrap: wrap;
-        }
-        .legenda-item { display: flex; align-items: center; gap: 4px; }
-        .legenda-item span { font-size: 18px; }
-        .legenda-item .tecla {
-            background: rgba(255,255,255,0.1);
-            padding: 1px 6px;
-            border-radius: 4px;
-            border: 1px solid rgba(255,255,255,0.2);
-            font-weight: bold;
-            color: #ffcc00;
-        }
-
-        /* ===== MÚSICAS E VÍDEOS ===== */
-        .grid-musicas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-        .grid-jogos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .video-card {
-            background: rgba(20,10,40,0.8);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            border: 2px solid rgba(155,60,255,0.2);
-            box-shadow: 0 0 30px rgba(155,60,255,0.1);
-        }
-        .video-card:hover { transform: translateY(-5px); border-color: #b366ff; }
-        .video-card iframe { width: 100%; height: 180px; display: none; border: none; }
-        .video-card iframe.show { display: block; }
-
-        .video-thumb {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            background: #0a0015;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        .video-thumb img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-        .video-thumb:hover img { transform: scale(1.05); filter: brightness(0.7); }
-        .video-thumb:hover .play-btn { transform: scale(1.2); }
-
-        .play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #7a00cc;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 40px rgba(155,60,255,0.4);
-        }
-        .video-duracao {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: rgba(0,0,0,0.8);
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
-        }
-        .video-info { padding: 10px 12px; }
-        .video-titulo { color: #fff; font-size: 14px; margin: 0 0 3px 0; font-weight: bold; }
-        .video-artista { color: #d9b3ff; font-size: 12px; margin: 0; opacity: 0.8; }
-        .video-loading { display: none; text-align: center; color: #d9b3ff; padding: 8px; font-size: 12px; }
-
-        .jogo-card {
-            background: rgba(20,10,40,0.8);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            border: 2px solid rgba(155,60,255,0.2);
-        }
-        .jogo-card:hover { transform: translateY(-5px); border-color: #b366ff; }
-        .jogo-card .video-thumb { padding-top: 56.25%; }
-        .jogo-card iframe { width: 100%; height: 180px; display: none; border: none; }
-        .jogo-card iframe.show { display: block; }
-        .jogo-card h3 { color: #fff; font-size: 14px; padding: 10px 12px 0 12px; margin: 0; }
-        .jogo-card .video-artista { padding: 0 12px 10px 12px; }
-
-        /* ===== SOBRE ===== */
-        .sobre-box {
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 25px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 20px;
-            border: 2px solid #b366ff;
-        }
-        .sobre-box h2 { color: #fff; font-size: 24px; text-align: center; margin-bottom: 15px; }
-        .sobre-box p { color: #d9b3ff; font-size: 15px; line-height: 1.8; margin-bottom: 8px; }
-        .sobre-box ul { list-style: none; padding: 0; margin: 12px 0; }
-        .sobre-box ul li { color: #d9b3ff; font-size: 14px; padding: 5px 0; border-bottom: 1px solid rgba(155,60,255,0.1); }
-        .sobre-box ul li:last-child { border-bottom: none; }
-        .sobre-versao { text-align: center; color: #b366ff !important; font-size: 13px; margin-top: 12px; opacity: 0.7; }
-
-        /* ===== RODAPÉ ===== */
-        .rodape {
-            margin-top: 40px;
-            padding: 20px;
-            text-align: center;
-            color: #d9b3ff;
-            border-top: 2px solid #b366ff;
-            font-size: 14px;
-        }
-        .social { display: flex; justify-content: center; gap: 15px; margin: 10px 0; flex-wrap: wrap; }
-        .social a {
-            color: #d9b3ff;
-            text-decoration: none;
-            font-size: 13px;
-            padding: 3px 10px;
-            border-radius: 8px;
-            background: rgba(155,60,255,0.1);
-            transition: all 0.3s ease;
-        }
-        .social a:hover { background: rgba(155,60,255,0.3); transform: scale(1.05); }
-        .visitas-rodape { font-size: 12px; opacity: 0.6; margin-top: 5px; }
-
-        /* ===== RESPONSIVO ===== */
-        @media (max-width: 1024px) { .jogos-container { grid-template-columns: 1fr 1fr; gap: 20px; } }
-        @media (max-width: 768px) {
-            .jogos-container { grid-template-columns: 1fr; gap: 25px; }
-            .titulo-principal { font-size: 28px; }
-            .secao-titulo { font-size: 22px; }
-            #gameArea, #arena { height: 280px; }
-            .lutador { font-size: 50px; }
-            #alvo { font-size: 35px; }
-            .grid-musicas, .grid-jogos { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        }
-        @media (max-width: 480px) {
-            .titulo-principal { font-size: 22px; }
-            .topo-conteudo { flex-direction: column; align-items: center; gap: 5px; }
-            .topo-info { justify-content: center; }
-            #gameArea, #arena { height: 220px; }
-            .lutador { font-size: 40px; }
-            #alvo { font-size: 30px; }
-            .grid-musicas, .grid-jogos { grid-template-columns: 1fr 1fr; gap: 10px; }
-            .video-card iframe, .jogo-card iframe { height: 120px; }
-            .controls button { padding: 5px 10px; font-size: 11px; }
-        }
-        @media (max-width: 360px) {
-            .grid-musicas, .grid-jogos { grid-template-columns: 1fr; }
-            #gameArea, #arena { height: 180px; }
-        }
-    </style>
 </head>
 <body>
 
-    <!-- ===== TOPO ===== -->
+    <!-- ==================== TOPO ==================== -->
     <div class="topo">
         <div class="topo-conteudo">
             <h1 class="titulo-principal">🎯 TIRO AO ALVO</h1>
@@ -547,107 +17,69 @@
                 <button id="toggleTheme">🌓 Tema</button>
             </div>
         </div>
-        <p class="subtitulo">🥊 Luta + 🎯 Tiro + 🎵 Músicas + 🎮 Gameplays = DIVERSÃO TOTAL!</p>
+        <p class="subtitulo">🎯 Acerte os alvos antes que eles desapareçam! 30 segundos de pura adrenalina!</p>
     </div>
 
-    <!-- ===== MENU ===== -->
+    <!-- ==================== MENU ==================== -->
     <nav class="menu">
-        <a href="#jogos">🎮 Jogos</a>
+        <a href="#jogo">🎯 Jogo</a>
         <a href="#musicas">🎵 Músicas</a>
         <a href="#gameplays">🎮 Gameplays</a>
         <a href="#sobre">📖 Sobre</a>
     </nav>
 
-    <!-- ===== JOGOS LADO A LADO ===== -->
-    <section id="jogos">
-        <h2 class="secao-titulo">🎮 Escolha seu Jogo</h2>
-        <div class="jogos-container">
-            
-            <!-- LUTA -->
-            <div class="jogo-card-grande luta-card">
-                <div class="game-header">
-                    <h2>🥊 PIXEL FIGHT</h2>
-                    <div class="game-stats">
-                        <div>🏆 <span id="vitorias">0</span></div>
-                        <div>🔄 <span id="rodadas">0</span></div>
-                    </div>
-                </div>
-
-                <div class="barra-vida-container">
-                    <div class="barra-vida jogador">
-                        <div class="preenchimento" id="vidaJogadorBarra" style="width:100%"></div>
-                        <div class="label">🧑 VOCÊ <span id="vidaJogador">100</span>%</div>
-                    </div>
-                    <div class="barra-vida inimigo">
-                        <div class="preenchimento" id="vidaInimigoBarra" style="width:100%"></div>
-                        <div class="label">👾 INIMIGO <span id="vidaInimigo">100</span>%</div>
-                    </div>
-                </div>
-
-                <div id="arena">
-                    <div class="chao"></div>
-                    <div id="jogadorLuta" class="lutador jogador">🧑</div>
-                    <div id="inimigoLuta" class="lutador inimigo">👾</div>
-                    <div id="mensagemLuta">🥊 A/D andar | W socar | S defender</div>
-                </div>
-
-                <div class="controls">
-                    <button class="azul" id="btnEsquerda">⬅️ A</button>
-                    <button class="azul" id="btnDireita">➡️ D</button>
-                    <button class="verde" id="btnSocar">🥊 W</button>
-                    <button id="btnDefender">🛡️ S</button>
-                    <button id="btnReiniciarLuta">🔄 Reiniciar</button>
-                </div>
-
-                <div class="legenda">
-                    <div class="legenda-item"><span class="tecla">A</span> Esquerda</div>
-                    <div class="legenda-item"><span class="tecla">D</span> Direita</div>
-                    <div class="legenda-item"><span class="tecla">W</span> Socar 🥊</div>
-                    <div class="legenda-item"><span class="tecla">S</span> Defender 🛡️</div>
+    <!-- ==================== JOGO TIRO AO ALVO ==================== -->
+    <section id="jogo">
+        <h2 class="secao-titulo">🎯 TIRO AO ALVO</h2>
+        <div class="game-window">
+            <div class="game-header">
+                <h2>🎯 TIRO AO ALVO</h2>
+                <div class="game-stats">
+                    <div>💥 <span id="pontosDisplay">0</span></div>
+                    <div>⏱️ <span id="tempoDisplay">30</span>s</div>
+                    <div>🎯 <span id="acertosDisplay">0</span></div>
+                    <div>🏆 <span id="recordeDisplay">0</span></div>
                 </div>
             </div>
 
-            <!-- TIRO AO ALVO -->
-            <div class="jogo-card-grande tiro-card">
-                <div class="game-header">
-                    <h2>🎯 TIRO AO ALVO</h2>
-                    <div class="game-stats">
-                        <div>💥 <span id="pontosDisplay">0</span></div>
-                        <div>⏱️ <span id="tempoDisplay">30</span>s</div>
-                        <div>🎯 <span id="acertosDisplay">0</span></div>
-                        <div>🏆 <span id="recordeDisplay">0</span></div>
-                    </div>
-                </div>
-
-                <div class="barra-tempo">
-                    <div id="barraProgresso" style="width:100%"></div>
-                </div>
-
-                <div id="gameArea">
-                    <div id="alvo" class="alvo">🎯</div>
-                    <div id="mensagemGame">🎯 Clique em "INICIAR" para começar!</div>
-                </div>
-
-                <div class="controls">
-                    <button id="btnIniciar">🚀 INICIAR</button>
-                    <button id="btnReiniciar">🔄 Reiniciar</button>
-                </div>
-
-                <div class="legenda">
-                    <div class="legenda-item"><span>🎯</span> Alvo</div>
-                    <div class="legenda-item"><span>💥</span> Tiro certeiro!</div>
-                    <div class="legenda-item"><span>⏱️</span> 30 segundos</div>
-                    <div class="legenda-item"><span>🏆</span> Recorde</div>
-                </div>
+            <!-- BARRA DE PROGRESSO -->
+            <div class="barra-tempo">
+                <div id="barraProgresso" style="width:100%"></div>
             </div>
 
+            <!-- ÁREA DO JOGO -->
+            <div id="gameArea">
+                <div id="alvo" class="alvo">🎯</div>
+                <div id="mensagemGame">🎯 Clique em "INICIAR JOGO" para começar!</div>
+            </div>
+
+            <!-- CONTROLES -->
+            <div class="controls">
+                <button id="btnIniciar">🚀 INICIAR JOGO</button>
+                <button id="btnReiniciar">🔄 Reiniciar</button>
+            </div>
+
+            <!-- DICAS -->
+            <div class="game-dica">
+                💡 Clique nos alvos 🎯 que aparecem para ganhar pontos!
+                <br>Eles desaparecem rápido! Fique atento! 👀
+            </div>
+
+            <!-- LEGENDA -->
+            <div class="legenda">
+                <div class="legenda-item"><span>🎯</span> Alvo</div>
+                <div class="legenda-item"><span>💥</span> Tiro certeiro!</div>
+                <div class="legenda-item"><span>⏱️</span> 30 segundos</div>
+                <div class="legenda-item"><span>🏆</span> Recorde</div>
+            </div>
         </div>
     </section>
 
-    <!-- ===== MÚSICAS ===== -->
+    <!-- ==================== MÚSICAS ==================== -->
     <section id="musicas">
         <h2 class="secao-titulo">🎵 Músicas Geek</h2>
         <div class="grid-musicas">
+            <!-- Música 1 -->
             <div class="video-card">
                 <div class="video-thumb" data-id="fMvNUINWdjc">
                     <img src="https://img.youtube.com/vi/fMvNUINWdjc/maxresdefault.jpg" alt="Tipo Sasuke" loading="lazy">
@@ -659,9 +91,10 @@
                     <p class="video-artista">MHRAP | Style Trap</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/fMvNUINWdjc?autoplay=0&rel=0" title="Tipo Sasuke" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/fMvNUINWdjc?autoplay=0&rel=0&modestbranding=1&volume=100" title="Tipo Sasuke" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+            <!-- Música 2 -->
             <div class="video-card">
                 <div class="video-thumb" data-id="8kxcZ7ouQSc">
                     <img src="https://img.youtube.com/vi/8kxcZ7ouQSc/maxresdefault.jpg" alt="Vibe Hashirama" loading="lazy">
@@ -673,9 +106,10 @@
                     <p class="video-artista">MHRAP | Vale do FIM</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/8kxcZ7ouQSc?autoplay=0&rel=0" title="Vibe Hashirama" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/8kxcZ7ouQSc?autoplay=0&rel=0&modestbranding=1&volume=100" title="Vibe Hashirama" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+            <!-- Música 3 -->
             <div class="video-card">
                 <div class="video-thumb" data-id="ZRDvW2QhEw8">
                     <img src="https://img.youtube.com/vi/ZRDvW2QhEw8/maxresdefault.jpg" alt="Rap do Sharingan" loading="lazy">
@@ -687,9 +121,10 @@
                     <p class="video-artista">NERD HITS</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/ZRDvW2QhEw8?autoplay=0&rel=0" title="Rap do Sharingan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/ZRDvW2QhEw8?autoplay=0&rel=0&modestbranding=1&volume=100" title="Rap do Sharingan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+            <!-- Música 4 -->
             <div class="video-card">
                 <div class="video-thumb" data-id="CDY9PqjmgVc">
                     <img src="https://img.youtube.com/vi/CDY9PqjmgVc/maxresdefault.jpg" alt="NEW GEN" loading="lazy">
@@ -701,9 +136,479 @@
                     <p class="video-artista">M4rkim | Blue Lock</p>
                 </div>
                 <div class="video-loading">⏳ Carregando...</div>
-                <iframe src="https://www.youtube.com/embed/CDY9PqjmgVc?autoplay=0&rel=0" title="NEW GEN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/CDY9PqjmgVc?autoplay=0&rel=0&modestbranding=1&volume=100" title="NEW GEN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+            <!-- Música 5 -->
             <div class="video-card">
                 <div class="video-thumb" data-id="nwTm5r24DUg">
-                    <img src="https://img.youtube.com/vi/nwTm5r24DUg/maxres
+                    <img src="https://img.youtube.com/vi/nwTm5r24DUg/maxresdefault.jpg" alt="Paris X Gen" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">3:45</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">Paris X Gen 🇫🇷</h4>
+                    <p class="video-artista">M4rkim | Blue Lock</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/nwTm5r24DUg?autoplay=0&rel=0&modestbranding=1&volume=100" title="Paris X Gen" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Música 6 -->
+            <div class="video-card">
+                <div class="video-thumb" data-id="yZQPFLO3Q3A">
+                    <img src="https://img.youtube.com/vi/yZQPFLO3Q3A/maxresdefault.jpg" alt="AGONIA" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">4:20</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">AGONIA 🔥</h4>
+                    <p class="video-artista">7 Minutoz | FNAF</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/yZQPFLO3Q3A?autoplay=0&rel=0&modestbranding=1&volume=100" title="AGONIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Música 7 - Homem-Aranha -->
+            <div class="video-card">
+                <div class="video-thumb" data-id="zd6H4riH29w">
+                    <img src="https://img.youtube.com/vi/zd6H4riH29w/maxresdefault.jpg" alt="Homem-Aranha VS Rei do Crime" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">4:15</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">Homem-Aranha VS Rei do Crime 🕷️</h4>
+                    <p class="video-artista">AniRap ft. Henrique Mendonça</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/zd6H4riH29w?autoplay=0&rel=0&modestbranding=1&volume=100" title="Homem-Aranha VS Rei do Crime" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Música 8 - Japão X França -->
+            <div class="video-card">
+                <div class="video-thumb" data-id="ZRbLHXhcqZA">
+                    <img src="https://img.youtube.com/vi/ZRbLHXhcqZA/maxresdefault.jpg" alt="Japão X França" loading="lazy">
+                    <div class="play-btn">▶</div>
+                    <div class="video-duracao">4:30</div>
+                </div>
+                <div class="video-info">
+                    <h4 class="video-titulo">Japão X França ⚽</h4>
+                    <p class="video-artista">Kaito | Blue Lock</p>
+                </div>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/ZRbLHXhcqZA?autoplay=0&rel=0&modestbranding=1&volume=100" title="Japão X França" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GAMEPLAYS ==================== -->
+    <section id="gameplays">
+        <h2 class="secao-titulo">🎮 Gameplays Insanos</h2>
+        <div class="grid-jogos">
+            <!-- Gameplay 1 - CS2 -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="Td7R4m5p73s">
+                    <img src="https://img.youtube.com/vi/Td7R4m5p73s/maxresdefault.jpg" alt="CS2" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🟣 CS2 - 3700 ELO</h3>
+                <p class="video-artista">Faceit Gameplay</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/Td7R4m5p73s?autoplay=0&rel=0&modestbranding=1&volume=100" title="CS2 Gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Gameplay 2 - Cyberpunk -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="iKdwk5nu5ws">
+                    <img src="https://img.youtube.com/vi/iKdwk5nu5ws/maxresdefault.jpg" alt="Cyberpunk" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🟣 Cyberpunk 2077 MODS</h3>
+                <p class="video-artista">10 MODS Absurdos</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/iKdwk5nu5ws?autoplay=0&rel=0&modestbranding=1&volume=100" title="Cyberpunk MODS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Gameplay 3 - Halo -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="7oETYzF27lQ">
+                    <img src="https://img.youtube.com/vi/7oETYzF27lQ/maxresdefault.jpg" alt="Halo" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🟢 Halo Infinite [4K]</h3>
+                <p class="video-artista">Multiplayer Gameplay</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/7oETYzF27lQ?autoplay=0&rel=0&modestbranding=1&volume=100" title="Halo Infinite" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Gameplay 4 - God of War -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="UEIqHfLggaA">
+                    <img src="https://img.youtube.com/vi/UEIqHfLggaA/maxresdefault.jpg" alt="God of War" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🔵 God of War Ragnarok</h3>
+                <p class="video-artista">4K 60FPS HDR</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/UEIqHfLggaA?autoplay=0&rel=0&modestbranding=1&volume=100" title="God of War" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Gameplay 5 - Spider-Man -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="dAVKjOHJfjI">
+                    <img src="https://img.youtube.com/vi/dAVKjOHJfjI/maxresdefault.jpg" alt="Spider-Man" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🔵 Spider-Man 2</h3>
+                <p class="video-artista">4K 120FPS HDR</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/dAVKjOHJfjI?autoplay=0&rel=0&modestbranding=1&volume=100" title="Spider-Man 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Gameplay 6 - Batman -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="-cFpk2_0xEw">
+                    <img src="https://img.youtube.com/vi/-cFpk2_0xEw/maxresdefault.jpg" alt="Batman" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🦇 Batman: Arkham Knight</h3>
+                <p class="video-artista">RTX 5090 | 4K 120FPS</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/-cFpk2_0xEw?autoplay=0&rel=0&modestbranding=1&volume=100" title="Batman Arkham Knight" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <!-- Gameplay 7 - Marvel's Avengers -->
+            <div class="jogo-card">
+                <div class="video-thumb" data-id="g57sKAvxmLc">
+                    <img src="https://img.youtube.com/vi/g57sKAvxmLc/maxresdefault.jpg" alt="Marvel's Avengers" loading="lazy">
+                    <div class="play-btn">▶</div>
+                </div>
+                <h3>🟣 Marvel's Avengers</h3>
+                <p class="video-artista">RTX 5090 | 4K HDR</p>
+                <div class="video-loading">⏳ Carregando...</div>
+                <iframe src="https://www.youtube.com/embed/g57sKAvxmLc?autoplay=0&rel=0&modestbranding=1&volume=100" title="Marvel's Avengers" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SOBRE ==================== -->
+    <section id="sobre">
+        <div class="sobre-box">
+            <h2>📖 Sobre o Site</h2>
+            <p>🎯 <strong>TIRO AO ALVO</strong> é um site criado por <strong>Carlos</strong> para fãs de música geek e games!</p>
+            <p>🎮 Aqui você encontra:</p>
+            <ul>
+                <li>🎯 Jogo de tiro ao alvo com recordes</li>
+                <li>🎵 As melhores músicas geek em HD</li>
+                <li>🎮 Gameplays insanos em 4K</li>
+            </ul>
+            <p>💡 Dica: Ative o som e clique nos alvos!</p>
+            <p class="sobre-versao">📌 Versão 2.0 - Atualizado em 2026</p>
+        </div>
+    </section>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer class="rodape">
+        <p>🎯 Criado por Carlos - 2026 💥</p>
+        <div class="social">
+            <a href="#">🐦 Twitter</a>
+            <a href="#">📺 YouTube</a>
+            <a href="#">📷 Instagram</a>
+        </div>
+        <p class="visitas-rodape">👀 <span id="visitasRodape">0</span> visitas</p>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // ============================================================
+        // 📊 CONTADOR DE VISITAS
+        // ============================================================
+        let visits = localStorage.getItem('visitasSite') || 0;
+        visits++;
+        localStorage.setItem('visitasSite', visits);
+        document.getElementById('contadorVisitas').textContent = '👀 ' + visits + ' visitas';
+        document.getElementById('visitasRodape').textContent = visits;
+
+        // ============================================================
+        // 🌓 TEMA CLARO/ESCURO
+        // ============================================================
+        let temaEscuro = true;
+        document.getElementById('toggleTheme').addEventListener('click', function() {
+            temaEscuro = !temaEscuro;
+            document.body.classList.toggle('tema-claro');
+            this.textContent = temaEscuro ? '🌓 Tema' : '☀️ Claro';
+        });
+
+        // ============================================================
+        // 🎬 PLAYER DE VÍDEO COM CAPA
+        // ============================================================
+        document.querySelectorAll('.video-thumb').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const card = this.closest('.video-card, .jogo-card');
+                const iframe = card.querySelector('iframe');
+                const loading = card.querySelector('.video-loading');
+                const thumbContainer = this;
+                const videoId = this.dataset.id;
+
+                if (videoId && iframe) {
+                    if (loading) loading.style.display = 'block';
+                    thumbContainer.style.display = 'none';
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&volume=100`;
+                    iframe.style.display = 'block';
+                    
+                    iframe.addEventListener('load', function() {
+                        if (loading) loading.style.display = 'none';
+                    });
+                    
+                    setTimeout(() => {
+                        if (loading) loading.style.display = 'none';
+                    }, 5000);
+                }
+            });
+        });
+
+        // ============================================================
+        // 🎯 TIRO AO ALVO - JOGO
+        // ============================================================
+
+        const gameArea = document.getElementById('gameArea');
+        const alvo = document.getElementById('alvo');
+        const pontosDisplay = document.getElementById('pontosDisplay');
+        const tempoDisplay = document.getElementById('tempoDisplay');
+        const acertosDisplay = document.getElementById('acertosDisplay');
+        const recordeDisplay = document.getElementById('recordeDisplay');
+        const mensagemGame = document.getElementById('mensagemGame');
+        const barraProgresso = document.getElementById('barraProgresso');
+
+        let pontos = 0;
+        let acertos = 0;
+        let tempoRestante = 30;
+        let tempoMaximo = 30;
+        let jogoAtivo = false;
+        let temporizador = null;
+        let intervaloAlvo = null;
+        let recorde = localStorage.getItem('recordeTiroAlvo') || 0;
+        let velocidadeAlvo = 800;
+
+        recordeDisplay.textContent = recorde;
+
+        function moverAlvo() {
+            if (!jogoAtivo) return;
+            
+            const areaWidth = gameArea.clientWidth - 70;
+            const areaHeight = gameArea.clientHeight - 70;
+            
+            const x = 10 + Math.random() * Math.max(0, areaWidth - 20);
+            const y = 10 + Math.random() * Math.max(0, areaHeight - 20);
+            
+            alvo.style.left = Math.max(5, x) + 'px';
+            alvo.style.top = Math.max(5, y) + 'px';
+            alvo.style.display = 'block';
+            alvo.style.transform = 'scale(1)';
+            
+            const emojis = ['🎯', '👾', '💀', '🧟', '🕷️', '🐉', '⚡', '🔥', '🌟', '🎪'];
+            alvo.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            const cores = ['#ff4444', '#ff8800', '#ffcc00', '#44ff88', '#4488ff', '#cc44ff'];
+            alvo.style.textShadow = `0 0 40px ${cores[Math.floor(Math.random() * cores.length)]}`;
+        }
+
+        function esconderAlvo() {
+            if (jogoAtivo && alvo.style.display !== 'none') {
+                alvo.style.display = 'none';
+                if (pontos > 0) {
+                    pontos--;
+                    pontosDisplay.textContent = pontos;
+                }
+            }
+        }
+
+        alvo.addEventListener('click', function(e) {
+            if (!jogoAtivo || this.style.display === 'none') return;
+            e.stopPropagation();
+            
+            pontos++;
+            acertos++;
+            pontosDisplay.textContent = pontos;
+            acertosDisplay.textContent = acertos;
+
+            this.style.transform = 'scale(2)';
+            this.style.boxShadow = '0 0 80px rgba(255, 200, 0, 1)';
+            
+            const boom = document.createElement('div');
+            boom.textContent = '💥';
+            boom.style.cssText = `
+                position: absolute;
+                left: ${parseInt(this.style.left) + 10}px;
+                top: ${parseInt(this.style.top) - 10}px;
+                font-size: 60px;
+                pointer-events: none;
+                transition: all 0.8s ease;
+                opacity: 1;
+                z-index: 100;
+                transform: scale(0.5);
+            `;
+            gameArea.appendChild(boom);
+            
+            setTimeout(() => {
+                boom.style.opacity = '0';
+                boom.style.transform = 'scale(2.5)';
+                setTimeout(() => boom.remove(), 800);
+            }, 100);
+
+            if (acertos % 5 === 0 && acertos > 0) {
+                tempoRestante += 1;
+                tempoDisplay.textContent = tempoRestante;
+                atualizarBarra();
+                
+                if (velocidadeAlvo > 350) {
+                    velocidadeAlvo -= 30;
+                    clearInterval(intervaloAlvo);
+                    intervaloAlvo = setInterval(() => {
+                        if (jogoAtivo) {
+                            if (Math.random() < 0.35) {
+                                esconderAlvo();
+                                setTimeout(() => { if (jogoAtivo) moverAlvo(); }, 300);
+                            } else {
+                                moverAlvo();
+                            }
+                        }
+                    }, velocidadeAlvo);
+                }
+                
+                mensagemGame.textContent = `⚡ +1s! Velocidade aumentada!`;
+                mensagemGame.style.color = '#ffcc00';
+                setTimeout(() => {
+                    mensagemGame.textContent = '🎯 Continue atirando!';
+                    mensagemGame.style.color = '#d9b3ff';
+                }, 1000);
+            }
+
+            setTimeout(() => {
+                if (jogoAtivo) moverAlvo();
+            }, 150);
+        });
+
+        gameArea.addEventListener('click', function(e) {
+            if (!jogoAtivo || e.target !== this) return;
+            if (pontos > 0) {
+                pontos--;
+                pontosDisplay.textContent = pontos;
+                mensagemGame.textContent = '❌ Errou! -1 ponto!';
+                mensagemGame.style.color = '#ff4444';
+                setTimeout(() => {
+                    mensagemGame.textContent = '🎯 Continue atirando!';
+                    mensagemGame.style.color = '#d9b3ff';
+                }, 800);
+            }
+        });
+
+        function atualizarBarra() {
+            const percentual = (tempoRestante / tempoMaximo) * 100;
+            barraProgresso.style.width = Math.max(0, percentual) + '%';
+            
+            if (percentual < 20) {
+                barraProgresso.style.background = 'linear-gradient(90deg, #ff4444, #ff8800)';
+            } else if (percentual < 50) {
+                barraProgresso.style.background = 'linear-gradient(90deg, #ff8800, #ffcc00)';
+            } else {
+                barraProgresso.style.background = 'linear-gradient(90deg, #00ccff, #00ff88)';
+            }
+        }
+
+        function iniciarJogo() {
+            if (jogoAtivo) return;
+            
+            pontos = 0;
+            acertos = 0;
+            tempoRestante = 30;
+            tempoMaximo = 30;
+            velocidadeAlvo = 800;
+            jogoAtivo = true;
+            
+            pontosDisplay.textContent = pontos;
+            acertosDisplay.textContent = acertos;
+            tempoDisplay.textContent = tempoRestante;
+            atualizarBarra();
+            mensagemGame.textContent = '🎯 VAI COMEÇAR!';
+            mensagemGame.style.color = '#88ff88';
+            moverAlvo();
+
+            temporizador = setInterval(() => {
+                tempoRestante--;
+                tempoDisplay.textContent = tempoRestante;
+                atualizarBarra();
+                
+                if (tempoRestante <= 0) {
+                    finalizarJogo();
+                }
+            }, 1000);
+
+            intervaloAlvo = setInterval(() => {
+                if (jogoAtivo) {
+                    if (Math.random() < 0.35) {
+                        esconderAlvo();
+                        setTimeout(() => { if (jogoAtivo) moverAlvo(); }, 300);
+                    } else {
+                        moverAlvo();
+                    }
+                }
+            }, velocidadeAlvo);
+
+            document.getElementById('btnIniciar').textContent = '⏳ JOGANDO...';
+            document.getElementById('btnIniciar').disabled = true;
+        }
+
+        function finalizarJogo() {
+            jogoAtivo = false;
+            clearInterval(temporizador);
+            clearInterval(intervaloAlvo);
+            alvo.style.display = 'none';
+            
+            if (pontos > recorde) {
+                recorde = pontos;
+                localStorage.setItem('recordeTiroAlvo', recorde);
+                recordeDisplay.textContent = recorde;
+                mensagemGame.textContent = `🏆 NOVO RECORDE! ${pontos} pontos! 🏆`;
+                mensagemGame.style.color = '#ffdd00';
+            } else {
+                mensagemGame.textContent = `⏰ FIM DE JOGO! ${pontos} pontos. Recorde: ${recorde}`;
+                mensagemGame.style.color = '#ffcc00';
+            }
+            
+            document.getElementById('btnIniciar').textContent = '🚀 INICIAR JOGO';
+            document.getElementById('btnIniciar').disabled = false;
+        }
+
+        function reiniciarJogo() {
+            clearInterval(temporizador);
+            clearInterval(intervaloAlvo);
+            jogoAtivo = false;
+            pontos = 0;
+            acertos = 0;
+            tempoRestante = 30;
+            tempoMaximo = 30;
+            velocidadeAlvo = 800;
+            
+            pontosDisplay.textContent = pontos;
+            acertosDisplay.textContent = acertos;
+            tempoDisplay.textContent = tempoRestante;
+            atualizarBarra();
+            alvo.style.display = 'none';
+            
+            mensagemGame.textContent = '🔄 Jogo reiniciado! Clique em "INICIAR" para jogar!';
+            mensagemGame.style.color = '#d9b3ff';
+            
+            document.getElementById('btnIniciar').textContent = '🚀 INICIAR JOGO';
+            document.getElementById('btnIniciar').disabled = false;
+        }
+
+        document.getElementById('btnIniciar').addEventListener('click', iniciarJogo);
+        document.getElementById('btnReiniciar').addEventListener('click', reiniciarJogo);
+
+        mensagemGame.textContent = '🎯 Clique em "INICIAR JOGO" para começar!';
+        atualizarBarra();
+    </script>
+
+</body>
+</html>
